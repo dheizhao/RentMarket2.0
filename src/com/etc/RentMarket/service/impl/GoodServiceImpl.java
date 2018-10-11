@@ -9,7 +9,7 @@ import com.etc.RentMarket.service.GoodService;
 public class GoodServiceImpl implements GoodService {
 	GoodsDaoImpl gd= new GoodsDaoImpl();
 	/**
-	 * 查找商品信息
+	 * 鍟嗗搧鏌ヨ
 	 */
 	@Override
 	public List<Good> selectGoods() {

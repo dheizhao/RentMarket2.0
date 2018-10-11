@@ -1,3 +1,9 @@
+<%@page import="com.etc.RentMarket.entity.Good"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ page autoFlush="true" buffer="1094kb"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html>
  <head>
@@ -64,7 +70,11 @@
      </style>
  </head>
  <body>
-
+<%
+	List<Good> good=(List<Good>)request.getAttribute("Good"); 
+	String goodPath="theme/img/pd/";//存放商品的绝对路径
+	String adPath="theme/img/ad/";//存放广告信息的绝对路径
+%>
 
 <div>
     <div id="moquu_wxin" class="moquu_wxin"><a href="javascript:void(0)"><div class="moquu_wxinh"></div></a></div>
@@ -110,7 +120,7 @@
         </div>
     </div>
     <div class="container clearfix">
-        <div class="header-logo fl"><h1><a href="index.jsp"><img src="theme/icon/logo.png"></a> </h1></div>
+        <div class="header-logo fl"><h1><a href="index.html"><img src="theme/icon/logo.png"></a> </h1></div>
         <div class="head-form fl">
             <form class="clearfix">
                 <input type="text" class="search-text" accesskey="" id="key" autocomplete="off"  placeholder="相机">
@@ -567,8 +577,15 @@
 </div>
 <!-- 卖场推荐 End -->
  
+ 	<%
  	
-<div class="time-lists clearfix">
+ 	
+ 	if(good==null){
+ 	%>
+		<jsp:forward page="../GoodServlet"></jsp:forward>
+	<%} %>
+	
+ 	<div class="time-lists clearfix">
     <div class="time-list time-list-w fl">
         <div class="time-title time-clear"><h2>热租区</h2><div class="pc-font fl"></div><a class="pc-spin fr" href="javascript:;">换一换</a> </div>
         <div class="time-border">
@@ -578,9 +595,9 @@
                         <ul>
                             <li>
                                 <a href="">
-                                    <img src="theme/img/pd/p1.jpg">
-                                    <p class="head-name pc-pa10">美国艾罗伯特智能扫地机器人 吸尘器 Roomba 651</p>
-                                    <p class="label-default">¥36.80/月</p>
+                                    <img src=<%=goodPath+good.get(0).getGoodImgAdd()%>>
+                                    <p class="head-name pc-pa10"><%=good.get(0).getGoodName()%></p>
+                                    <p class="label-default">¥<%=good.get(0).getGoodPrice() %>/月</p>
                                 </a>
                             </li>
                             <li>
@@ -625,7 +642,8 @@
         </div>
     </div>
 </div>
-
+ 	
+	
 <div class="containers main-banner"><a href="#"><img src="theme/img/ad/br1.jpg" width="1200" height="105"></a> </div>
 
 <div class="time-lists  clearfix">
@@ -804,5 +822,14 @@
     </div>
 </div>
 <script type="text/javascript">banner()</script>
+</body>
+</html>DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
 </body>
 </html>

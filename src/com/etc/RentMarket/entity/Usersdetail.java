@@ -18,7 +18,7 @@ public class Usersdetail implements Serializable {
 
 	private int userId;
 
-	private int userPhone;
+	private String  userPhone;
 
 	public Usersdetail() {
 	}
@@ -47,11 +47,11 @@ public class Usersdetail implements Serializable {
 		this.userId = userId;
 	}
 
-	public int getUserPhone() {
+	public String  getUserPhone() {
 		return this.userPhone;
 	}
 
-	public void setUserPhone(int userPhone) {
+	public void setUserPhone(String  userPhone) {
 		this.userPhone = userPhone;
 	}
 
