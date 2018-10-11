@@ -85,4 +85,11 @@ public class Good implements Serializable {
 		this.typeId = typeId;
 	}
 
+	@Override
+	public String toString() {
+		return "Good [goodId=" + goodId + ", goodCount=" + goodCount + ", goodImgAdd=" + goodImgAdd + ", goodName="
+				+ goodName + ", goodPrice=" + goodPrice + ", goodState=" + goodState + ", typeId=" + typeId + "]";
+	}
+	
+
 }
