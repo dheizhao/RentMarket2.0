@@ -97,23 +97,14 @@
 <section id="member">
     <div class="member-center clearfix">
         <div class="member-left fl">
-            <div class="member-apart clearfix">
-                <div class="fl"><a href="#"><img src="theme/img/bg/mem.png"></a></div>
-                <div class="fl">
-                    <p>用户名：</p>
-                    <p><a href="#">亚里士多德</a></p>
-                    <p>搜悦号：</p>
-                    <p>389323080</p>
-                </div>
-            </div>
             <div class="member-lists">
                 <dl>
                     <dt>我的商城</dt>
+                    <dd><a href="user-info.jsp">我的信息</a></dd>
                     <dd class="cur"><a href="#">我的订单</a></dd>
-                    <dd><a href="#">我的收藏</a></dd>
-                    <dd><a href="#">账户安全</a></dd>
-                    <dd><a href="#">我的评价</a></dd>
-                    <dd><a href="#">地址管理</a></dd>
+                    <dd><a href="myfavorite.jsp">我的收藏</a></dd>
+                    <dd><a href="comment.jsp">我的评价</a></dd>
+                    <dd><a href="addressManager.jsp">地址管理</a></dd>
                 </dl>
                 <dl>
                     <dt>客户服务</dt>

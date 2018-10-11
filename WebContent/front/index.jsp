@@ -111,7 +111,7 @@
                 <li class="headerul">|</li>
                 <li id="pc-nav" class="menu"><a href="" class="tit">我的商城</a>
                     <div class="subnav">
-                   		<a href="person/index.jsp">个人中心</a>
+                   		<a href="user-info.jsp">个人中心</a>
                         <a href="list-receive.jsp">我的订单</a>
                         <a href="myfavorite.jsp">我的收藏</a>
                         <a href="addressManager.html">地址管理</a>

@@ -90,22 +90,18 @@
 						<dt>我的商城</dt>
 						<dd class="cur">
 							<a href="#">我的信息</a>
-							<input type="hidden">
 						</dd>
 						<dd>
-							<a href="#">我的订单</a>
+							<a href="list-receive.jsp">我的订单</a>
 						</dd>
 						<dd>
-							<a href="#">我的收藏</a>
+							<a href="myfavorite.jsp">我的收藏</a>
 						</dd>
 						<dd>
-							<a href="#">账户安全</a>
+							<a href="comment.jsp">我的评价</a>
 						</dd>
 						<dd>
-							<a href="#">我的评价</a>
-						</dd>
-						<dd>
-							<a href="#">地址管理</a>
+							<a href="addressManager.jsp">地址管理</a>
 						</dd>
 					</dl>
 					<dl>
@@ -137,15 +133,22 @@
 							<div class="m-userinfo"
 								style="background: url(theme/images/header-bg1.jpg);">
 								<div class="m-baseinfo">
-									<a href="information.html"> <img
+									<a href="#"> <img
 										src="theme/images/getAvatar.do.jpg"> 
 										<%
+											
+											if(session.getAttribute("user")==null){
+												response.sendRedirect("login.jsp");
+												return;
+											}else{
  											User user = (User) session.getAttribute("user");
  											String userName = user.getUserName();
  										%>
 									</a> <em class="s-name" style="font-size: 20px"><%=userName%><span class="vip1"
 										style="background-image: url('theme/images/vip.png');"></span></em>
-
+										<%
+											} 
+										%>
 								</div>
 								
 							</div>
