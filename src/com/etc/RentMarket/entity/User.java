@@ -63,4 +63,27 @@ public class User implements Serializable {
 		this.userState = userState;
 	}
 
+
+	public User(int userId, String userName, String userphoto, String userPwd, int userState) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userphoto = userphoto;
+		this.userPwd = userPwd;
+		this.userState = userState;
+	}
+
+	
+	public User(String userName, String userPwd) {
+		super();
+		this.userName = userName;
+		this.userPwd = userPwd;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userName=" + userName + ", userphoto=" + userphoto + ", userPwd=" + userPwd
+				+ ", userState=" + userState + "]";
+	}
+
 }

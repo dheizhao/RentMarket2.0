@@ -1,7 +1,6 @@
 package com.etc.RentMarket.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
 
 /**
