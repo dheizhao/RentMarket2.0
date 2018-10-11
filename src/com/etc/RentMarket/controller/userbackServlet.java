@@ -43,6 +43,8 @@ public class userbackServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
+		String op="";
+		
 		// 调用service的分页方法返回一个pageData对象
 		List<Uesrslist> list = us.getUesrs();
 		// Ajax来实现
