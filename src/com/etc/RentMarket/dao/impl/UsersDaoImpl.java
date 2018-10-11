@@ -26,10 +26,10 @@ public class UsersDaoImpl implements UsersDao {
 	}
 
 	/**
-	 * 用户名是否存在
+	 * 根据用户名查询用户信息
 	 */
 	@Override
-	public List<User> userCheck(String userName) {
+	public List<User> getUserByUserName(String userName) {
 		// TODO Auto-generated method stub
 		String sql = "select * from users where userName=?";
 		List<User> list = (List<User>) BaseDao.select(sql, User.class, userName);
@@ -48,4 +48,5 @@ public class UsersDaoImpl implements UsersDao {
 		String sql="select u1.userId,u1.userName,u2.userPhone,u2.userAddress,u1.userRegisterTime,u1.userState from users u1,usersdetail u2 where u1.userId=u2.userId";
 		return (List<Uesrslist>)BaseDao.select(sql, Uesrslist.class);
 	}
+
 }

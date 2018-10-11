@@ -28,13 +28,13 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	/**
-	 * 查询用户名是否存在
+	 * 根据用户名查询用户信息
 	 */
 	@Override
-	public List<User> userCheck(String userName) {
+	public List<User> getUserByUserName(String userName) {
 		// TODO Auto-generated method stub
 
-		return ud.userCheck(userName);
+		return ud.getUserByUserName(userName);
 	}
 
 	/**

@@ -13,7 +13,7 @@ public class UserTest {
 		//查询用户是否存在
 		String userName = "azhuge";
 		UsersService us = new UsersServiceImpl();
-		List<User> list = us.userCheck(userName);
+		List<User> list = us.getUserByUserName(userName);
 		if (list.size()!=0) {
 			System.out.println("exist");
 		}else {

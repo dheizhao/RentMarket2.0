@@ -18,11 +18,11 @@ public interface UsersService {
 	boolean addUsers(User u);
 	
 	/**
-	 * 用户名是否存在
+	 * 根据用户名查询用户信息
 	 * @param userName
 	 * @return
 	 */
-	List<User> userCheck(String userName);
+	List<User> getUserByUserName(String userName);
 	/**
 	 * @author 小白
 	 * 后台得到所有用户方法

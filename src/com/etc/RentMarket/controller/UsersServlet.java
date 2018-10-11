@@ -73,7 +73,7 @@ public class UsersServlet extends HttpServlet {
 			User user = new User(userName, userPwd);
 
 			// 查询数据库中是否存在此用户名
-			List<User> list = us.userCheck(userName);
+			List<User> list = us.getUserByUserName(userName);
 			if (list.size() == 0) {
 				out.print("<script>alert('用户名不存在，请先注册！');location.href='front/login.jsp'</script>");
 			} else {
