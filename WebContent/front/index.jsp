@@ -1,3 +1,5 @@
+<%@page import="com.etc.RentMarket.entity.PhoneGood"%>
+<%@page import="com.etc.RentMarket.service.impl.GoodPhoneServiceImpl"%>
 <%@page import="com.etc.RentMarket.entity.User"%>
 <%@page import="com.etc.RentMarket.entity.Good"%>
 <%@page import="java.util.List"%>
@@ -72,11 +74,7 @@
      </style>
  </head>
  <body>
-<%
-	List<Good> good=(List<Good>)request.getAttribute("Good"); //商品集合
-	String goodPath="theme/img/pd/";//存放商品的绝对路径
-	String adPath="theme/img/ad/";//存放广告信息的绝对路径
-%>
+
 
 <div>
     <div id="moquu_wxin" class="moquu_wxin"><a href="javascript:void(0)"><div class="moquu_wxinh"></div></a></div>
@@ -593,12 +591,19 @@
 <!-- 卖场推荐 End -->
  
  	<%
- 	
- 	
- 	if(good==null){
+	List<Good> good=(List<Good>)request.getAttribute("Good"); //商品集合
+	String goodPath="theme/img/pd/";//存放商品的绝对路径
+	
+	%>
+	
+ 	<%
+ 	if(good==null){//为空就跳转到Servlet获取数据
  	%>
 		<jsp:forward page="../GoodServlet"></jsp:forward>
-	<%} %>
+		
+	<%
+	} 
+	%>
 	
  	<div class="time-lists clearfix">
     <div class="time-list time-list-w fl">
@@ -659,31 +664,20 @@
             <div class="brand-poa fl">
                 <div class="brand-poa H-over clearfix">
                     <ul>
+                    	<%
+                    		GoodPhoneServiceImpl gpsi = new GoodPhoneServiceImpl();
+                    		List<PhoneGood> phoneList = gpsi.selectPhone();
+                    		for(PhoneGood pg : phoneList){
+                    	%>
                         <li>
-                            <div class="brand-imgss"><a href="#"><img src="theme/img/pd/o5t.jpg"></a></div>
-                            <div class="brand-title"><a href="#">一加手机5T 8GB+128GB 星辰黑 全面屏游戏手机 全网通4G 双卡双待</a> </div>
-                            <div class="brand-price">￥99.00/月 </div>
+                            <div class="brand-imgss"><a href="#"><img src=<%=goodPath+pg.getGoodImgAdd() %>></a></div>
+                            <div class="brand-title"><a href="#"><%=pg.getGoodName() %></a> </div>
+                            <div class="brand-price">￥<%=pg.getGoodPrice() %>/月 </div>
                         </li>
-                        <li>
-                            <div class="brand-imgss"><a href="#"><img src="theme/img/pd/o6.jpg"></a></div>
-                            <div class="brand-title"><a href="#">一加手机6 8GB+128GB 亮瓷黑 全面屏游戏手机 全网通4G 双卡双待</a> </div>
-                            <div class="brand-price">￥99.00/月 </div>
-                        </li>
-                        <li>
-                            <div class="brand-imgss"><a href="#"><img src="theme/img/pd/o6a.jpg"></a></div>
-                            <div class="brand-title"><a href="#">一加 6手机 OnePlus6 （六）游戏手机 复仇者联盟限量版 全网通(8G+256G)</a> </div>
-                            <div class="brand-price">￥99.00/月 </div>
-                        </li>
-                        <li>
-                            <div class="brand-imgss"><a href="#"><img src="theme/img/pd/o6r.jpg"></a></div>
-                            <div class="brand-title"><a href="#">一加 6手机 OnePlus6 全面屏游戏手机 全网通4G 双卡双待 琥珀红 8G+128G</a> </div>
-                            <div class="brand-price">￥99.00/月 </div>
-                        </li>
-                        <li>
-                            <div class="brand-imgss"><a href="#"><img src="theme/img/pd/o5t6.jpg"></a></div>
-                            <div class="brand-title"><a href="#">一加 5T（A5010）手机 OnePlus5T 星辰黑 全网通(6G+64G)</a> </div>
-                            <div class="brand-price">￥66.00/月 </div>
-                        </li>
+                        <% 
+                    		}
+                        %>
+                        
                         
                     </ul>
                 </div>
