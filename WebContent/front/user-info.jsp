@@ -85,23 +85,13 @@
 	<section id="member">
 		<div class="member-center clearfix">
 			<div class="member-left fl">
-				<div class="member-apart clearfix">
-					<div class="fl">
-						<a href="#"><img src="theme/img/bg/mem.png"></a>
-					</div>
-					<div class="fl">
-						<p>用户名：</p>
-						<p>
-							<a href="#">亚里士多德</a>
-						</p>
-						<p>搜悦号：</p>
-						<p>389323080</p>
-					</div>
-				</div>
 				<div class="member-lists">
 					<dl>
 						<dt>我的商城</dt>
 						<dd class="cur">
+							<a href="#">我的信息</a>
+						</dd>
+						<dd>
 							<a href="#">我的订单</a>
 						</dd>
 						<dd>
@@ -152,15 +142,11 @@
  											User user = (User) session.getAttribute("user");
  											String userName = user.getUserName();
  										%>
-									</a> <em class="s-name"><%=userName%><span class="vip1"
+									</a> <em class="s-name" style="font-size: 20px"><%=userName%><span class="vip1"
 										style="background-image: url('theme/images/vip.png');"></span></em>
 
 								</div>
-								<div class="m-right">
-									<div class="m-address">
-										<a href="addressManage.jsp" class="i-trigger">我的收货地址</a>
-									</div>
-								</div>
+								
 							</div>
 						</div>
 						<div class="box-container-bottom"
