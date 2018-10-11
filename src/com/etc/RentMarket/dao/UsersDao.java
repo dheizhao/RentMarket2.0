@@ -2,6 +2,7 @@ package com.etc.RentMarket.dao;
 
 import java.util.List;
 
+import com.etc.RentMarket.entity.Uesrslist;
 import com.etc.RentMarket.entity.User;
 
 /**
@@ -24,4 +25,11 @@ public interface UsersDao {
 	 * @return
 	 */
 	List<User> userCheck(String userName);
+	
+	/**
+	 * 后台得到所有用户方法
+	 * @author 小白
+	 * @return List 用户列表集合
+	 */
+	public List<Uesrslist> getUesrs();
 }
