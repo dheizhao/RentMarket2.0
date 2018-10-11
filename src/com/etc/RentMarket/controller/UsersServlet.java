@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.etc.RentMarket.DBUtil.MD5Util;
+import com.etc.RentMarket.entity.Uesrslist;
 import com.etc.RentMarket.entity.User;
 import com.etc.RentMarket.service.UsersService;
 import com.etc.RentMarket.service.impl.UsersServiceImpl;
@@ -40,33 +41,42 @@ public class UsersServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String op = request.getParameter("op");
 		UsersService us = new UsersServiceImpl();
-		if ("".equals(op)) {
-			String userName = request.getParameter("username");
-			String userPwd = request.getParameter("password");
-			String reUserPwd = request.getParameter("repassword");
+
+		if ("add".equals(op)) {
+			String userName = request.getParameter("username");// 用户名
+			String userPwd = MD5Util.getEncodeByMd5(request.getParameter("password"));// 密码
+			String reUserPwd = MD5Util.getEncodeByMd5(request.getParameter("repassword"));// 确认密码
+			User u = new User(userName, userPwd);
+			boolean flag = us.addUsers(u);
+			System.out.println("flag:" + flag);
 
 			String data = "";
+			List<Uesrslist> list = us.getUesrs();
 			if (userName.equals("")) {
-				data = "请输入用户名~";
+				data = "*请输入用户名";
 			} else {
-				data = "ggg";
+			for (Uesrslist uesrslist : list) {
+				if (userName.equals(uesrslist.getUserName())) {//获取数据库所有用户名，逐一比较是否重复
+					data = "*用户名已存在，请重新输入";
+					break;
+				}
+			}
+			}
+			
+			//对注册的密码进行判定
+			if (userPwd.equals("")) {
+				data = "*密码不能为空";
+			} 
+			if (reUserPwd.equals("")) {
+				data = "*密码不能为空";
+			} else if (!(userPwd.equals(reUserPwd))) {
+				data = "*两次密码输入不一致";
 			}
 			out.print(data);
-			/*
-			 * if(userName==null) { //ajax提示用户名先填写 data="" if(userPwd==null) {
-			 * 
-			 * }else if(!(userPwd.equals(reUserPwd))) { //ajax提示用户密码不正确 } }
-			 */
-			if ("add".equals(op)) {
-				userPwd = MD5Util.getEncodeByMd5(userPwd);
-				User u = new User(userName, userPwd);
-				boolean flag = us.addUsers(u);
-				System.out.println("flag:" + flag);
-				// 暂时不提示成功或者失败
-				// 页面的跳转
-				// request实现页面的跳转->转发
-				request.getRequestDispatcher("login.jsp").forward(request, response);
-			}
+			// 暂时不提示成功或者失败
+			// 页面的跳转
+			// request实现页面的跳转->转发
+			request.getRequestDispatcher("front/login.jsp").forward(request, response);
 		} else if ("login".equals(op)) {
 			String userName = request.getParameter("userName");
 			String userPwd = MD5Util.getEncodeByMd5((request.getParameter("userPwd")));

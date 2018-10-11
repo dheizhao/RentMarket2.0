@@ -14,7 +14,12 @@
 	href="theme/icon/favicon.ico">
 <link rel="stylesheet" type="text/css" href="theme/css/base.css">
 <link rel="stylesheet" type="text/css" href="theme/css/login.css">
-
+<style type="text/css">
+.tip {
+	font-size: medium;
+	color: red;
+}
+</style>
 </head>
 <body>
 
@@ -46,19 +51,20 @@
 							<label><i class="heart">*</i>用户名：</label> <input type="text"
 								class="list-input1" id="username" name="username" value=""
 								placeholder="请输入正确格式的用户名">
-							<label id="msg"></label>
+							<div id="msg_username" class="tip"></div>
 						</div>
-
 						<div class="login-input">
 							<label><i class="heart">*</i>请设置密码：</label> <input
-								type="password" class="list-input" id="password" name="password">
+								type="password" class="list-input" id="password" name="password"
+								placeholder="请输入密码">
+							<div id="msg_userpwd" class="tip"></div>
 						</div>
 						<div class="login-input">
 							<label><i class="heart">*</i>请确认密码：</label> <input
 								type="password" class="list-input" id="repassword"
-								name="repassword">
+								name="repassword" placeholder="请确认密码">
+							<div id="msg_userCpwd" class="tip"></div>
 						</div>
-
 						<div class="item-ifo">
 							<input type="checkbox" onClick="agreeonProtocol();" id="readme"
 								checked="checked" class="checkbox"> <label
@@ -67,7 +73,6 @@
 						</div>
 						<div class="login-button">
 							<input type="submit" value="注册" />
-
 						</div>
 					</form>
 				</div>
@@ -103,15 +108,41 @@
 
 	<script>
 		$(function() {
-			$("#username").blur(function() {
-				console.log(Math.random());
-				$.get("../us.do","username="+$(this).val()+"&random="+Math.random(),function(data,status){
-					if(status == "success"){
-						$("#msg").html(data);
-					}
-				});
-			});
+			$("#username").blur(
+					function() {
+						console.log(Math.random());
+						$.get("../us.do", "username=" + $(this).val()
+								+ "&random=" + Math.random(), function(data,
+								status) {
+							if (status == "success") {
+								$("#msg_username").html(data);
+							}
+						});
+					});
+			$("#password").blur(
+					function() {
+						console.log(Math.random());
+						$.get("../us.do", "password=" + $(this).val()
+								+ "&random=" + Math.random(), function(data,
+								status) {
+							if (status == "success") {
+								$("#msg_userpwd").html(data);
+							}
+						});
+					});
+			$("#repassword").blur(
+					function() {
+						console.log(Math.random());
+						$.get("../us.do", "repassword=" + $(this).val()
+								+ "&random=" + Math.random(), function(data,
+								status) {
+							if (status == "success") {
+								$("#msg_userCpwd").html(data);
+							}
+						});
+					});
 		});
 	</script>
+
 </body>
 </html>

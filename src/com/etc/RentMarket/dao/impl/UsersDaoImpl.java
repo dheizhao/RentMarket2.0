@@ -21,7 +21,7 @@ public class UsersDaoImpl implements UsersDao {
 	@Override
 	public boolean addUsers(User u) {
 		// TODO Auto-generated method stub
-		String sql = "insert into users (userName, userPwd) VALUES (?, ?)";
+		String sql = "insert into users (userName, userPwd,userRegisterTime) VALUES (?, ?,now())";
 		return BaseDao.execute(sql, u.getUserName(), u.getUserPwd()) > 0;
 	}
 
