@@ -1,9 +1,11 @@
+<%@page import="com.etc.RentMarket.entity.User"%>
 <%@page import="com.etc.RentMarket.entity.Good"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page autoFlush="true" buffer="1094kb"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ 
 <!doctype html>
 <html>
  <head>
@@ -88,7 +90,20 @@
     <div class="BHeader">
         <div class="yNavIndex">
             <ul class="BHeaderl">
+            	<%
+            		User user = (User)session.getAttribute("user");
+            		if(user==null){
+            	%>
                 <li><a href="login.jsp" style="color:#ea4949;">请登录</a> </li>
+                <%
+            		}else{
+                %>
+                <li><a href="#" style="color:#ea4949;">${sessionScope.user.userName}</a> </li>
+                <li class="headerul">|</li>
+                <li><a href="Signout.jsp" style="color:gray;">[注销]</a> </li>
+                <%
+            		}
+                %>
                 <li class="headerul">|</li>
                 <li><a href="register.jsp">免费注册</a> </li>
                 <li class="headerul">|</li>
@@ -98,9 +113,9 @@
                 <li class="headerul">|</li>
                 <li id="pc-nav" class="menu"><a href="" class="tit">我的商城</a>
                     <div class="subnav">
+                   		<a href="person/index.jsp">个人中心</a>
                         <a href="list-receive.jsp">我的订单</a>
                         <a href="myfavorite.jsp">我的收藏</a>
-                        <a href="my-user.html">账户安全</a>
                         <a href="addressManager.html">地址管理</a>
                         <a href="comment.html">我要评价</a>
                     </div>

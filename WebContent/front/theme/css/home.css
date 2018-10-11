@@ -416,7 +416,7 @@ body{min-width: 1200px; _width:expression(document.documentElement.clientWidth>1
 .menu{height:35px;width:100px; line-heigh:35px;position:relative;}
 .menu a{display:block;height:35px;line-height:35px;padding:0 0 0 10px; }
 .menu a:hover { background:#ea4949; color:#fff;}
-.menu a.tit{background:url(../icon/arrow.gif) no-repeat;background-position:75px 15px; }
+.menu a.tit{background:url(../icon/arrow.gif) no-repeat;background-position:68px 21px; }
 #pc-nav.current a.tit{background-position:75px -12px;position:relative;z-index:9; color:#333; }
 .menu .subnav{display:none;background:#f5f5f5;position:absolute;top:35px;left:4px;width:102px;  z-index:112; border-left:1px solid #e7e5e5; border-right:1px solid #e7e5e5}
 #pc-nav.current .subnav{display:block;}
