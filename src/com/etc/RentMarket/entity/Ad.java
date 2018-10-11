@@ -13,13 +13,13 @@ public class Ad implements Serializable {
 	private int adId;
 
 	
-	private Date ad_beginDate;
+	private String ad_beginDate;
 
 	
 	private String adContent;
 
 	
-	private Date ad_endDate;
+	private String ad_endDate;
 
 
 	private String adPicture;
@@ -38,11 +38,11 @@ public class Ad implements Serializable {
 		this.adId = adId;
 	}
 
-	public Date getAd_beginDate() {
+	public String  getAd_beginDate() {
 		return this.ad_beginDate;
 	}
 
-	public void setAd_beginDate(Date ad_beginDate) {
+	public void setAd_beginDate(String ad_beginDate) {
 		this.ad_beginDate = ad_beginDate;
 	}
 
@@ -54,11 +54,11 @@ public class Ad implements Serializable {
 		this.adContent = adContent;
 	}
 
-	public Date getAd_endDate() {
+	public String getAd_endDate() {
 		return this.ad_endDate;
 	}
 
-	public void setAd_endDate(Date ad_endDate) {
+	public void setAd_endDate(String ad_endDate) {
 		this.ad_endDate = ad_endDate;
 	}
 
@@ -77,5 +77,12 @@ public class Ad implements Serializable {
 	public void setAdProductor(String adProductor) {
 		this.adProductor = adProductor;
 	}
+
+	@Override
+	public String toString() {
+		return "Ad [adId=" + adId + ", ad_beginDate=" + ad_beginDate + ", adContent=" + adContent + ", ad_endDate="
+				+ ad_endDate + ", adPicture=" + adPicture + ", adProductor=" + adProductor + "]";
+	}
+	
 
 }
