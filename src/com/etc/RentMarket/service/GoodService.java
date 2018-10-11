@@ -5,6 +5,6 @@ import java.util.List;
 import com.etc.RentMarket.entity.Good;
 
 public interface GoodService {
-	public List<Good> selectGoods();//查询商品信息
+	public List<Good> selectGoods();//鏌ヨ鍟嗗搧淇℃伅
 
 }
