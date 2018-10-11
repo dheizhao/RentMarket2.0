@@ -14,7 +14,7 @@
 <meta name="renderer" content="webkit">
 <meta content="易点租, 购物, 大家电, 手机" name="keywords">
 <meta content="易点租，购物商城。" name="description">
-<title>会员系统我的订单</title>
+<title>我的信息</title>
 <link rel="shortcut icon" type="image/x-icon"
 	href="theme/icon/favicon.ico">
 <link rel="stylesheet" type="text/css" href="theme/css/base.css">
@@ -31,18 +31,11 @@
 		<div class="BHeader">
 			<div class="yNavIndex">
 				<ul class="BHeaderl">
-					<li><a href="#">登录</a></li>
+                	<li><a href="#" style="color: red;">${sessionScope.user.userName}</a></li>
 					<li class="headerul">|</li>
-					<li><a href="#">订单查询</a></li>
-					<li class="headerul">|</li>
-					<li><a href="#">我的收藏</a></li>
-					<li class="headerul">|</li>
-					<li id="pc-nav" class="menu"><a href="#" class="tit">我的商城</a>
-						<div class="subnav">
-							<a href="#">我的商城</a> <a href="#">我的商城</a> <a href="#">我的商城</a>
-						</div></li>
-					<li class="headerul">|</li>
-					<li><a href="#" class="M-iphone">手机悦商城</a></li>
+					<div class="header-cart fr">
+						<a href="#"><img src="theme/icon/car.png"></a>
+					</div>
 				</ul>
 			</div>
 		</div>
@@ -55,29 +48,14 @@
 			<div class="member-title fl">
 				<h2></h2>
 			</div>
-			<div class="head-form fl">
-				<form class="clearfix">
-					<input type="text" class="search-text" accesskey="" id="key"
-						autocomplete="off" placeholder="洗衣机">
-					<button class="button" onClick="search('key');return false;">搜索</button>
-				</form>
-				<div class="words-text clearfix">
-					<a href="#" class="red">优惠廉租</a> <a href="#">低至五折</a> <a href="#">农用物资</a>
-					<a href="#">家具电器</a> <a href="#">佳能相机</a> <a href="#">租房</a> <a
-						href="#">服装城</a>
-				</div>
-			</div>
-			<div class="header-cart fr">
-				<a href="#"><img src="theme/icon/car.png"></a> <i
-					class="head-amount">99</i>
-			</div>
+			
 		</div>
 	</header>
 	<!-- header End -->
 
 	<div class="containers">
 		<div class="pc-nav-item">
-			<a href="#">首页</a> &gt; <a href="#">会员中心 </a> &gt; <a href="#">商城快讯</a>
+			<a href="index.jsp">首页</a> &gt; <a href="user-info.jsp">会员中心 </a>
 		</div>
 	</div>
 
