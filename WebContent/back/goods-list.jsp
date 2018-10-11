@@ -159,13 +159,13 @@
 					<thead>
 						<tr class="text-c">
 							<th width="25"><input type="checkbox" name="" value=""></th>
-							<th width="80">用户Id</th>
-							<th width="80">用户名</th>
-							<th width="80">用户电话</th>
-							<th width="80">用户地址</th>
-							<th width="120">注册时间</th>
-							<th width="75">用户状态</th>
-							<th width="120">操作</th>
+							<th width="70">商品Id</th>
+							<th width="80">商品名称</th>
+							<th width="80">商品图片</th>
+							<th width="200">商品价格</th>
+							<th width="120">商品数量</th>
+							<th>商品状态</th>
+							<th width="100">操作</th>
 						</tr>
 					</thead>
 					<tbody>					
@@ -442,7 +442,7 @@ function member_del(obj,id){
     //路径配置,此处配置的路径是获取数据的重要手段;
     employee.url="/"; //  这里 / 表示的是localhost/
     employee.requestUrl = {
-        queryList:employee.url+"RentMarket2.0/usback.do"  //数据是从servlet一侧返回的 json格式
+        queryList:employee.url+"RentMarket2.0/gsback.do"  //数据是从servlet一侧返回的 json格式
     };
 
     employee.search={
@@ -476,12 +476,12 @@ function member_del(obj,id){
                 $(nTd).html("<input type='checkbox' name='checkList' value='" + sData + "'>");
             }
         }, //这里是返回的json对象中的 属性值   {data : }
-        {"data": "userId"},
-        {"data": "userName"},
-        {"data": "userPhone"},
-        {"data": "userAddress"},
-        {"data": "userRegisterTime"},
-        {"data": "userState"},
+        {"data": "goodId"},
+        {"data": "goodName"},
+        {"data": "goodImgAdd"},
+        {"data": "goodPrice"},
+        {"data": "goodCount"},
+        {"data": "goodState"},
         {    //创建操作那个列
         	"data":"extn",
         	"createdCell":function(nTd)
