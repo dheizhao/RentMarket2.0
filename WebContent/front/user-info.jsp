@@ -90,7 +90,6 @@
 						<dt>我的商城</dt>
 						<dd class="cur">
 							<a href="#">我的信息</a>
-							<input type="hidden">
 						</dd>
 						<dd>
 							<a href="#">我的订单</a>
