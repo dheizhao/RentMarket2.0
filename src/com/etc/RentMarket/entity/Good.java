@@ -22,7 +22,7 @@ public class Good implements Serializable {
 
 	private double goodPrice;
 
-	private int goodState;
+	private String  goodState;
 
 	private int typeId;
 
@@ -69,11 +69,11 @@ public class Good implements Serializable {
 		this.goodPrice = goodPrice;
 	}
 
-	public int getGoodState() {
+	public String  getGoodState() {
 		return this.goodState;
 	}
 
-	public void setGoodState(int goodState) {
+	public void setGoodState(String  goodState) {
 		this.goodState = goodState;
 	}
 

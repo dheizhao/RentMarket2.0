@@ -186,7 +186,8 @@
 <script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
 <script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
-<script type="text/javascript"><!--
+<script type="text/javascript">
+
 $(function(){
 	/*暂时注释掉hui自带的dt访问	
 	$('.table-sort').dataTable({
@@ -269,6 +270,7 @@ function member_del(obj,id){
 	layer.confirm('确认要删除吗？',function(index){
 		$(obj).parents("tr").remove();
 		layer.msg('已删除!',{icon:1,time:1000});
+		
 	});
 }
 </script>
@@ -316,14 +318,13 @@ function member_del(obj,id){
 	 $(document).on("click",'.empedit',function()
 	 {
 		 var _this = $(this); //当前对象 编辑的超链接
-	      data =_this.parent().siblings(); //_this.parent() 得到td   siblings(); 当前行的其他td
-	      var arr = [];
+	     data =_this.parent().siblings(); //_this.parent() 得到td   siblings(); 当前行的其他td
+	     var arr = [];
 	     for(var i = 1; i< data.length; i++){ //1 从1开始 从姓名开始
 	        arr.push($(data[i]).text());//每一个td中的内容() 放到一个数组里
 	     }
 	    // console.log(arr);
 		 //change-password.html
-		 
 		 //打开新窗口 编辑窗口
 	     layer.open({
 	 		type: 2,
@@ -332,11 +333,10 @@ function member_del(obj,id){
 	 		maxmin: true,
 	 		shade:0.4,
 	 		title: '编辑员工信息', //显示的标题
-	 		content: 'emp-add.html', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
+	 		content: 'goods-edit.html', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
 	 		success: function(layero, index){ //success可以不写
 	             var body = layer.getChildFrame('body',index);//建立父子联系
 	             var iframeWin = window[layero.find('iframe')[0]['name']];
-	             
 	             var inputList = body.find('input'); //找所有的input
 	             for(var j = 0; j< arr.length; j++){
 	                 $(inputList[j]).val(arr[j]); //arr[j] 数组中的值 赋值给  $(inputList[j])
@@ -486,7 +486,7 @@ function member_del(obj,id){
         	"createdCell":function(nTd)
         	{
         		//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
-        		$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
+        		$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
         		//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");

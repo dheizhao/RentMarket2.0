@@ -14,4 +14,10 @@ public class MyData<T> {
 		this.data = data;
 	}
 
+	@Override
+	public String toString() {
+		return "MyData [data=" + data + "]";
+	}
+	
+
 }

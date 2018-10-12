@@ -50,9 +50,11 @@ public class goodsbackServlet extends HttpServlet {
 		MyData<Good> md = new MyData<Good>();
 		md.setData(list);
 		Gson gson = new Gson();
+		
 		String jsonString = gson.toJson(md);
 		// 使用printWriter对象
 		PrintWriter out = response.getWriter();
+		request.setAttribute("op", list);
 		out.print(jsonString);
 		System.out.println("[jsonString] :" + jsonString);
 		out.close();
