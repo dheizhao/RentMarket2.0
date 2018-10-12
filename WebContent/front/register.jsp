@@ -18,6 +18,7 @@
 .tip {
 	font-size: medium;
 	color: red;
+	margin-top: 15px;
 }
 </style>
 </head>
@@ -111,18 +112,19 @@
 			$("#username").blur(
 					function() {
 						console.log(Math.random());
-						$.get("../us.do", "username=" + $(this).val()
+						$.get("../us.do?op=tip-username", "username=" + $(this).val()
 								+ "&random=" + Math.random(), function(data,
 								status) {
 							if (status == "success") {
 								$("#msg_username").html(data);
+								
 							}
 						});
 					});
-			$("#password").blur(
+			 $("#password").blur(
 					function() {
 						console.log(Math.random());
-						$.get("../us.do", "password=" + $(this).val()
+						$.get("../us.do?op=tip-userpwd", "password=" + $(this).val()
 								+ "&random=" + Math.random(), function(data,
 								status) {
 							if (status == "success") {
@@ -130,17 +132,17 @@
 							}
 						});
 					});
-			$("#repassword").blur(
+			 $("#repassword").blur(
 					function() {
 						console.log(Math.random());
-						$.get("../us.do", "repassword=" + $(this).val()
+						$.get("../us.do?op=tip-cuserpwd", "repassword=" + $(this).val()
 								+ "&random=" + Math.random(), function(data,
 								status) {
 							if (status == "success") {
 								$("#msg_userCpwd").html(data);
 							}
 						});
-					});
+					});    
 		});
 	</script>
 
