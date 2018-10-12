@@ -9,7 +9,7 @@ import com.etc.RentMarket.entity.Order;
 
 /**
  * 订单管理dao的实现类
- * @author Administrator
+ * @author 陈伟杰
  *
  */
 public class OrderDaoImpl implements OrderDao{

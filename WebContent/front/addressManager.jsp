@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html>
  <head>
@@ -12,7 +13,7 @@
 	<meta name="renderer" content="webkit">
     <meta content="易点租, 购物, 大家电, 手机" name="keywords">
     <meta content="易点租，购物商城。" name="description">
-	<title>会员系统地址管理</title>
+	<title>我的地址</title>
     <link rel="shortcut icon" type="image/x-icon" href="theme/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="theme/css/base.css">
 	<link rel="stylesheet" type="text/css" href="theme/css/base.css">
@@ -22,52 +23,33 @@
  <body>
 
 <!--- header begin-->
-<header id="pc-header">
-    <div class="BHeader">
-        <div class="yNavIndex">
-            <ul class="BHeaderl">
-                <li><a href="#">登录</a> </li>
-                <li class="headerul">|</li>
-                <li><a href="#">订单查询</a> </li>
-                <li class="headerul">|</li>
-                <li><a href="#">我的收藏</a> </li>
-                <li class="headerul">|</li>
-                <li id="pc-nav" class="menu"><a href="#" class="tit">我的商城</a>
-                    <div class="subnav">
-                        <a href="#">我的商城</a>
-                        <a href="#">我的商城</a>
-                        <a href="#">我的商城</a>
-                    </div>
-                </li>
-                <li class="headerul">|</li>
-                <li><a href="#" class="M-iphone">手机悦商城</a> </li>
-            </ul>
-        </div>
-    </div>
-    <div class="container clearfix">
-        <div class="header-logo fl"><h1><a href="#"><img src="theme/icon/logo.png"></a> </h1></div>
-        <div class="member-title fl"><h2></h2></div>
-        <div class="head-form fl">
-            <form class="clearfix">
-                <input type="text" class="search-text" accesskey="" id="key" autocomplete="off"  placeholder="洗衣机">
-                <button class="button" onClick="search('key');return false;">搜索</button>
-            </form>
-            <div class="words-text clearfix">
-                <a href="#" class="red">优惠廉租</a>
-                <a href="#">低至五折</a>
-                <a href="#">农用物资</a>
-                <a href="#">家具电器</a>
-                <a href="#">佳能相机</a>
-                <a href="#">租房</a>
-                <a href="#">服装城</a>
-            </div>
-        </div>
-        <div class="header-cart fr"><a href="#"><img src="theme/icon/car.png"></a> <i class="head-amount">99</i></div>
-    </div>
-</header>
-<!-- header End -->
+	<header id="pc-header">
+		<div class="BHeader">
+			<div class="yNavIndex">
+				<ul class="BHeaderl">
+					<li><a href="#" style="color: red;">${sessionScope.user.userName}</a></li>
+					<li class="headerul">|</li>
+					<div class="header-cart fr">
+						<a href="#"><img src="theme/icon/car.png"></a>
+					</div>
+				</ul>
+			</div>
+		</div>
+		<div class="container clearfix">
+			<div class="header-logo fl">
+				<h1>
+					<a href="#"><img src="theme/icon/logo.png"></a>
+				</h1>
+			</div>
+			<div class="member-title fl">
+				<h2></h2>
+			</div>
 
-<div class="containers"><div class="pc-nav-item"><a href="#">首页</a> &gt; <a href="#">会员中心 </a> &gt; <a href="#">商城快讯</a></div></div>
+		</div>
+	</header>
+	<!-- header End -->
+
+<div class="containers"><div class="pc-nav-item"><a href="index.jsp">首页</a> &gt; <a href="user-info.jsp">会员中心 </a></div></div>
 
 <!-- 商城快讯 begin -->
 <section id="member">
@@ -77,7 +59,7 @@
                 <dl>
                     <dt>我的商城</dt>
                     <dd><a href="user-info.jsp">我的信息</a></dd>
-                    <dd><a href="list-receive.jsp">我的订单</a></dd>
+                    <dd><a href="../os.do?op=sel">我的订单</a></dd>
                     <dd><a href="myfavorite.jsp">我的收藏</a></dd>
                     <dd><a href="comment.jsp">我的评价</a></dd>
                     <dd class="cur"><a href="#">地址管理</a></dd>
@@ -99,102 +81,43 @@
                 <div class="member-heels fl"><h2>地址管理</h2></div>
             </div>
             <div class="member-border">
-                <div class="member-newly"><b>新增收货地址</b>您已经创建了<i class="reds">4</i>个收货地址了，最多可创建<i class="reds">20</i>个</div>
+                <div class="member-newly"><b>新增收货地址</b></div>
+                
+                <!-- 循环开始 -->
+                <c:forEach var="a" items="${requestScope.list}">
+                	
+                
                 <div class="member-sites">
                     <ul>
                         <li class="clearfix">
-                            <div class="default fl"><a href="#">默认地址</a> </div>
                             <div class="user-info1 fl clearfix">
                                 <div class="user-info">
                                     <span class="info1">收货人：</span>
-                                    <span class="info2">张子琪</span>
-                                </div>
-                                <div class="user-info">
-                                    <span class="info1">所在地区：</span>
-                                    <span class="info2">北京市海淀区三环到四环之间</span>
+                                    <span class="info2">${a.userRealName}</span>
                                 </div>
                                 <div class="user-info">
                                     <span class="info1">地址：</span>
-                                    <span class="info2">北京市海淀区中关村南街99号，幸福小区3号楼4门401</span>
+                                    <span class="info2">${a.userAddress}</span>
                                 </div>
                                 <div class="user-info">
                                     <span class="info1">手机：</span>
-                                    <span class="info2">186****4832</span>
-                                </div>
-                                <div class="user-info">
-                                    <span class="info1">固定电话：</span>
-                                    <span class="info2">010-81819191</span>
-                                </div>
-                                <div class="user-info">
-                                    <span class="info1">电子邮箱：</span>
-                                    <span class="info2">azneui@sina.com</span>
+                                    <span class="info2">${a.userPhone}</span>
                                 </div>
                             </div>
 
                             <div class="pc-event">
-                                <a href="#" class="pc-event-d">设为默认地址</a>
                                 <a href="#">编辑 </a>
                                 <a href="#">删除</a>
                             </div>
                         </li>
 
-                        <li class="clearfix">
-                            <div class="default fl"></div>
-                            <div class="user-info1 fl clearfix">
-                                <div class="user-info">
-                                    <span class="info1">收货人：</span>
-                                    <span class="info2">张子琪</span>
-                                </div>
-                                <div class="user-info">
-                                    <span class="info1">所在地区：</span>
-                                    <span class="info2">北京市海淀区三环到四环之间</span>
-                                </div>
-                                <div class="user-info">
-                                    <span class="info1">地址：</span>
-                                    <span class="info2">北京市海淀区中关村南街99号，幸福小区3号楼4门401</span>
-                                </div>
-                                <div class="user-info">
-                                    <span class="info1">手机：</span>
-                                    <span class="info2">186****4832</span>
-                                </div>
-                                <div class="user-info">
-                                    <span class="info1">固定电话：</span>
-                                    <span class="info2">010-81819191</span>
-                                </div>
-                                <div class="user-info">
-                                    <span class="info1">电子邮箱：</span>
-                                    <span class="info2">azneui@sina.com</span>
-                                </div>
-                            </div>
-                            <div class="pc-event">
-                                <a href="#">设为默认地址</a>
-                                <a href="#">编辑 </a>
-                                <a href="#">删除</a>
-                            </div>
-                        </li>
+                       
                     </ul>
                 </div>
-                <div class="member-pages clearfix">
-                    <div class="fr pc-search-g">
-                        <a href="#" class="fl pc-search-f">上一页</a>
-                        <a class="current" href="#">1</a>
-                        <a href="javascript:;">2</a>
-                        <a href="javascript:;">3</a>
-                        <a href="javascript:;">4</a>
-                        <a href="javascript:;">5</a>
-                        <a href="javascript:;">6</a>
-                        <a href="javascript:;">7</a>
-                        <span class="pc-search-di">…</span>
-                        <a onClick="SEARCH.page(3, true)" href="javascript:;" class="pc-search-n" title="使用方向键右键也可翻到下一页哦！">下一页</a>
-                    <span class="pc-search-y">
-                        <em>  共20页    到第</em>
-                        <input type="text" placeholder="1" class="pc-search-j">
-                        <em>页</em>
-                        <a class="confirm" href="#">确定</a>
-                    </span>
-
-                    </div>
-                </div>
+                
+                </c:forEach>
+                
+                
             </div>
         </div>
     </div>
