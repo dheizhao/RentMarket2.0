@@ -44,7 +44,7 @@ public class UsersDaoImpl implements UsersDao {
 	@Override
 	public List<Uesrslist> getUesrs() {
 		// TODO Auto-generated method stub
-		String sql = "select u1.userId,u1.userName,u2.userPhone,u2.userAddress,u1.userRegisterTime,u1.userState from users u1,usersdetail u2 where u1.userId=u2.userId";
+		String sql = "select u1.userId,u1.userName,u2.userPhone,u2.userAddress,u1.userRegisterTime,u1.userState from users u1,usersdetail u2 where u1.userName=u2.userName";
 		List<Uesrslist> list=(List<Uesrslist>) BaseDao.select(sql, Uesrslist.class);
 		for (Uesrslist user : list) {
 			if (user.getUserState().equals("0")) {
