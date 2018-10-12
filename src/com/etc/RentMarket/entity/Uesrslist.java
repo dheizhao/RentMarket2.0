@@ -10,7 +10,7 @@ public class Uesrslist {
 	private String userPhone;//用户联系方式
 	private String userAddress;//用户地址
 	private String userRegisterTime;//注册时间
-	private int userState;//用户状态
+	private String userState;//用户状态
 	public Uesrslist() {
 		// TODO Auto-generated constructor stub
 	}
@@ -44,20 +44,26 @@ public class Uesrslist {
 	public void setUserRegisterTime(String userRegisterTime) {
 		this.userRegisterTime = userRegisterTime;
 	}
-	public int getUserState() {
+	public String getUserState() {
 		return userState;
 	}
-	public void setUserState(int userState) {
-		this.userState = userState;
+	public void setUserState(String string) {
+		this.userState = string;
 	}
 	public Uesrslist(int userId, String userName, String userPhone, String userAddress, String userRegisterTime,
-			int userState) {
+			String userState) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.userPhone = userPhone;
 		this.userAddress = userAddress;
 		this.userRegisterTime = userRegisterTime;
+		this.userState = userState;
+	}
+	
+	public Uesrslist(int userId, String userState) {
+		super();
+		this.userId = userId;
 		this.userState = userState;
 	}
 	@Override

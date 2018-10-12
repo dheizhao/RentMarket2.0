@@ -29,4 +29,11 @@ public interface UsersService {
 	 * @return List 用户列表集合
 	 */
 	public List<Uesrslist> getUesrs();
+	/**
+	 * 后台编辑用户状态方法
+	 * @author 小白
+	 * @param User
+	 * @return true 操作成功  false 操作失败
+	 */
+	boolean UpdateUesrStatus(Uesrslist u);
 }

@@ -3,7 +3,6 @@ package com.etc.RentMarket.dao.impl;
 import java.util.List;
 
 import com.etc.RentMarket.DBUtil.BaseDao;
-import com.etc.RentMarket.DBUtil.MD5Util;
 import com.etc.RentMarket.dao.UsersDao;
 import com.etc.RentMarket.entity.Uesrslist;
 import com.etc.RentMarket.entity.User;
@@ -45,8 +44,28 @@ public class UsersDaoImpl implements UsersDao {
 	@Override
 	public List<Uesrslist> getUesrs() {
 		// TODO Auto-generated method stub
-		String sql="select u1.userId,u1.userName,u2.userPhone,u2.userAddress,u1.userRegisterTime,u1.userState from users u1,usersdetail u2 where u1.userId=u2.userId";
-		return (List<Uesrslist>)BaseDao.select(sql, Uesrslist.class);
-	}
+		String sql = "select u1.userId,u1.userName,u2.userPhone,u2.userAddress,u1.userRegisterTime,u1.userState from users u1,usersdetail u2 where u1.userId=u2.userId";
+		List<Uesrslist> list=(List<Uesrslist>) BaseDao.select(sql, Uesrslist.class);
+		for (Uesrslist user : list) {
+			if (user.getUserState().equals("0")) {
+				user.setUserState("禁用");
+			} else if (user.getUserState().equals("1")) {
+				user.setUserState("启用");
+			} 
+		}
+		return list;
 
+	}
+	/**
+	 * 后台编辑用户状态方法
+	 * @author 小白
+	 * @param userId
+	 * @return true 操作成功  false 操作失败
+	 */
+	@Override
+	public boolean UpdateUesrStatus(Uesrslist u) {
+		// TODO Auto-generated method stub
+		String sql="update users set userState=? where userId=?";
+		return BaseDao.execute(sql, u.getUserState(),u.getUserId())>0;
+	}
 }
