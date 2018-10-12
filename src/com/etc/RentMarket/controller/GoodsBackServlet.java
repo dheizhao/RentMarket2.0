@@ -20,14 +20,14 @@ import com.google.gson.Gson;
  * 后台页面显示商品列表
  */
 @WebServlet("/gsback.do")
-public class goodsbackServlet extends HttpServlet {
+public class GoodsBackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	GoodService gs = new GoodServiceImpl();
 	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public goodsbackServlet() {
+	public GoodsBackServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
