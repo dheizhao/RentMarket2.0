@@ -38,7 +38,7 @@ public class OrderServlet extends HttpServlet {
 		String op = request.getParameter("op");
 		if ("sel".equals(op)) {
 			int page = 1;
-			int pageSize = 3;
+			int pageSize = 2;
 			String userName = "";
 			if (request.getParameter("page") != null) {
 				page = Integer.parseInt(request.getParameter("page"));

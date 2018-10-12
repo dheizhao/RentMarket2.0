@@ -98,7 +98,7 @@
 					<dl>
 						<dt>我的商城</dt>
 						<dd>
-							<a href="user-info.jsp">我的信息</a>
+							<a href="front/user-info.jsp">我的信息</a>
 						</dd>
 						<dd class="cur">
 							<a href="#">我的订单</a>
@@ -138,12 +138,15 @@
 					<div class="member-heels fl">
 						<h2>我的订单</h2>
 					</div>
-					<div class="member-backs member-icons fr">
-						<a href="#" style="color: white;">搜索</a>
-					</div>
-					<div class="member-about fr">
-						<input type="text" placeholder="商品名称/商品编号/订单编号">
-					</div>
+					<form method="post" action="os.do?op=sel">
+						<div class="member-backs member-icons fr">
+							<button style="color: white;width:50px; height:26px; line-height:26px; text-align:center; display:block; color:#fff; background:#000000; border-radius:2px;border: 0px solid">搜索</button>
+						</div>
+						<div class="member-about fr">
+							<input type="text" placeholder="商品名称" name="keywords" id="keywords" value="${keywords}">
+						</div>
+						
+					</form>
 				</div>
 				<div class="user-order">
 					<div class="am-tabs am-tabs-d2 am-margin" data-am-tabs>
@@ -192,15 +195,9 @@
 												<span>收货地址：${o.userAddress}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												<span>联系电话：${o.userTel}</span>
 											</div>
-											<%
-											User u = (User)request.getSession().getAttribute("user");
-											String userName = u.getUserName();
-											OrderService os = new OrderServiceImpl();
-											List<Order> list = os.queryOrdersIdByuserName(userName);
-											for(int j = 0;j<list.size();j++){
-											List<Order> list2 = os.queryOrdersByOrderId(list.get(j).getOrderId());
-											for(int i = 0;i<list2.size();i++){
-											%>
+											
+											
+											
 											<div class="order-content">
 												<div class="order-left">
 													<ul class="item-list">
@@ -215,7 +212,7 @@
 																<div class="item-basic-info">
 																	<a href="#">
 																		<p>
-																			<%=list2.get(i).getUserName() %>
+																			${o.goodName} 
 																		</p>
 																		<p class="info-little">
 																			<br />运费：包邮
@@ -226,13 +223,13 @@
 														</li>
 														<li class="td td-price">
 															<div class="item-price">
-																<%=list2.get(i).getRentDate() %>
+																${o.rentDate}
 															</div>
 														</li>
 														<li class="td td-number">
 															<div class="item-number">
 																<span>×</span>
-																<%=list2.get(i).getGoodNumber() %>
+																${o.goodNumber}
 															</div>
 														</li>
 													</ul>
@@ -245,11 +242,11 @@
 													<li class="td td-amount">
 														<div class="item-amount" style="margin-top: -20px">
 															合计：<span style="color: red">
-															￥<%=list2.get(i).getOrderTPrice() %>
+															￥${o.orderTPrice}
 															</span>
 															<p>
 																收货人：<span>
-																	<%=list2.get(i).getUserName() %>
+																	${o.userName}
 																</span>
 															</p>
 														</div>
@@ -257,7 +254,7 @@
 													<div class="move-right">
 														<li class="td td-status">
 															<div class="item-status">
-																<p class="Mystatus"><%=list2.get(i).getOrderState()==0?"未收货":"已收货" %></p>
+																<p class="Mystatus">${o.orderState==0?"未收货":"已收货" }</p>
 															</div>
 														</li>
 														<li class="td td-change">
@@ -269,9 +266,8 @@
 													</div>
 												</div>
 											</div>
-											<%
-												}
-											%>
+											
+											
 										</div>
 									</div>
 								</div>
@@ -309,7 +305,7 @@
     //首次不执行
       if(!first){
         //do something
-    	  location.href="../os.do?op=sel&page="+obj.curr+"&pageSize="+obj.limit+"&userName="+${sessionScope.user.userName}+"&keywords="+document.getElementById("keywords").value;
+    	  location.href="os.do?op=sel&page="+obj.curr+"&pageSize="+obj.limit+"&keywords="+document.getElementById("keywords").value;
       }
     }
   });
