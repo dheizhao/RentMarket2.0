@@ -1,4 +1,4 @@
-<!--_meta 作为公共模版分离出去-->
+<!--用户修改界面-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -29,54 +29,73 @@
 <script>DD_belatedPNG.fix('*');</script><![endif]-->
 <!--/meta 作为公共模版分离出去-->
 
-<title>添加用户</title>
+<title>修改用户</title>
 <meta name="keywords" content="易点租  方便你的生活">
 <meta name="description" content="易点租  方便你的生活">
 </head>
 <body>
 	<article class="cl pd-20">
-		<form action="../usback.do?op=userAdd" method="post" class="form form-horizontal"
-			id="form-member-add">
+		<form  method="post"
+			class="form form-horizontal" id="form-member-edit">
 			<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="请输入用户名" id="username" name="username">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>用户Id：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+				
+					<input type="text" class="input-text" value="" readonly="readonly"
+						id="userId" name="userId">
+				</div>
 			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户密码：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="请输入密码" id="userpwd" name="userpwd">
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>用户名：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="" readonly="readonly"
+						id="username" name="username">
+				</div>
 			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="请输入手机号" id="mobile" name="mobile">
+
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>用户电话：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="" readonly="readonly"
+						id="mobile" name="mobile">
+				</div>
 			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>收货地址：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" placeholder="请输入地址" name="address" id=""address"">
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>用户地址：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="" readonly="readonly"
+						name="address" id="address">
+				</div>
 			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3">注册时间：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
-				<input class="input-text upload-url" type="date" name="registerTime" id="registerTime" >
-				</span> </div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3">用户状态：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select class="select" size="1" name="userStatus">
-					<option value="" selected>请选择用户状态</option>
-					<option value="1">启用</option>
-					<option value="2">禁用</option>
-				</select>
-				</span> </div>
-		</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>注册时间：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="" readonly="readonly"
+						name="registerTime" id="registerTime"> 
+					<!-- 把用户状态的input隐藏 -->
+					<input type="hidden"
+						class="input-text" value="" >
+				</div>
+			</div>
+			<div class="row cl">
+
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>用户状态：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+
+					<select class="select" size="1" name="userStatus">
+						<option value="0">禁用</option>
+						<option value="1">启用</option>
+					</select>
+
+				</div>
+			</div>
+
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 					<input class="btn btn-primary radius" type="submit" value="提交" />
@@ -114,33 +133,24 @@
 			});
 
 			/*validate验证和 ajax 的方式完成表单提交 */
-			$("#form-member-add")
+			$("#form-member-edit")
 					.validate(
 							{
 								rules : {
-									empno : {
-										required : true,
-										minlength : 4,
-										maxlength : 4
-									},
-									ename : {
-										required : true,
-									}
-								},
+								mobile : {//用户电话 验证 minlength最短长度为11
+									required : true,
+									minlength : 11,
+									maxlength : 11
+								}},
 								onkeyup : false,
 								focusCleanup : true,
 								success : "valid",
 								submitHandler : function(form) {
-									alert("submit" + form);
-									//$(form).ajaxSubmit();
-									//var index = parent.layer.getFrameIndex(window.name);
-									//parent.$('.btn-refresh').click();
-									//parent.layer.close(index);
 									$(form)
 											.ajaxSubmit(
 													{
-														//type : 'post',
-														//url : "EmpServlet",
+														type : 'post',//提交表单方法 
+														url : "/RentMarket2.0/usback.do?op=userEdit",//请求的servlet路径 
 														success : function(data) {
 															layer
 																	.msg(
@@ -182,30 +192,15 @@
 														}
 													});
 									//ajaxSubmit结束
-									return false; // 阻止表单自动提交事件
+									//return false; // 阻止表单自动提交事件
 
-								}
+								},
 							});
 		});
 	</script>
 
 
-	<!-- <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script> -->
-	<script type="text/javascript">
-		$(function() {
-
-			$.get("EmpServlet?op=load", function(data) {
-				//得到的data应该是一个string类型满足 json对象
-				$.each(data, function(i, d) {
-					$("#deptno").append(
-							"<option value="+d.DEPTNO+">" + d.DNAME
-									+ "</option>");
-				});
-
-			});
-
-		});
-	</script>
+	
 
 	<!--/请在上方写此页面业务相关的脚本-->
 </body>

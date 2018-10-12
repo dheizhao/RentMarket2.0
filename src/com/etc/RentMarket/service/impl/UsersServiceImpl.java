@@ -46,4 +46,15 @@ public class UsersServiceImpl implements UsersService {
 		// TODO Auto-generated method stub
 		return ud.getUesrs();
 	}
+	/**
+	 * 后台编辑用户状态方法
+	 * @author 小白
+	 * @param userId
+	 * @return true 操作成功  false 操作失败
+	 */
+	@Override
+	public boolean UpdateUesrStatus(Uesrslist u) {
+		// TODO Auto-generated method stub
+		return ud.UpdateUesrStatus(u);
+	}
 }

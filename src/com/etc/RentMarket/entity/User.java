@@ -18,7 +18,7 @@ public class User implements Serializable {
 
 	private String userPwd;
 
-	private int userState = 1;
+	private String userState = "1";
 
 	public User() {
 	}
@@ -55,16 +55,16 @@ public class User implements Serializable {
 		this.userPwd = userPwd;
 	}
 
-	public int getUserState() {
+	public String getUserState() {
 		return this.userState;
 	}
 
-	public void setUserState(int userState) {
+	public void setUserState(String userState) {
 		this.userState = userState;
 	}
 
 
-	public User(int userId, String userName, String userphoto, String userPwd, int userState) {
+	public User(int userId, String userName, String userphoto, String userPwd, String userState) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
