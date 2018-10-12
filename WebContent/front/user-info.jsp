@@ -70,7 +70,7 @@
 							<a href="#">我的信息</a>
 						</dd>
 						<dd>
-							<a href="list-receive.jsp">我的订单</a>
+							<a href="../os.do?op=sel">我的订单</a>
 						</dd>
 						<dd>
 							<a href="myfavorite.jsp">我的收藏</a>

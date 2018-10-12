@@ -338,7 +338,7 @@ non-standard information in a separate file, and easily refer from
 these tools-specific files to the information in the standard web-app
 deployment descriptor.
 -->
-<web-app xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" id="WebApp_ID">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID">
   <display-name>GtJavaSdkDemo</display-name>
   <servlet>
     <description></description>

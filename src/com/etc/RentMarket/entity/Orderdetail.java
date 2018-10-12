@@ -19,7 +19,6 @@ public class Orderdetail implements Serializable {
 
 	private int goodNumber;
 
-	private String goodType;
 
 	private int orderId;
 
@@ -53,13 +52,6 @@ public class Orderdetail implements Serializable {
 		this.goodNumber = goodNumber;
 	}
 
-	public String getGoodType() {
-		return this.goodType;
-	}
-
-	public void setGoodType(String goodType) {
-		this.goodType = goodType;
-	}
 
 	public int getOrderId() {
 		return this.orderId;

@@ -16,7 +16,7 @@ public class Order implements Serializable {
 	private int orderId;
 
 	
-	private Date orderDate;
+	private String orderDate;
 
 	private int orderState;
 
@@ -24,13 +24,39 @@ public class Order implements Serializable {
 
 	private String userAddress;
 
-	private int userId;
-
 	private String userName;
 
 	private String userTel;
+	
+	private String goodName;
+	private String rentDate;
+	private int goodNumber;
 
 	public Order() {
+	}
+
+	public String getGoodName() {
+		return goodName;
+	}
+
+	public void setGoodName(String goodName) {
+		this.goodName = goodName;
+	}
+
+	public String getRentDate() {
+		return rentDate;
+	}
+
+	public void setRentDate(String rentDate) {
+		this.rentDate = rentDate;
+	}
+
+	public int getGoodNumber() {
+		return goodNumber;
+	}
+
+	public void setGoodNumber(int goodNumber) {
+		this.goodNumber = goodNumber;
 	}
 
 	public int getOrderId() {
@@ -41,11 +67,11 @@ public class Order implements Serializable {
 		this.orderId = orderId;
 	}
 
-	public Date getOrderDate() {
+	public String getOrderDate() {
 		return this.orderDate;
 	}
 
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
 
@@ -73,13 +99,6 @@ public class Order implements Serializable {
 		this.userAddress = userAddress;
 	}
 
-	public int getUserId() {
-		return this.userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
 
 	public String getUserName() {
 		return this.userName;
@@ -95,6 +114,29 @@ public class Order implements Serializable {
 
 	public void setUserTel(String userTel) {
 		this.userTel = userTel;
+	}
+
+	public Order(int orderId, String orderDate, int orderState, double orderTPrice, String userAddress, String userName,
+			String userTel, String goodName, String rentDate, int goodNumber) {
+		super();
+		this.orderId = orderId;
+		this.orderDate = orderDate;
+		this.orderState = orderState;
+		this.orderTPrice = orderTPrice;
+		this.userAddress = userAddress;
+		this.userName = userName;
+		this.userTel = userTel;
+		this.goodName = goodName;
+		this.rentDate = rentDate;
+		this.goodNumber = goodNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", orderDate=" + orderDate + ", orderState=" + orderState
+				+ ", orderTPrice=" + orderTPrice + ", userAddress=" + userAddress + ", userName=" + userName
+				+ ", userTel=" + userTel + ", goodName=" + goodName + ", rentDate=" + rentDate + ", goodNumber="
+				+ goodNumber + "]";
 	}
 
 }
