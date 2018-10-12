@@ -18,7 +18,10 @@
 	<link rel="stylesheet" type="text/css" href="theme/css/base.css">
 	<link rel="stylesheet" type="text/css" href="theme/css/base.css">
 	<link rel="stylesheet" type="text/css" href="theme/css/member.css">
-
+	<!-- Bootstrap core CSS -->
+    <link href="theme/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="theme/css/dashboard.css" rel="stylesheet">
  </head>
  <body>
 
@@ -59,7 +62,7 @@
                 <dl>
                     <dt>我的商城</dt>
                     <dd><a href="user-info.jsp">我的信息</a></dd>
-                    <dd><a href="../os.do?op=sel">我的订单</a></dd>
+                    <dd><a href="os.do?op=sel">我的订单</a></dd>
                     <dd><a href="myfavorite.jsp">我的收藏</a></dd>
                     <dd><a href="comment.jsp">我的评价</a></dd>
                     <dd class="cur"><a href="#">地址管理</a></dd>
@@ -106,7 +109,7 @@
                             </div>
 
                             <div class="pc-event">
-                                <a href="#">编辑 </a>
+                                <a href="#">修改 </a>
                                 <a href="#">删除</a>
                             </div>
                         </li>
