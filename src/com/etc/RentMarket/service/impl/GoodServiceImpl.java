@@ -16,5 +16,29 @@ public class GoodServiceImpl implements GoodService {
 		// TODO Auto-generated method stub
 		return gd.selectGoods();
 	}
+	/**
+	 * 删除商品信息
+	 */
+	@Override
+	public boolean delGoods(int goodId) {
+		// TODO Auto-generated method stub
+		return gd.delGoods(goodId);
+	}
+	/**
+	 * 批量删除商品信息
+	 */
+	@Override
+	public boolean delMuchGoods(List<Integer> goodIds) {
+		// TODO Auto-generated method stub
+		return gd.delMuchGoods(goodIds);
+	}
+	/**
+	 * 更新商品信息
+	 */
+	@Override
+	public boolean upGoods(Good good) {
+		// TODO Auto-generated method stub
+		return gd.upGoods(good);
+	}
 
 }

@@ -13,9 +13,14 @@ public class AdServiceImpl implements AdService {
 	 * 广告信息查询
 	 */
 	@Override
-	public List<Ad> QueryAds() {
+	public List<Ad> SelectAds() {
 		// TODO Auto-generated method stub
-		return ad.QueryAds();
+		return ad.SelectAds();
 	}
 
+	@Override
+	public boolean AddAds(Ad a) {
+		// TODO Auto-generated method stub
+		return ad.AddAds(a);
+	}
 }

@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+﻿﻿<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
@@ -152,19 +152,25 @@
 		<article class="cl pd-20"> 
 		
 			
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> 
+			<span class="l">
+			<a href="javascript:;" onclick="batchIds(this)" class="btn btn-danger radius">
+			<i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> 
+			<a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
+			<i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> 
+			<span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>
-						<tr class="text-c">
-							<th width="25"><input type="checkbox" name="" value=""></th>
-							<th width="70">商品Id</th>
-							<th width="80">商品名称</th>
-							<th width="80">商品图片</th>
-							<th width="200">商品价格</th>
-							<th width="120">商品数量</th>
-							<th>商品状态</th>
-							<th width="100">操作</th>
+						<tr class="text-c" >
+							<th id ="tb" width="25" height="35"><input type="checkbox" name="" value=""></th>
+							<th width="70" height="35">商品Id</th>
+							<th width="200" height="35">商品名称</th>
+							<th width="80" height="35">商品图片</th>
+							<th width="80" height="35">商品价格</th>
+							<th width="120" height="35">商品数量</th>
+							<th width="80" height="35">商品状态</th>
+							<th width="100" height="35">操作</th>
 						</tr>
 					</thead>
 					<tbody>					
@@ -268,11 +274,21 @@ function change_password(title,url,id,w,h){
 /*用户-删除*/
 function member_del(obj,id){
 	layer.confirm('确认要删除吗？',function(index){
-		$(obj).parents("tr").remove();
-		layer.msg('已删除!',{icon:1,time:1000});
+		
+		
+		$.get("../gsback.do","id="+id+"&op=del",function(data,status){
+			console.log(data+","+status);
+			if(data){
+			$(obj).parents("tr").remove();
+			layer.msg('已删除!',{icon:1,time:1000});
+			}else{
+			layer.msg('删除失败!',{icon:1,time:1000});
+			}
+		});
 		
 	});
 }
+
 </script>
 
 <script>
@@ -332,7 +348,7 @@ function member_del(obj,id){
 	 		fix: false, //不固定
 	 		maxmin: true,
 	 		shade:0.4,
-	 		title: '编辑员工信息', //显示的标题
+	 		title: '编辑商品信息', //显示的标题
 	 		content: 'goods-edit.html', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
 	 		success: function(layero, index){ //success可以不写
 	             var body = layer.getChildFrame('body',index);//建立父子联系
@@ -441,7 +457,7 @@ function member_del(obj,id){
     //路径配置,此处配置的路径是获取数据的重要手段;
     employee.url="/"; //  这里 / 表示的是localhost/
     employee.requestUrl = {
-        queryList:employee.url+"RentMarket2.0/gsback.do"  //数据是从servlet一侧返回的 json格式
+        queryList:employee.url+"RentMarket2.0/gsback.do?op=sel"  //数据是从servlet一侧返回的 json格式
     };
 
     employee.search={
@@ -472,7 +488,7 @@ function member_del(obj,id){
         {   //第一个列
         	"data": "extn",
             "createdCell": function (nTd, sData, oData, iRow, iCol) {
-                $(nTd).html("<input type='checkbox' name='checkList' value='" + sData + "'>");
+                $(nTd).html("<input type='checkbox' name='checkList' value='" + oData.goodId + "'>");
             }
         }, //这里是返回的json对象中的 属性值   {data : }
         {"data": "goodId"},
@@ -483,10 +499,10 @@ function member_del(obj,id){
         {"data": "goodState"},
         {    //创建操作那个列
         	"data":"extn",
-        	"createdCell":function(nTd)
+        	"createdCell":function(nTd,sData, oData, iRow, iCol)
         	{
         		//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
-        		$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
+        		$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,'+oData.goodId+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
         		//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
@@ -498,6 +514,7 @@ function member_del(obj,id){
     employee.buttons =
             '<button class="btn btn-default"  type="button" id="reload" data-toggle="modal" data-target="#employeeModal">刷新表格</button>'+
             '<button class="btn btn-primary" type="button" id="batchIds" style="margin-left:20px;" data-toggle="modal" >多选</button>'+
+            '<button class="btn btn-success" type="button" id="del" style="margin-left:20px;" data-toggle="modal" >删除</button>'+
             '<button class="btn btn-success" type="button" id="selection" style="margin-left:20px;" data-toggle="modal" >单选</button>'+
             '<button class="btn btn-success" type="button" id="search" style="margin-left:20px;" data-toggle="modal" >查询</button>'+
             '<button class="btn btn-success" type="button" id="clearSearch" style="margin-left:20px;" data-toggle="modal" >重置</button>';
@@ -707,17 +724,30 @@ function member_del(obj,id){
     }
 
     //获取所有选中行的UUID
-    function batchIds(){
+    function batchIds(obj){
 
-        var uuid = '';
+        var uuid = [];
         var uuids =eloancn.table.grid.rows(".selected").data();
+        //console.log(uuids[1].goodId);
         if(uuids.length==0){
             alert(eloancn.table.statusTitle);
         }else{
             for(var i=0;i<uuids.length;i++){
-                uuid = uuid+uuids[i].extn+",";
+                //uuid = uuid+uuids[i].goodId+",";
+                uuid.push(uuids[i].goodId)
             }
-            alert(uuid);
+            //alert(uuid);
+            layer.confirm('确认要删除吗？',function(index){
+            $.get("../gsback.do","ids="+uuid+"&op=MuchSel",function(data,status){
+            	
+    			if(data){
+    			$(eloancn.table.grid.rows(".selected")).parents("tr").remove();
+    			layer.msg('已删除!',{icon:1,time:1000});
+    			}else{
+    			layer.msg('删除失败!',{icon:1,time:1000});
+    			}
+            });
+          });  
         }
     }
 
@@ -725,12 +755,13 @@ function member_del(obj,id){
     function selection(){
 
         if (eloancn.table.grid.rows(".selected").data().length==1) {
-            var uuid =eloancn.table.grid.row(".selected").data().extn;
+            var uuid =eloancn.table.grid.row(".selected").data();
 
             if(uuid==""){
                 alert(eloancn.table.statusTitle);
             }else{
-                alert(uuid);
+            	
+                alert(uuid.goodId);
             }
 
         }else{

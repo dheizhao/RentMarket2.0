@@ -34,4 +34,15 @@ public class Admin implements Serializable {
 		this.adminPwd = adminPwd;
 	}
 
+	public Admin(String admin, String adminPwd) {
+		super();
+		this.admin = admin;
+		this.adminPwd = adminPwd;
+	}
+
+	@Override
+	public String toString() {
+		return "Admin [admin=" + admin + ", adminPwd=" + adminPwd + "]";
+	}
+
 }
