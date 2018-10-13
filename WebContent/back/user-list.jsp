@@ -311,7 +311,7 @@ $(function(){
 	             var body = layer.getChildFrame('body',index);//建立父子联系
 	             var iframeWin = window[layero.find('iframe')[0]['name']];
 	             
-	             var inputList = body.find('input'); //找所有的input
+	             var inputList = body.find('input'); //找所有的input 把data的值放进文本框 
 	             for(var j = 0; j< arr.length; j++){
 	                 $(inputList[j]).val(arr[j]); //arr[j] 数组中的值 赋值给  $(inputList[j])
 	             }

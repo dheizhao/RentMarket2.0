@@ -54,6 +54,10 @@ public class UsersBackServlet extends HttpServlet {
 		else if ("userEdit".equals(op)) {
 			doUpdateUserStatus(request, response);
 		}
+		//3、删除用户信息
+		else if("userDel".equals(op)) {
+			doDelUser(request, response);
+		}
 
 	}
 
@@ -91,6 +95,20 @@ public class UsersBackServlet extends HttpServlet {
 		boolean flag = us.UpdateUesrStatus(u);
 		System.out.println(flag);
 		System.out.println(request.getParameter("userStatus"));
+		out.print(flag);
+
+	}
+	/**
+	 * 3、删除用户信息
+	 */
+	protected void doDelUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// 使用printWriter对象
+		PrintWriter out = response.getWriter();
+		int userId = Integer.valueOf((request.getParameter("id")));
+		boolean flag = us.DelUesr(userId);
+		System.out.println(flag);
 		out.print(flag);
 
 	}

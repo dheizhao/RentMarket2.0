@@ -36,4 +36,11 @@ public interface UsersService {
 	 * @return true 操作成功  false 操作失败
 	 */
 	boolean UpdateUesrStatus(Uesrslist u);
+	/**
+	 * 后台删除用户方法同时删除用户表和用户详情表
+	 * @author 小白
+	 * @param userId
+	 * @return true 操作成功  false 操作失败
+	 */
+	boolean DelUesr(int userId);
 }
