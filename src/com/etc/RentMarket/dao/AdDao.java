@@ -5,5 +5,7 @@ import java.util.List;
 import com.etc.RentMarket.entity.Ad;
 
 public interface AdDao {
-	public List<Ad> QueryAds();
+	public List<Ad> SelectAds();
+	
+	public boolean AddAds(Ad a);
 }

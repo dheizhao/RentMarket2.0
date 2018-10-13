@@ -5,14 +5,30 @@ import java.util.List;
 import com.etc.RentMarket.DBUtil.BaseDao;
 import com.etc.RentMarket.dao.AdDao;
 import com.etc.RentMarket.entity.Ad;
+import com.etc.RentMarket.entity.Uesrslist;
 
 public class AdDaoImpl implements AdDao {
 
 	@Override
-	public List<Ad> QueryAds() {
+	public List<Ad> SelectAds() {
 		// TODO Auto-generated method stub
 		String sql = "select * from ad";
-		return (List<Ad>) BaseDao.select(sql, Ad.class);
+		List<Ad> list = (List<Ad>) BaseDao.select(sql, Ad.class);
+		for (Ad ad : list) {
+			if (ad.getAd_state().equals("0")) {
+				ad.setAd_state("未激活");
+			} else {
+				ad.setAd_state("激活");
+			} 
+		}
+		return list;
 	}
-
+	
+	@Override
+	public boolean AddAds(Ad a) {
+		// TODO Auto-generated method stub
+		String sql = "insert into ad(ad_content,ad_picture,ad_productor,ad_beginDate,ad_day,ad_state)values(?,?,?,now(),?,?)";
+		return BaseDao.execute(sql, a.getad_content(),a.getad_picture(),a.getad_productor(),a.getAd_day(),a.getAd_state())>0;
+	}
+	
 }

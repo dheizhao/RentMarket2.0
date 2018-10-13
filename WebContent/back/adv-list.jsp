@@ -25,7 +25,7 @@
 <script>DD_belatedPNG.fix('*');</script><![endif]-->
 <!--/meta 作为公共模版分离出去-->
 
-<title>用户信息管理</title>
+<title>广告投放管理</title>
 <meta name="keywords" content="易点租  方便你的生活">
 <meta name="description" content="易点租  方便你的生活">
 </head>
@@ -105,7 +105,7 @@
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 广告信息管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="adv-list.html" title="会员列表">广告列表</a></li>
+					<li><a href="adv-list.jsp" title="会员列表">广告列表</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -152,18 +152,20 @@
 		<article class="cl pd-20"> 
 		
 			
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加广告','ad-add.jsp','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加广告</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>
 						<tr class="text-c">
 							<th width="25"><input type="checkbox" name="" value=""></th>
-							<th width="70">广告Id</th>
-							<th width="80">广告内容</th>
-							<th width="80">广告图片</th>
-							<th width="200">广告产品</th>
-							<th width="120">上架时间</th>
-							<th>下架时间</th>
+							<th width="30">广告编号</th>
+							<th width="120">广告内容</th>
+							<th width="120">广告素材</th>
+							<th width="120">广告商</th>
+							<th width="30">投放天数</th>
+							<th width="90">上架时间</th>
+							<th width="90">下架时间</th>
+							<th width="30">状态</th>
 							<th width="100">操作</th>
 						</tr>
 					</thead>
@@ -331,8 +333,8 @@ function member_del(obj,id){
 	 		fix: false, //不固定
 	 		maxmin: true,
 	 		shade:0.4,
-	 		title: '编辑员工信息', //显示的标题
-	 		content: 'emp-add.html', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
+	 		title: '编辑广告投放信息', //显示的标题
+	 		content: 'ad-add.jsp', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
 	 		success: function(layero, index){ //success可以不写
 	             var body = layer.getChildFrame('body',index);//建立父子联系
 	             var iframeWin = window[layero.find('iframe')[0]['name']];
@@ -475,12 +477,14 @@ function member_del(obj,id){
                 $(nTd).html("<input type='checkbox' name='checkList' value='" + sData + "'>");
             }
         }, //这里是返回的json对象中的 属性值   {data : }
-        {"data": "adId"},
+        {"data": "ad_id"},
         {"data": "ad_content"},
         {"data": "ad_picture"},
         {"data": "ad_productor"},
+        {"data": "ad_day"},
         {"data": "ad_beginDate"},
         {"data": "ad_endDate"},
+        {"data": "ad_state"},
         {    //创建操作那个列
         	"data":"extn",
         	"createdCell":function(nTd)
