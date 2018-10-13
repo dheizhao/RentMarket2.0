@@ -6,6 +6,7 @@ public class TestGood {
 	public static void main(String[] args) {
 		GoodsDaoImpl gd = new GoodsDaoImpl();
 		System.out.println(gd.selectGoods());
+		//System.out.println(gd.delGoods(14));
 	}
 
 }

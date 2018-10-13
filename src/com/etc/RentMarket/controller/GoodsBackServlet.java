@@ -2,6 +2,7 @@ package com.etc.RentMarket.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -43,19 +44,52 @@ public class GoodsBackServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
-		// 调用service的分页方法返回一个pageData对象
-		List<Good> list = gs.selectGoods();
-		// Ajax来实现
-		// 返回数据最好是json格式 外部的jar包 gson
-		MyData<Good> md = new MyData<Good>();
-		md.setData(list);
-		Gson gson = new Gson();
-		String jsonString = gson.toJson(md);
 		// 使用printWriter对象
 		PrintWriter out = response.getWriter();
-		out.print(jsonString);
-		System.out.println("[jsonString] :" + jsonString);
-		out.close();
+		Gson gson = new Gson();
+		String op = request.getParameter("op");
+		
+		if(op.equals("sel")) {
+			List<Good> list = gs.selectGoods();
+			// Ajax来实现
+			// 返回数据最好是json格式 外部的jar包 gson
+			MyData<Good> md = new MyData<Good>();
+			md.setData(list);
+			String jsonString = gson.toJson(md);
+			out.print(jsonString);
+			
+			out.close();
+		}else if (op.equals("del")) {
+			String goodId = request.getParameter("id");
+			
+			boolean flag = gs.delGoods(Integer.valueOf(goodId));
+			
+			if(flag) {
+				//out.print("alert('删除成功')");
+				out.print(flag);
+			}else {
+				out.print(flag);
+			}
+			out.close();
+		}else if (op.equals("MuchSel")) {//批量删除
+			
+			String goods= request.getParameter("ids");
+			String arr[]=goods.split(",");
+			
+			List<Integer> list = new ArrayList<Integer>();
+			for (int i =0;i<arr.length;i++) {
+				list.add(Integer.valueOf(arr[i]));
+			}
+			boolean flag = gs.delMuchGoods(list);
+			if(flag) {
+				
+				out.print(flag);
+			}else {
+				out.print(flag);
+			}
+			out.close();
+		}
+		
 	}
 
 	/**
