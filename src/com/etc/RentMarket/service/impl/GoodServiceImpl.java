@@ -32,5 +32,13 @@ public class GoodServiceImpl implements GoodService {
 		// TODO Auto-generated method stub
 		return gd.delMuchGoods(goodIds);
 	}
+	/**
+	 * 更新商品信息
+	 */
+	@Override
+	public boolean upGoods(Good good) {
+		// TODO Auto-generated method stub
+		return gd.upGoods(good);
+	}
 
 }

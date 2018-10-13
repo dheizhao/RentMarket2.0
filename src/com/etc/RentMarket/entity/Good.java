@@ -28,6 +28,29 @@ public class Good implements Serializable {
 
 	public Good() {
 	}
+	
+	public Good(int goodId, int goodCount, String goodImgAdd, String goodName, double goodPrice, String goodState,
+			int typeId) {
+		super();
+		this.goodId = goodId;
+		this.goodCount = goodCount;
+		this.goodImgAdd = goodImgAdd;
+		this.goodName = goodName;
+		this.goodPrice = goodPrice;
+		this.goodState = goodState;
+		this.typeId = typeId;
+	}
+	
+
+	public Good(int goodId, int goodCount, String goodImgAdd, String goodName, double goodPrice, String goodState) {
+		super();
+		this.goodId = goodId;
+		this.goodCount = goodCount;
+		this.goodImgAdd = goodImgAdd;
+		this.goodName = goodName;
+		this.goodPrice = goodPrice;
+		this.goodState = goodState;
+	}
 
 	public int getGoodId() {
 		return this.goodId;

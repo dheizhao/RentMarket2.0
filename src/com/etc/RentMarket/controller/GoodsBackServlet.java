@@ -88,6 +88,17 @@ public class GoodsBackServlet extends HttpServlet {
 				out.print(flag);
 			}
 			out.close();
+		}else if (op.equals("upInfo")) {//更新数据
+			String goodId=request.getParameter("goodId");
+			String goodName=request.getParameter("goodName");
+			String goodImgAdd=request.getParameter("goodImgAdd");
+			String goodPrice=request.getParameter("goodPrice");
+			String goodCount=request.getParameter("goodCount");
+			String goodState=request.getParameter("goodState");
+			System.out.println(goodName);
+			Good good = new Good(Integer.parseInt(goodId),Integer.parseInt(goodCount), goodImgAdd, goodName, Double.valueOf(goodPrice), goodState);
+			boolean flag = gs.upGoods(good);
+			out.println(flag);
 		}
 		
 	}

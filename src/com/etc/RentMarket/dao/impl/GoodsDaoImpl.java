@@ -60,6 +60,13 @@ public class GoodsDaoImpl implements GoodsDao {
 			return false;
 		}
 	}
+
+	@Override
+	public boolean upGoods(Good good) {//商品更新方法
+		// TODO Auto-generated method stub
+		String sql = "update good set goodCount=?,goodImgAdd=?,goodName=?,goodPrice=?,goodState=?  where goodId=?";
+		return BaseDao.execute(sql, good.getGoodCount(),good.getGoodImgAdd(),good.getGoodPrice(),good.getGoodPrice(),good.getGoodState(),good.getGoodId())>0;
+	}
 	
 	
 
