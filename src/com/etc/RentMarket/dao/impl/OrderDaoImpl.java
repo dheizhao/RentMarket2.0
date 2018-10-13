@@ -19,7 +19,7 @@ public class OrderDaoImpl implements OrderDao{
 	@Override
 	public PageData<Order> queryOrdersByPage(int page, int pageSize, String userName, String keywords) {
 		// TODO Auto-generated method stub
-		String sql = "SELECT orders.orderId,orders.orderDate,orders.orderState,orders.orderTPrice,orders.userAddress,orders.userName,orders.userTel,orderdetail.goodName,orderdetail.rentDate,orderdetail.goodNumber " + 
+		String sql = "SELECT orders.orderId,orders.orderDate,orders.orderState,orders.orderTPrice,orders.userAddress,orders.userName,orders.userTel,orderdetail.goodName,orderdetail.rentDate,orderdetail.goodNumber,orderdetail.goodImg " + 
 				" FROM orders " + 
 				" INNER JOIN orderdetail " + 
 				" ON orders.orderId = orderdetail.orderId " + 

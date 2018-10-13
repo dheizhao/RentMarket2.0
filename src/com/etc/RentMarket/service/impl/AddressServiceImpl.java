@@ -13,11 +13,26 @@ import com.etc.RentMarket.service.AddressService;
  */
 public class AddressServiceImpl implements AddressService{
 	AddressDao ad = new AddressDaoImpl();
-
+/**
+ * 查询地址信息
+ */
 	@Override
 	public List<Usersdetail> queryUserAddr(String userName) {
 		// TODO Auto-generated method stub
 		return ad.queryUserAddr(userName);
 	}
+/**
+ * 添加地址
+ */
+	@Override
+	public boolean addAddr(String userName, String userRealName, String userAddress, String userPhone) {
+		// TODO Auto-generated method stub
+		return ad.addAddr(userName, userRealName, userAddress, userPhone);
+	}
+@Override
+public boolean updateAddr(int userDetailId, String userRealName, String userAddress, String userPhone) {
+	// TODO Auto-generated method stub
+	return ad.updateAddr(userDetailId, userRealName, userAddress, userPhone);
+}
 
 }

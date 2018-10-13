@@ -22,5 +22,27 @@ public class AddressDaoImpl implements AddressDao{
 		List<Usersdetail> list = (List<Usersdetail>) BaseDao.select(sql, Usersdetail.class, userName);
 		return list;
 	}
+	
+	
+	/**
+	 * 添加地址（用户详细信息）
+	 * 
+	 * 
+	 */
+@Override
+public boolean addAddr(String userName, String userRealName, String userAddress, String userPhone) {
+	// TODO Auto-generated method stub
+	String sql = "insert into usersdetail (userName,userPhone,userAddress,userRealName) values (?,?,?,?)";
+	return BaseDao.execute(sql,userName,userRealName,userAddress,userPhone)>0;
+}
+
+
+	@Override
+	public boolean updateAddr(int userDetailId, String userRealName, String userAddress, String userPhone) {
+		// TODO Auto-generated method stub
+		String sql = "update usersdetail set userPhone = ?,userAddress = ?,userRealName = ? where userDetailId = ?";
+		return BaseDao.execute(sql, userPhone,userAddress,userRealName,userDetailId)>0;
+	}
+
 
 }

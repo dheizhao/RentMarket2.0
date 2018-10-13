@@ -22,6 +22,14 @@
     <link href="theme/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="theme/css/dashboard.css" rel="stylesheet">
+    <link href="theme/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="theme/css/layoutit.css" rel="stylesheet">
+    <script type="text/javascript" src="theme/js/jquery-2.0.0.min.js"></script>
+	<script type="text/javascript" src="theme/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="theme/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="theme/js/jquery.ui.touch-punch.min.js"></script>
+	<script type="text/javascript" src="theme/js/jquery.htmlClean.js"></script>
+    
  </head>
  <body>
 
@@ -61,7 +69,7 @@
             <div class="member-lists">
                 <dl>
                     <dt>我的商城</dt>
-                    <dd><a href="user-info.jsp">我的信息</a></dd>
+                    <dd><a href="front/user-info.jsp">我的信息</a></dd>
                     <dd><a href="os.do?op=sel">我的订单</a></dd>
                     <dd><a href="myfavorite.jsp">我的收藏</a></dd>
                     <dd><a href="comment.jsp">我的评价</a></dd>
@@ -81,11 +89,10 @@
         </div>
         <div class="member-right fr">
             <div class="member-head">
-                <div class="member-heels fl"><h2>地址管理</h2></div>
+                <div class="member-heels fl"><h2 style="margin-top: 3px">地址管理</h2></div>
             </div>
             <div class="member-border">
-                <div class="member-newly"><b>新增收货地址</b></div>
-                
+                <div class="member-newly"><a role="button" class="btn" data-toggle="modal" data-target="#Mymodal2" contenteditable="true">新增地址</a></div>
                 <!-- 循环开始 -->
                 <c:forEach var="a" items="${requestScope.list}">
                 	
@@ -109,7 +116,7 @@
                             </div>
 
                             <div class="pc-event">
-                                <a href="#">修改 </a>
+                                <a role="button" class="btn" data-toggle="modal" data-target="#Mymodal3" contenteditable="true">修改 </a>
                                 <a href="#">删除</a>
                             </div>
                         </li>
@@ -119,8 +126,91 @@
                 </div>
                 
                 </c:forEach>
-                
-                
+                <!-- 添加遮罩开始 -->
+               <div class="modal fade" tabindex="-1" role="dialog" id="Mymodal2">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title">新增地址</h4>
+								</div>
+								<div class="modal-body">
+									<input type="hidden" id="id" name="id">
+									<!-- 内容部分 -->
+									<form class="form-horizontal" action="ads.do?op=add"
+										role="form" method="post">
+										<div class="form-group">
+											<input type="hidden" id="userName" name="userName" value="${sessionScope.user.userName}">
+											<label for="userRealName">收货人</label> <input type="text"
+												class="form-control" id="userRealName" name="userRealName" placeholder="" />
+										</div>
+										<div class="form-group">
+											<label for="userAddress">地址</label> <input type="text"
+												class="form-control" id="userAddress" name="userAddress"
+												placeholder="地址" />
+										</div>
+										<div class="form-group">
+											<label for="userPhone">手机</label> <input type="text"
+												class="form-control" name="userPhone" id="userPhone"
+												placeholder="手机" />
+										</div>
+										<button type="submit" class="btn btn-default">提交</button>
+									</form>
+									<!-- 内容部分 -->
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+            <!-- 添加遮罩结束 -->    
+            
+            <!-- 修改遮罩开始 -->
+               <div class="modal fade" tabindex="-1" role="dialog" id="Mymodal3">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title">修改地址</h4>
+								</div>
+								<div class="modal-body">
+									<input type="hidden" id="id" name="id">
+									<!-- 内容部分 -->
+									<form class="form-horizontal" action="ads.do?op=up"
+										role="form" method="post">
+										<div class="form-group">
+											<input type="hidden" id="userDetailId" name="userDetailId" value="${a.userDetailId}">
+											<label for="userRealName">收货人</label> <input type="text"
+												class="form-control" id="userRealName" name="userRealName" placeholder="" />
+										</div>
+										<div class="form-group">
+											<label for="userAddress">地址</label> <input type="text"
+												class="form-control" id="userAddress" name="userAddress"
+												placeholder="地址" />
+										</div>
+										<div class="form-group">
+											<label for="userPhone">手机</label> <input type="text"
+												class="form-control" name="userPhone" id="userPhone"
+												placeholder="手机" />
+										</div>
+										<button type="submit" class="btn btn-default">提交</button>
+									</form>
+									<!-- 内容部分 -->
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+            <!-- 修改遮罩结束 --> 
             </div>
         </div>
     </div>

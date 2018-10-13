@@ -31,8 +31,17 @@ public class Order implements Serializable {
 	private String goodName;
 	private String rentDate;
 	private int goodNumber;
+	private String goodImg;
 
 	public Order() {
+	}
+
+	public String getGoodImg() {
+		return goodImg;
+	}
+
+	public void setGoodImg(String goodImg) {
+		this.goodImg = goodImg;
 	}
 
 	public String getGoodName() {
@@ -116,8 +125,10 @@ public class Order implements Serializable {
 		this.userTel = userTel;
 	}
 
+	
+
 	public Order(int orderId, String orderDate, int orderState, double orderTPrice, String userAddress, String userName,
-			String userTel, String goodName, String rentDate, int goodNumber) {
+			String userTel, String goodName, String rentDate, int goodNumber, String goodImg) {
 		super();
 		this.orderId = orderId;
 		this.orderDate = orderDate;
@@ -129,6 +140,7 @@ public class Order implements Serializable {
 		this.goodName = goodName;
 		this.rentDate = rentDate;
 		this.goodNumber = goodNumber;
+		this.goodImg = goodImg;
 	}
 
 	@Override
@@ -136,7 +148,9 @@ public class Order implements Serializable {
 		return "Order [orderId=" + orderId + ", orderDate=" + orderDate + ", orderState=" + orderState
 				+ ", orderTPrice=" + orderTPrice + ", userAddress=" + userAddress + ", userName=" + userName
 				+ ", userTel=" + userTel + ", goodName=" + goodName + ", rentDate=" + rentDate + ", goodNumber="
-				+ goodNumber + "]";
+				+ goodNumber + ", goodImg=" + goodImg + "]";
 	}
+
+	
 
 }

@@ -204,7 +204,7 @@
 														<li class="td td-item">
 															<div class="item-pic">
 																<a href="#" class="J_MakePoint"> <img
-																	src="#"
+																	src="theme/img/pd/${o.goodImg}"
 																	class="itempic J_ItemImg">
 																</a>
 															</div>

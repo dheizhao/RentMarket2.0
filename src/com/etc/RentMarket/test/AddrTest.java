@@ -10,11 +10,16 @@ public class AddrTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String userName = "mada";
+		String userName = "azhuge";
+		String userRealName = "俊溪";
+		String userAddress = "上海";
+		String userPhone = "12544485230";
 		AddressService as = new AddressServiceImpl();
-		List<Usersdetail> list = as.queryUserAddr(userName);
-		for (Usersdetail usersdetail : list) {
-			System.out.println(usersdetail);
+		boolean flag = as.addAddr(userName, userRealName, userAddress, userPhone);
+		if (flag) {
+			System.out.println("success");
+		}else {
+			System.out.println("f");
 		}
 	}
 
