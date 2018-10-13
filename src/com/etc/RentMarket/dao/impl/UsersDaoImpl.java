@@ -68,4 +68,16 @@ public class UsersDaoImpl implements UsersDao {
 		String sql="update users set userState=? where userId=?";
 		return BaseDao.execute(sql, u.getUserState(),u.getUserId())>0;
 	}
+	/**
+	 * 后台删除用户方法同时删除用户表和用户详情表
+	 * @author 小白
+	 * @param userId
+	 * @return true 操作成功  false 操作失败
+	 */
+	@Override
+	public boolean DelUesr(int userId) {
+		// TODO Auto-generated method stub
+		String sql="delete users,usersdetail from users,usersdetail where users.userId=? and users.userName=usersdetail.userName ";
+		return BaseDao.execute(sql, userId)>0;
+	}
 }

@@ -57,4 +57,15 @@ public class UsersServiceImpl implements UsersService {
 		// TODO Auto-generated method stub
 		return ud.UpdateUesrStatus(u);
 	}
+	/**
+	 * 后台删除用户方法同时删除用户表和用户详情表
+	 * @author 小白
+	 * @param userId
+	 * @return true 操作成功  false 操作失败
+	 */
+	@Override
+	public boolean DelUesr(int userId) {
+		// TODO Auto-generated method stub
+		return ud.DelUesr(userId);
+	}
 }
