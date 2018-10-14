@@ -38,12 +38,13 @@
 			<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
 			
 			<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+			
 				<ul class="cl">
-					<li>超级管理员</li>
-					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+					<li>欢迎你：</li>
+					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">${sessionScope.adm.admin} <i class="Hui-iconfont">&#xe6d5;</i></a>
 						<ul class="dropDown-menu menu radius box-shadow">
 							<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
-							<li><a href="#">退出</a></li>
+							<li><a href="#" class="exit0">退出</a></li>
 				</ul>
 			</li>
 					<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
@@ -106,7 +107,7 @@
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 广告信息管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="adv-list.html" title="会员列表">广告列表</a></li>
+					<li><a href="adv-list.html" title="会员列表">广告列表</a></li>				
 		</ul>
 	</dd>
 </dl>
@@ -114,6 +115,7 @@
 			<dt><i class="Hui-iconfont">&#xe62d;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd> 
 				<ul>
+					
 					<li><a href="order-list.html" title="订单列表">订单列表</a></li>
 		</ul>
 	</dd>
@@ -122,13 +124,13 @@
 			<dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="charts-1.html" title="折线图">折线图</a></li>
-					<li><a href="charts-2.html" title="时间轴折线图">时间轴折线图</a></li>
-					<li><a href="charts-3.html" title="区域图">区域图</a></li>
-					<li><a href="charts-4.html" title="柱状图">柱状图</a></li>
-					<li><a href="charts-5.html" title="饼状图">饼状图</a></li>
-					<li><a href="charts-6.html" title="3D柱状图">3D柱状图</a></li>
-					<li><a href="charts-7.html" title="3D饼状图">3D饼状图</a></li>
+					<li><a href="charts-1.jsp" title="折线图">折线图</a></li>
+					<li><a href="charts-2.jsp" title="时间轴折线图">时间轴折线图</a></li>
+					<li><a href="charts-3.jsp" title="区域图">区域图</a></li>
+					<li><a href="charts-4.jsp" title="柱状图">柱状图</a></li>
+					<li><a href="charts-5.jsp" title="饼状图">饼状图</a></li>
+					<li><a href="charts-6.jsp" title="3D柱状图">3D柱状图</a></li>
+					<li><a href="charts-7.jsp" title="3D饼状图">3D饼状图</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -136,8 +138,9 @@
 			<dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="system-shielding.html" title="屏蔽词">屏蔽词</a></li>
-					<li><a href="system-log.html" title="系统日志">系统日志</a></li>
+					
+					<li><a href="system-shielding.jsp" title="屏蔽词">屏蔽词</a></li>
+					<li><a href="system-log.jsp" title="系统日志">系统日志</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -148,12 +151,16 @@
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
+<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="index.jsp" class="maincolor">首页</a> 
+	<span class="c-999 en">&gt;</span>
+	<span class="c-666">用户信息</span> 
+		</nav>
 	<div class="Hui-article">
 	
 		<article class="cl pd-20"> 
 		
 			
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> </div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>

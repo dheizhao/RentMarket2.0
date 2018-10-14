@@ -1,5 +1,8 @@
+<%@page import="java.util.Date"%>
+<%@page import="com.etc.RentMarket.entity.Admin"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
@@ -38,11 +41,11 @@
 			
 			<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
 				<ul class="cl">
-					<li>超级管理员</li>
-					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+					<li>欢迎你：</li>
+					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">${sessionScope.adm.admin} <i class="Hui-iconfont">&#xe6d5;</i></a>
 						<ul class="dropDown-menu menu radius box-shadow">
 							<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
-							<li><a href="#">退出</a></li>
+							<li><a href="#" class="exit0">退出</a></li>
 				</ul>
 			</li>
 					<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
@@ -148,15 +151,20 @@
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
-	<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/" class="maincolor">首页</a> 
+	<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="index.jsp" class="maincolor">首页</a> 
 		<span class="c-999 en">&gt;</span>
 		<span class="c-666">我的桌面</span> 
 		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 	<div class="Hui-article">
 		<article class="cl pd-20">
-			<p class="f-20 text-success">欢迎来到易点租的后台界面
-			<p>登录次数：18 </p>
-			<p>上次登录时间：2018-10-9 11:19:55</p>
+			<p class="f-20 text-success">欢迎来到易点租的后台界面~
+			<p>当前时间：
+								 <span id=time0> <script>
+									setInterval(
+											"time0.innerHTML=new Date().toLocaleString()",
+											1000);</script>
+											</span>
+			</p>
 			<table class="table table-border table-bordered table-bg">
 				<thead>
 					<tr>
@@ -225,20 +233,19 @@
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript">
+$(function(){//退出操作   还没写完
+	$(".exit0").click(function(){
+		 //HttpServletRequest request;
+		// HttpSession session=request.getSession();
+		// var obj=session.getAttribute("adm");
+		 session.removeAttribute("adm");
+		 response.sendRedirect("login1.html");
+	});
+});
 
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 
-<!--此乃百度统计代码，请自行删除-->
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?080836300300be57b7f34f4b3e97d911";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-<!--/此乃百度统计代码，请自行删除-->
+
 </body>
 </html>

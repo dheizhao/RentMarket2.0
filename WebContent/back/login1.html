@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>	
 <head>
-<title>Login</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>登录界面</title>
+<meta name="viewport" content="width=device-width, initial-scale=1,charset=UTF-8">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <meta name="keywords" content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -13,16 +13,9 @@
 <script src="http://ajax.useso.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 <body>
-<script>$(document).ready(function(c) {
-	$('.close').on('click', function(c){
-		$('.login-form').fadeOut('slow', function(c){
-	  		$('.login-form').remove();
-		});
-	});	  
-});
-</script>
+
  <!--SIGN UP-->
- <h1>klasikal Login Form</h1>
+ <h1>管理员登录界面</h1>
 <div class="login-form">
 	<div class="close"> </div>
 		<div class="head-info">
@@ -34,19 +27,20 @@
 	<div class="avtar">
 		<img src="images/avtar.png" />
 	</div>
-			<form>
-					<input type="text" class="text" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
+			<form action="../admin.do?op=login" method="post">
+					<input type="text" class="text" id="admin" name="admin" placeholder="用户名">
 						<div class="key">
-					<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+					<input type="password" id="adminPwd" name="adminPwd" placeholder="密码">
 						</div>
-			</form>
+			
 	<div class="signin">
-		<input type="submit" value="Login" >
+		<input type="submit" value="登录" id="login">
 	</div>
+	</form>
 </div>
  <div class="copy-rights">
-					<p>Copyright &copy; 2015.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="ģ��֮��">ģ��֮��</a> - Collect from <a href="http://www.cssmoban.com/" title="��ҳģ��" target="_blank">��ҳģ��</a></p>
+					<p>&copy; 本网站信息全由易点租提供支持~ </p>
 			</div>
-
+			
 </body>
 </html>

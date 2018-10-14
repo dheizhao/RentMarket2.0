@@ -94,7 +94,7 @@ function myselfinfo(){
 		maxmin: true,
 		shade:0.4,
 		title: '查看信息',
-		content: '<div>管理员信息</div>'
+		content: '<div>管理员名：admin</br>管理员密码：admin</div>'
 	});
 }
 $(function(){
