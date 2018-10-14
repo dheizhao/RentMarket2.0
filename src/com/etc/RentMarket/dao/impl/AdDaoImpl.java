@@ -31,4 +31,10 @@ public class AdDaoImpl implements AdDao {
 		return BaseDao.execute(sql, a.getad_content(),a.getad_picture(),a.getad_productor(),a.getAd_day(),a.getAd_state())>0;
 	}
 	
+	@Override
+	public boolean UpdAd(Ad a) {
+		// TODO 自动生成的方法存根
+		String sql = "update set ad_content=?,ad_picture=?,ad_productor=?,ad_endDate=now(),ad_day=?,ad_state=? from ad";
+		return BaseDao.execute(sql,  a.getad_content(),a.getad_picture(),a.getad_productor(),a.getAd_day(),a.getAd_state())>0;
+	}
 }

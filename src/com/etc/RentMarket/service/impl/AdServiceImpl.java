@@ -23,4 +23,10 @@ public class AdServiceImpl implements AdService {
 		// TODO Auto-generated method stub
 		return ad.AddAds(a);
 	}
+	
+	@Override
+	public boolean UpdAd(Ad a) {
+		// TODO 自动生成的方法存根
+		return ad.UpdAd(a);
+	}
 }

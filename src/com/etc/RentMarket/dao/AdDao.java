@@ -8,4 +8,6 @@ public interface AdDao {
 	public List<Ad> SelectAds();
 	
 	public boolean AddAds(Ad a);
+	
+	public boolean UpdAd(Ad a);
 }

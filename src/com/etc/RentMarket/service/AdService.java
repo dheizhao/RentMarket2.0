@@ -8,4 +8,6 @@ public interface AdService {
 	public List<Ad> SelectAds();//查询广告
 
 	public boolean AddAds(Ad a);
+	
+	public boolean UpdAd(Ad a);
 }

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.etc.RentMarket.DBUtil.MyData;
 import com.etc.RentMarket.entity.Ad;
-import com.etc.RentMarket.entity.Uesrslist;
 import com.etc.RentMarket.service.AdService;
 import com.etc.RentMarket.service.impl.AdServiceImpl;
 import com.google.gson.Gson;
@@ -48,6 +47,10 @@ public class AdServlet extends HttpServlet {
 		if ("".equals(op)) {
 			doGetAds(request, response);
 		}
+		if("add".equals(op)){
+			doAddAds(request, response);
+			request.getRequestDispatcher("adv-list.jsp").forward(request, response);
+		}
 	}
 	/**
 	 * 1、显示广告信息
@@ -65,13 +68,30 @@ public class AdServlet extends HttpServlet {
 		// 使用printWriter对象
 		PrintWriter out = response.getWriter();
 		out.print(jsonString);
-		System.out.println("[jsonString] :" + jsonString);
 		out.close();
 	}
 	/**
-	 * 2,添加广告信息
+	 * 2、添加广告信息
 	 */
 	protected void doAddAds(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String ad_content = request.getParameter("content");
+		String ad_picture = request.getParameter("picture");
+		String ad_productor = request.getParameter("productor");
+		int ad_day = Integer.parseInt(request.getParameter("day"));
+		String ad_state = request.getParameter("adStatus");
+		Ad a = new Ad(ad_content, ad_picture, ad_productor, ad_day, ad_state);
+		boolean flag = as.AddAds(a);
+		System.out.println("flag:"+flag);
+	}
+	/**
+	 * 3、修改广告内容及其他信息
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	protected void doUpdAds(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 	}

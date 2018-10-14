@@ -112,6 +112,16 @@ public class Ad implements Serializable {
 		this.ad_state = ad_state;
 	}
 
+	
+	public Ad(String ad_content, String ad_picture, String ad_productor, int ad_day, String ad_state) {
+		super();
+		this.ad_content = ad_content;
+		this.ad_picture = ad_picture;
+		this.ad_productor = ad_productor;
+		this.ad_day = ad_day;
+		this.ad_state = ad_state;
+	}
+
 	@Override
 	public String toString() {
 		return "Ad [ad_id=" + ad_id + ", ad_content=" + ad_content + ", ad_picture=" + ad_picture + ", ad_productor="
