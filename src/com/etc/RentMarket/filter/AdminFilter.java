@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  * 后台过滤器
  * 判断用户是否登录
  */
-@WebFilter("/*")
+//@WebFilter("/*")
 public class AdminFilter implements Filter {
 
     /**
