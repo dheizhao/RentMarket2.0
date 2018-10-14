@@ -20,7 +20,8 @@ import com.etc.RentMarket.service.impl.AdminServiceImpl;
 @WebServlet("/admin.do")
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	AdminService ads=new AdminServiceImpl();
+	AdminService ads = new AdminServiceImpl();
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -39,30 +40,33 @@ public class AdminServlet extends HttpServlet {
 		// 设置响应编码
 		response.setCharacterEncoding("utf-8");
 		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html");
 		// 使用PrintWriter对象来打印返回data的值
 		PrintWriter out = response.getWriter();
-		//接受传参动作
-		String op="";
-		if(request.getParameter("op")!=null) {
-			op=request.getParameter("op");
+		// 接受传参动作
+		String op = "";
+		if (request.getParameter("op") != null) {
+			op = request.getParameter("op");
 		}
-		//1、登录操作方法
+		// 1、登录操作方法
 		if ("login".equals(op)) {
-			//接收传参值
-			String admin=request.getParameter("admin");
-			String adminPwd=request.getParameter("adminPwd");
-			Admin adm=new Admin(admin, adminPwd);
-			List<Admin> list=ads.adminLogin(adm);
-			if (list.size()>0) {//该用户存在，可以登录				
-				out.print("<script>alert('登录成功');location.href='back/index.jsp'</script>");
+			// 接收传参值
+			String admin = request.getParameter("admin");
+			String adminPwd = request.getParameter("adminPwd");
+			// 构造一个Admin对象
+			Admin adm = new Admin(admin, adminPwd);
+			// 调用AdminServiceImpl的方法
+			List<Admin> list = ads.adminLogin(adm);
+			if (list.size() > 0) {// 该用户存在，可以登录，跳到首页
 				request.getSession().setAttribute("adm", adm);
-			} else {
-				out.print("<script>alert('登录失败');location.href='back/login.html'</script>");
+				out.print("<script>alert('登录成功！');location.href='back/index.jsp'</script>");
+
+			} else {//该用户不存在，登录失败
+				out.print("<script>alert('登录失败！');location.href='back/login1.html'</script>");
 			}
 			// 关闭PrintWriter对象，释放资源
 			out.close();
 		}
-		
 
 	}
 

@@ -17,9 +17,11 @@ import org.apache.commons.beanutils.BeanUtils;
 public class BaseDao {
 
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
+
 	private static final String URL = "jdbc:mysql://localhost:3306/rentmarket?useunicode=true&characterEncoding=utf-8";
+
 	private static final String USER = "root"; // 用户名
-	private static final String PASSWORD = "zhao";// 密码
+	private static final String PASSWORD = "123";// 密码
 
 	/**
 	 * 获取连接对象

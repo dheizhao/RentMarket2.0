@@ -1,4 +1,4 @@
-﻿﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
@@ -25,12 +25,11 @@
 <script>DD_belatedPNG.fix('*');</script><![endif]-->
 <!--/meta 作为公共模版分离出去-->
 
-<title>用户信息管理</title>
+<title>评价信息管理</title>
 <meta name="keywords" content="易点租  方便你的生活">
 <meta name="description" content="易点租  方便你的生活">
 </head>
 <body>
-
 <header class="navbar-wrapper">
 	<div class="navbar navbar-fixed-top">
 		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">易点租后台</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a> 
@@ -145,14 +144,13 @@
 </dl>
 </div>
 </aside>
-<!-- aside部分  结束位置-->
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
 <nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="index.jsp" class="maincolor">首页</a> 
 	<span class="c-999 en">&gt;</span>
-	<span class="c-666">用户信息</span> 
+	<span class="c-666">评价信息</span> 
 		</nav>
 	<div class="Hui-article">
 	
@@ -165,13 +163,12 @@
 					<thead>
 						<tr class="text-c">
 							<th width="25"><input type="checkbox" name="" value=""></th>
-							<th width="80">用户Id</th>
-							<th width="80">用户名</th>
-							<th width="80">用户电话</th>
-							<th width="80">用户地址</th>
-							<th width="120">注册时间</th>
-							<th width="75">用户状态</th>
-							<th width="120">操作</th>
+							<th width="60">评价Id</th>
+							<th width="60">评价商品</th>
+							<th>评价内容</th>
+							<th width="160">评价时间</th>
+							<th width="60">评价用户</th>
+							<th width="100">操作</th>
 						</tr>
 					</thead>
 					<tbody>					
@@ -243,40 +240,13 @@ function member_start(obj,id){
 		layer.msg('已启用!',{icon: 6,time:1000});
 	});
 }
-/*用户-编辑*/
-function member_edit(title,url,id,w,h){
-	layer_show(title,url,w,h);
-}
-/*密码-修改*/
-function change_password(title,url,id,w,h){
-	//layer_show(title,url,w,h);	
 
-	layer.open({
-		type: 2,
-		area: ['600px', '270px'],
-		fix: false, //不固定
-		maxmin: true,
-		shade:0.4,
-		title: title,
-		content: url,
-		success: function(layero, index){
-            var body = layer.getChildFrame('body',index);//建立父子联系
-            var iframeWin = window[layero.find('iframe')[0]['name']];
-            // console.log(arr); //得到iframe页的body内容
-            // console.log(body.find('input'));
-            var inputList = body.find('input');
-            for(var j = 0; j< inputList.length; j++){
-                $(inputList[j]).val(arr[j]);
-            }
-        }
-	});
-}
 /*个别用户-删除*/
 function member_del(obj,id){
 	layer.confirm('确认要删除吗？',function(index){
 		
 		//ajax请求操作 访问servlet get请求 (url,parms传参值,function(data返回数据 ,status))
-		$.get("../usback.do?op=userDel","id="+id,function(data) {
+		$.get("../evaluate.do?op=evaluateDel","id="+id,function(data) {
 			//console.log("我是返回结果："+data+",状态："+status);
 			if(data){//返回的data为true 删除表单相关行数据 
 				$(obj).parents("tr").remove();
@@ -290,46 +260,7 @@ function member_del(obj,id){
 }
 </script>
 
-<script>	  
-//修改用户信息的超链接单击事件
-$(function(){
-	 $(document).on("click",'.empedit',function()
-	 {
-		 var _this = $(this); //当前对象 编辑的超链接
-	      data =_this.parent().siblings(); //_this.parent() 得到td   siblings(); 当前行的其他td
-	      var arr = [];
-	     for(var i = 1; i< data.length; i++){ //1 从1开始 从姓名开始
-	        arr.push($(data[i]).text());//每一个td中的内容() 放到一个数组里
-	     }
-	    // console.log(arr);
-		 //change-password.html
-		 
-		 //打开新窗口 编辑窗口
-	     layer.open({
-	 		type: 2,
-	 		area: ['710px', '510px'], //窗口大小
-	 		fix: false, //不固定
-	 		maxmin: true,
-	 		shade:0.4,
-	 		title: '编辑员工信息', //显示的标题
-	 		content: 'users-edit.html', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
-	 		success: function(layero, index){ //success可以不写
-	             var body = layer.getChildFrame('body',index);//建立父子联系
-	             var iframeWin = window[layero.find('iframe')[0]['name']];
-	             
-	             var inputList = body.find('input'); //找所有的input 把data的值放进文本框 
-	             for(var j = 0; j< arr.length; j++){
-	                 $(inputList[j]).val(arr[j]); //arr[j] 数组中的值 赋值给  $(inputList[j])
-	             }
-	         }
-	 	});
-		 
-		 
-	 });
-	  
-	  
-  });
-</script>
+
 
 
 
@@ -382,8 +313,8 @@ $(function(){
 //ajax请求路径配置 
     //路径配置,此处配置的路径是获取数据的重要手段;
     employee.url="/"; //  这里 / 表示的是localhost/
-    employee.requestUrl = {//RentMarket2.0项目名  usback.do这个是所请求的servlet 
-        queryList:employee.url+"RentMarket2.0/usback.do"  //数据是从servlet一侧返回的 json格式
+    employee.requestUrl = {//RentMarket2.0项目名  evaluate.do这个是所请求的servlet 
+        queryList:employee.url+"RentMarket2.0/evaluate.do"  //数据是从servlet一侧返回的 json格式
     };
 
     employee.search={
@@ -414,21 +345,20 @@ $(function(){
         {   //第一个列
         	"data": "extn",
             "createdCell": function (nTd, sData, oData, iRow, iCol) {//第三个属性oData可以取data的单值如oData.userId
-                $(nTd).html("<input type='checkbox' name='checkList' value='" + oData.userId + "'>");//设置单选框的value值为userId 
+                $(nTd).html("<input type='checkbox' name='checkList' value='" + oData.evaluateId + "'>");//设置单选框的value值为userId 
             }
         }, //这里是返回的json对象中的 属性值   {data : } 记得要改这里的data后面的值是实体类的属性值  
-        {"data": "userId"},
+        {"data": "evaluateId"},
+        {"data": "goodName"},
+        {"data": "evaluateContent"},
+        {"data": "evaluateDate"},
         {"data": "userName"},
-        {"data": "userPhone"},
-        {"data": "userAddress"},
-        {"data": "userRegisterTime"},
-        {"data": "userState"},
         {    //创建操作那个列
         	"data":"extn",
         	"createdCell":function(nTd, sData, oData)//这个要和上面一样 function(nTd, sData, oData)用到第三个属性oData
         	{//删除按钮 
         		//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
-        		$(nTd).html('<a title="编辑状态" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,'+oData.userId+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
+        		$(nTd).html('<a title="删除" href="javascript:;" onclick="member_del(this,'+oData.evaluateId+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
         		//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");

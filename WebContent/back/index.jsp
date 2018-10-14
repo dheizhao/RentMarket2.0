@@ -1,5 +1,8 @@
+<%@page import="java.util.Date"%>
+<%@page import="com.etc.RentMarket.entity.Admin"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
@@ -38,11 +41,11 @@
 			
 			<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
 				<ul class="cl">
-					<li>超级管理员</li>
-					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+					<li>欢迎你：</li>
+					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">${sessionScope.adm.admin} <i class="Hui-iconfont">&#xe6d5;</i></a>
 						<ul class="dropDown-menu menu radius box-shadow">
 							<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
-							<li><a href="#">退出</a></li>
+							<li><a href="#" class="exit0">退出</a></li>
 				</ul>
 			</li>
 					<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
@@ -79,7 +82,7 @@
 			<dt><i class="Hui-iconfont">&#xe613;</i> 商品审核<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="goods-status.html" title="商品审核">商品审核</a></li>
+					<li><a href="goods-status.jsp" title="商品审核">商品审核</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -88,7 +91,7 @@
 			<dd>
 				<ul>
 					<li><a href="goods-list.jsp" title="商品信息">商品信息</a></li>
-					<li><a href="goods-category.html" title="分类管理">分类管理</a></li>
+					<li><a href="goods-category.jsp" title="分类管理">分类管理</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -96,8 +99,8 @@
 			<dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="feedback-list.html" title="评论列表">评论列表</a></li>
-					<li><a href="feedback2-list.html" title="回复列表">回复列表</a></li>
+					<li><a href="feedback-list.jsp" title="评论列表">评论列表</a></li>
+					<li><a href="feedback2-list.jsp" title="回复列表">回复列表</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -105,7 +108,7 @@
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 广告信息管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="adv-list.html" title="会员列表">广告列表</a></li>				
+					<li><a href="adv-list.jsp" title="会员列表">广告列表</a></li>				
 		</ul>
 	</dd>
 </dl>
@@ -114,7 +117,7 @@
 			<dd> 
 				<ul>
 					
-					<li><a href="order-list.html" title="订单列表">订单列表</a></li>
+					<li><a href="order-list.jsp" title="订单列表">订单列表</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -148,15 +151,20 @@
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
-	<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/" class="maincolor">首页</a> 
+	<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="index.jsp" class="maincolor">首页</a> 
 		<span class="c-999 en">&gt;</span>
 		<span class="c-666">我的桌面</span> 
 		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 	<div class="Hui-article">
 		<article class="cl pd-20">
-			<p class="f-20 text-success">欢迎来到易点租的后台界面
-			<p>登录次数：18 </p>
-			<p>上次登录时间：2018-10-9 11:19:55</p>
+			<p class="f-20 text-success">欢迎来到易点租的后台界面~
+			<p>当前时间：
+								 <span id=time0> <script>
+									setInterval(
+											"time0.innerHTML=new Date().toLocaleString()",
+											1000);</script>
+											</span>
+			</p>
 			<table class="table table-border table-bordered table-bg">
 				<thead>
 					<tr>
@@ -225,20 +233,19 @@
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript">
+$(function(){//退出操作   还没写完
+	$(".exit0").click(function(){
+		 //HttpServletRequest request;
+		// HttpSession session=request.getSession();
+		// var obj=session.getAttribute("adm");
+		 session.removeAttribute("adm");
+		 response.sendRedirect("login1.html");
+	});
+});
 
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 
-<!--此乃百度统计代码，请自行删除-->
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?080836300300be57b7f34f4b3e97d911";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-<!--/此乃百度统计代码，请自行删除-->
+
 </body>
 </html>

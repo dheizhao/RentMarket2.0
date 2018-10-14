@@ -5,7 +5,7 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the reevaluate database table.
+ * 自定义回复评价的实体类
  * 
  */
   
@@ -13,22 +13,22 @@ public class Reevaluate implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	
-	private int cid;
+	private int cid;//回复Id
 
-	private String content;
+	private String content;//回复评价内容
 
 	
-	private Date date;
+	private String date;//回复时间
 
-	private int lastuserId;
+	private String evaluateContent;//商品评价内容
 
-	private String userName;
+	private String userName;//回复者姓名
 
 	public Reevaluate() {
 	}
 
 	public int getCid() {
-		return this.cid;
+		return cid;
 	}
 
 	public void setCid(int cid) {
@@ -36,35 +36,52 @@ public class Reevaluate implements Serializable {
 	}
 
 	public String getContent() {
-		return this.content;
+		return content;
 	}
 
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-	public Date getDate() {
-		return this.date;
+	public String getDate() {
+		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
-	public int getLastuserId() {
-		return this.lastuserId;
+	public String getEvaluateContent() {
+		return evaluateContent;
 	}
 
-	public void setLastuserId(int lastuserId) {
-		this.lastuserId = lastuserId;
+	public void setEvaluateContent(String evaluateContent) {
+		this.evaluateContent = evaluateContent;
 	}
 
 	public String getUserName() {
-		return this.userName;
+		return userName;
 	}
 
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
+	public Reevaluate(int cid, String content, String date, String evaluateContent, String userName) {
+		super();
+		this.cid = cid;
+		this.content = content;
+		this.date = date;
+		this.evaluateContent = evaluateContent;
+		this.userName = userName;
+	}
+
+	@Override
+	public String toString() {
+		return "Reevaluate [cid=" + cid + ", content=" + content + ", date=" + date + ", evaluateContent="
+				+ evaluateContent + ", userName=" + userName + "]";
+	}
+
+	
 
 }
