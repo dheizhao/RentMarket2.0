@@ -36,4 +36,15 @@ public interface OrderService {
 	 * @return
 	 */
 	List<Order> queryOrdersIdByuserName(String userName);
+	/**
+	 * 查询订单
+	 * @return
+	 */
+	public List<Order> selOrders();
+	
+	public boolean upOrders(Order order);//更新订单
+	
+	public boolean delOrders(int orderId);//删除订单
+	
+	public boolean delMuchOrders(List<Integer> ordersIds);//批量删除订单
 }

@@ -32,5 +32,25 @@ public interface OrderDao {
 	 * @return
 	 */
 	List<Order> queryOrdersIdByuserName(String userName);
-
+	
+	/**
+	 * 查询订单
+	 * @return
+	 */
+	List<Order> selOrders();
+	
+	/**
+	 * 更新订单
+	 * @return
+	 */
+	boolean upOrders(Order order);
+	
+	/**
+	 * 删除订单
+	 */
+	boolean delOrders(int orderId);
+	/**
+	 * 批量删除订单
+	 */
+	boolean delMuchOrders(List<Integer> ordersIds);
 }

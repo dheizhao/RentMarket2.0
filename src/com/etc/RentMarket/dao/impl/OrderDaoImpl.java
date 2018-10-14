@@ -54,6 +54,42 @@ public List<Order> queryOrdersIdByuserName(String userName) {
 	List<Order> list = (List<Order>) BaseDao.select(sql, Order.class, userName);
 	return list;
 }
+@Override
+public List<Order> selOrders() {
+	// TODO Auto-generated method stub
+	String sql = "select orderId,userName,userTel,userAddress,orderDate,orderTPrice,orderState from orders";
+	return (List<Order>) BaseDao.select(sql, Order.class);
+}
+@Override
+public boolean upOrders(Order order) {
+	// TODO Auto-generated method stub
+	String sql = "update orders  set userName=?,userTel=?,userAddress=?,orderDate=?,orderTPrice=?,orderState=? WHERE orderId=?";
+	return BaseDao.execute(sql, order.getUserName(),order.getUserTel(),order.getUserAddress(),order.getOrderDate(),order.getOrderTPrice(),order.getOrderState(),order.getOrderId())>0;
+}
+@Override
+public boolean delOrders(int orderId) {
+	// TODO Auto-generated method stub
+	String sql = "delete from orders where orderId=?";
+	return BaseDao.execute(sql, orderId)>0;
+}
+@Override
+public boolean delMuchOrders(List<Integer> ordersIds) {
+	if(ordersIds.size()>0) {//如果选中的数量>0
+		Integer arr[] = new Integer[ordersIds.size()];//创建一个数组，大小为选中的数量
+		
+		String sql = "delete from orders where orderId in (";//拼接sql语句
+		for (int i = 0 ;i<ordersIds.size() ;i++) {
+			sql += "?,";
+			arr[i]=ordersIds.get(i);
+		}
+		sql=sql.substring(0, sql.length()-1);
+		sql += ")";
+		int c = BaseDao.execute(sql, arr);//进行删除操作
+		return c>0;
+		}else {
+			return false;
+		}
+}
 
 	
 

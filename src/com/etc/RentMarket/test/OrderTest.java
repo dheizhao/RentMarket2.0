@@ -1,9 +1,8 @@
 package com.etc.RentMarket.test;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.etc.RentMarket.DBUtil.PageData;
-import com.etc.RentMarket.entity.Order;
 import com.etc.RentMarket.service.OrderService;
 import com.etc.RentMarket.service.impl.OrderServiceImpl;
 
@@ -21,11 +20,17 @@ public class OrderTest {
 		System.out.println(pd);*/
 		
 		
-		int orderId = 1;
-		List<Order> list = os.queryOrdersByOrderId(orderId);
-		for (Order order : list) {
-			System.out.println(order);
-		}
+//		int orderId = 1;
+//		List<Order> list = os.queryOrdersByOrderId(orderId);
+//		for (Order order : list) {
+//			System.out.println(order);
+//		}
+//		Order order = new Order(1, "2018-10-14", 11, 11, "11", "11", "11");
+//		System.out.println(os.upOrders(order));
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(4);
+		list.add(5);
+		System.out.println(os.delMuchOrders(list));
 	}
 
 }

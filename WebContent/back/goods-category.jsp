@@ -151,24 +151,23 @@
 <section class="Hui-article-box">
 	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 商品管理 <span class="c-gray en">&gt;</span> 类别管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 	<div class="Hui-article">
-		<article class="cl pd-20">
-			<div class="text-c">
-				
-				
+		<article class="cl pd-20"> 
+		<div class="text-c">
 				<input type="text" name="" id="" placeholder=" 商品类型名称" style="width:250px" class="input-text">
 				<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜类型名称</button>
 			</div>
-			<div class="cl pd-5 bg-1 bk-gray mt-20">
-				<span class="l">
-				<a href="javascript:;" onclick="batchIds()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
-				<a class="btn btn-primary radius" data-title="添加类别" _href="user-add.html" onclick=" user_add('添加类别','user-add.html')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加类别</a>
-				</span>
-				<span class="r">共有数据：<strong>5</strong> 条</span>
-			</div>
+			
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> 
+			<span class="l">
+			<a href="javascript:;" onclick="batchIds()" class="btn btn-danger radius">
+			<i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> 
+			<a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
+			<i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> 
+			<span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-bg table-hover table-sort">
 					<thead>
-						<tr class="text-c">
+						<tr class="text-c" >
 							<th width="25"><input type="checkbox" name="" value="" id="employeeCheckAll"></th>
 							<th width="80">类别Id</th>
 							<th width="80">类别名</th>
@@ -176,12 +175,12 @@
 							<th width="120">操作</th>
 						</tr>
 					</thead>
-					<tbody>
-						
+					<tbody>					
 					</tbody>
 				</table>
 			</div>
 		</article>
+		
 	</div>
 </section>
 
@@ -295,7 +294,7 @@ function article_edit(title,url,id,w,h){
 	layer.full(index);
 }
 /*资讯-删除*/
-function article_del(obj,id){
+function member_del(obj,id){
 layer.confirm('确认要删除吗？',function(index){
 		$.get("../gsback.do","id="+id+"&op=deltype",function(data,status){
 			console.log(data+","+status);
@@ -449,7 +448,7 @@ function article_shenqing(obj,id){
         	"createdCell":function(nTd,sData, oData, iRow, iCol)
         	{
         		//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
-        		$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title=""><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>  <a title="删除" href="javascript:;" onclick="article_del(this,'+oData.typeId+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
+        		$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title=""><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>  <a title="删除" href="javascript:;" onclick="member_del(this,'+oData.typeId+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
         		//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
@@ -458,13 +457,13 @@ function article_shenqing(obj,id){
     ];
 
      //导航按钮操作
-    employee.buttons =
+    /* employee.buttons =
             '<button class="btn btn-default"  type="button" id="reload" data-toggle="modal" data-target="#employeeModal">刷新表格</button>'+
             '<button class="btn btn-primary" type="button" id="batchIds" style="margin-left:20px;" data-toggle="modal" >多选</button>'+
             '<button class="btn btn-success" type="button" id="del" style="margin-left:20px;" data-toggle="modal" >删除</button>'+
             '<button class="btn btn-success" type="button" id="selection" style="margin-left:20px;" data-toggle="modal" >单选</button>'+
             '<button class="btn btn-success" type="button" id="search" style="margin-left:20px;" data-toggle="modal" >查询</button>'+
-            '<button class="btn btn-success" type="button" id="clearSearch" style="margin-left:20px;" data-toggle="modal" >重置</button>';
+            '<button class="btn btn-success" type="button" id="clearSearch" style="margin-left:20px;" data-toggle="modal" >重置</button>'; */
 
 </script>
 
@@ -570,7 +569,8 @@ function article_shenqing(obj,id){
                         $("tr").removeClass('selected');
                     }
                 });
-
+              //得到总记录数，显示在表格的右上角位置
+                $("#datarowcount").text($('#'+elo.property.tableId).DataTable().page.info().recordsTotal);
             }
         });
 

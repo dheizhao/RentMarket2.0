@@ -35,6 +35,18 @@ public class Order implements Serializable {
 
 	public Order() {
 	}
+	
+	public Order(int orderId, String orderDate, int orderState, double orderTPrice, String userAddress, String userName,
+			String userTel) {
+		super();
+		this.orderId = orderId;
+		this.orderDate = orderDate;
+		this.orderState = orderState;
+		this.orderTPrice = orderTPrice;
+		this.userAddress = userAddress;
+		this.userName = userName;
+		this.userTel = userTel;
+	}
 
 	public String getGoodImg() {
 		return goodImg;

@@ -72,7 +72,7 @@ public class GoodsBackServlet extends HttpServlet {
 				out.print(flag);
 			}
 			out.close();
-		}else if (op.equals("MuchSel")) {//批量删除
+		}else if (op.equals("MuchDel")) {//批量删除
 			
 			String goods= request.getParameter("ids");
 			String arr[]=goods.split(",");
@@ -130,7 +130,7 @@ public class GoodsBackServlet extends HttpServlet {
 				out.print(flag);
 			}
 			out.close();
-		}else if(op.equals("MuchSelType")) {
+		}else if(op.equals("MuchSelType")) {//批量删除商品类型
 			String goods= request.getParameter("ids");
 			String arr[]=goods.split(",");
 			

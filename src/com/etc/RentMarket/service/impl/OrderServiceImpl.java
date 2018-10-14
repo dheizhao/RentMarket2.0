@@ -37,6 +37,26 @@ public class OrderServiceImpl implements OrderService{
 		// TODO Auto-generated method stub
 		return od.queryOrdersIdByuserName(userName);
 	}
+	@Override
+	public List<Order> selOrders() {
+		// TODO Auto-generated method stub
+		return od.selOrders();
+	}
+	@Override
+	public boolean upOrders(Order order) {
+		// TODO Auto-generated method stub
+		return od.upOrders(order);
+	}
+	@Override
+	public boolean delOrders(int orderId) {
+		// TODO Auto-generated method stub
+		return od.delOrders(orderId);
+	}
+	@Override
+	public boolean delMuchOrders(List<Integer> ordersIds) {
+		// TODO Auto-generated method stub
+		return od.delMuchOrders(ordersIds);
+	}
 
 	
 

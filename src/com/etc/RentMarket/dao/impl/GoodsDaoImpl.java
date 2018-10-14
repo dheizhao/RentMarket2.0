@@ -27,8 +27,8 @@ public class GoodsDaoImpl implements GoodsDao {
 //			}else {
 //				good.setGoodState("");
 //			}
-		
-	//}
+//			
+//		}
 		
 		return list;
 	}
