@@ -1,5 +1,5 @@
-﻿﻿<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
@@ -25,7 +25,8 @@
 <script>DD_belatedPNG.fix('*');</script><![endif]-->
 <!--/meta 作为公共模版分离出去-->
 
-<title>商品信息管理</title>
+<title>商品类别</title>
+<link rel="stylesheet" href="lib/zTree/v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
 <meta name="keywords" content="易点租  方便你的生活">
 <meta name="description" content="易点租  方便你的生活">
 </head>
@@ -63,6 +64,7 @@
 </div>
 </header>
 <!--/_header部分 结束位置-->
+
 <!-- aside部分  作为左边导航-->
 <aside class="Hui-aside">
 	
@@ -71,7 +73,7 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i>用户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="user-list.jsp" title="用户信息">用户信息</a></li>
+					<li><a href="users-list.html" title="用户信息">用户信息</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -79,7 +81,7 @@
 			<dt><i class="Hui-iconfont">&#xe613;</i> 商品审核<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="goods-status.html" title="商品审核">商品审核</a></li>
+					<li><a href="goods-status.jsp" title="商品审核">商品审核</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -87,8 +89,8 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i>商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="goods-list.jsp" title="商品信息">商品信息</a></li>
-					<li><a href="goods-category.html" title="分类管理">分类管理</a></li>
+					<li><a href="goods-list.html" title="商品信息">商品信息</a></li>
+					<li><a href="goods-category.jsp" title="分类管理">分类管理</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -147,39 +149,35 @@
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
+	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 商品管理 <span class="c-gray en">&gt;</span> 类别管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 	<div class="Hui-article">
-	
-		<article class="cl pd-20"> 
-		<div class="text-c">
+		<article class="cl pd-20">
+			<div class="text-c">
 				
 				
 				<input type="text" name="" id="" placeholder=" 商品类型名称" style="width:250px" class="input-text">
 				<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜类型名称</button>
 			</div>
-			
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> 
-			<span class="l">
-			<a href="javascript:;" onclick="batchIds()" class="btn btn-danger radius">
-			<i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> 
-			<a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
-			<i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> 
-			<span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
+			<div class="cl pd-5 bg-1 bk-gray mt-20">
+				<span class="l">
+				<a href="javascript:;" onclick="batchIds()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+				<a class="btn btn-primary radius" data-title="添加类别" _href="user-add.html" onclick=" user_add('添加类别','user-add.html')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加类别</a>
+				</span>
+				<span class="r">共有数据：<strong>5</strong> 条</span>
+			</div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-bg table-hover table-sort">
 					<thead>
-						<tr class="text-c" >
-							
-							<th width="25" height="35"><input type="checkbox" name="" value="" id="employeeCheckAll" ></th>
-							<th width="70" height="35">商品Id</th>
-							<th width="200" height="35">商品名称</th>
-							<th width="80" height="35">商品图片</th>
-							<th width="80" height="35">商品价格</th>
-							<th width="120" height="35">商品数量</th>
-							<th width="80" height="35">商品状态</th>
-							<th width="100" height="35">操作</th>
+						<tr class="text-c">
+							<th width="25"><input type="checkbox" name="" value="" id="employeeCheckAll"></th>
+							<th width="80">类别Id</th>
+							<th width="80">类别名</th>
+							<th width="80">父级类别Id</th>
+							<th width="120">操作</th>
 						</tr>
 					</thead>
-					<tbody>					
+					<tbody>
+						
 					</tbody>
 				</table>
 			</div>
@@ -188,9 +186,9 @@
 </section>
 
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
 <script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.page.js"></script>
 <!--/_footer /作为公共模版分离出去-->
 
@@ -199,37 +197,36 @@
 <script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
-
-$(function(){
-	/*暂时注释掉hui自带的dt访问	
-	$('.table-sort').dataTable({
-		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
-		"bStateSave": true,//状态保存
-		"aoColumnDefs": [
-		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-		  {"orderable":false,"aTargets":[0,8,9]}// 制定列不参与排序
-		]
-	});
-	*/
-    /*单击数据行 被选中，再次单击取消选中*/
-	$('.table-sort tbody').on( 'click', 'tr', function () {
-		if ( $(this).hasClass('selected') ) {
-			$(this).removeClass('selected');
-		}
-		else {
-			table.$('tr.selected').removeClass('selected');
-			$(this).addClass('selected');
-		}
-	});
+/* $('.table-sort').dataTable({
+	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+	"bStateSave": true,//状态保存
+	"aoColumnDefs": [
+		//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		{"orderable":false,"aTargets":[0,4]}// 不参与排序的列
+	]
+}); */
+/*单击数据行 被选中，再次单击取消选中*/
+$('.table-sort tbody').on( 'click', 'tr', function () {
+	if ( $(this).hasClass('selected') ) {
+		$(this).removeClass('selected');
+	}
+	else {
+		table.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	}
 });
-/*用户-添加*/
-function member_add(title,url,w,h){
-	layer_show(title,url,w,h);
+
+
+/*资讯-添加*/
+function user_add(title,url,w,h){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
 }
-/*用户-查看*/
-function member_show(title,url,id,w,h){
-	layer_show(title,url,w,h);
-}
+
 /*用户-停用*/
 function member_stop(obj,id){
 	layer.confirm('确认要停用吗？',function(index){
@@ -249,40 +246,58 @@ function member_start(obj,id){
 		layer.msg('已启用!',{icon: 6,time:1000});
 	});
 }
+
 /*用户-编辑*/
 function member_edit(title,url,id,w,h){
 	layer_show(title,url,w,h);
 }
-/*密码-修改*/
-function change_password(title,url,id,w,h){
-	//layer_show(title,url,w,h);	
 
-	layer.open({
+//修改员工信息的超链接单击事件
+$(document).on("click",'.empedit',function()
+{
+	 var _this = $(this); //当前对象 编辑的超链接
+    data =_this.parent().siblings(); //_this.parent() 得到td   siblings(); 当前行的其他td
+    var arr = [];
+    for(var i = 1; i< data.length; i++){ //1 从1开始 从姓名开始
+       arr.push($(data[i]).text());//每一个td中的内容() 放到一个数组里
+    }
+   // console.log(arr);
+	 //change-password.html
+	 //打开新窗口 编辑窗口
+    layer.open({
 		type: 2,
-		area: ['600px', '270px'],
+		area: ['710px', '510px'], //窗口大小
 		fix: false, //不固定
 		maxmin: true,
 		shade:0.4,
-		title: title,
-		content: url,
-		success: function(layero, index){
+		title: '编辑商品信息', //显示的标题
+		content: 'goodstype-edit.html', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
+		success: function(layero, index){ //success可以不写
             var body = layer.getChildFrame('body',index);//建立父子联系
             var iframeWin = window[layero.find('iframe')[0]['name']];
-            // console.log(arr); //得到iframe页的body内容
-            // console.log(body.find('input'));
-            var inputList = body.find('input');
-            for(var j = 0; j< inputList.length; j++){
-                $(inputList[j]).val(arr[j]);
+            var inputList = body.find('input'); //找所有的input
+            for(var j = 0; j< arr.length; j++){
+                $(inputList[j]).val(arr[j]); //arr[j] 数组中的值 赋值给  $(inputList[j])
             }
         }
 	});
+	 
+	 
+});
+
+/*资讯-编辑*/
+function article_edit(title,url,id,w,h){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
 }
-/*用户-删除*/
-function member_del(obj,id){
-	layer.confirm('确认要删除吗？',function(index){
-		
-		
-		$.get("../gsback.do","id="+id+"&op=del",function(data,status){
+/*资讯-删除*/
+function article_del(obj,id){
+layer.confirm('确认要删除吗？',function(index){
+		$.get("../gsback.do","id="+id+"&op=deltype",function(data,status){
 			console.log(data+","+status);
 			if(data){
 			$(obj).parents("tr").remove();
@@ -295,125 +310,53 @@ function member_del(obj,id){
 	});
 }
 
-</script>
+/*资讯-审核*/
+function article_shenhe(obj,id){
+	layer.confirm('审核文章？', {
+		btn: ['通过','不通过','取消'], 
+		shade: false,
+		closeBtn: 0
+	},
+	function(){
+		$(obj).parents("tr").find(".td-manage").prepend('<a class="c-primary" onClick="article_start(this,id)" href="javascript:;" title="申请上线">申请上线</a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
+		$(obj).remove();
+		layer.msg('已发布', {icon:6,time:1000});
+	},
+	function(){
+		$(obj).parents("tr").find(".td-manage").prepend('<a class="c-primary" onClick="article_shenqing(this,id)" href="javascript:;" title="申请上线">申请上线</a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-danger radius">未通过</span>');
+		$(obj).remove();
+    	layer.msg('未通过', {icon:5,time:1000});
+	});	
+}
+/*资讯-下架*/
+function article_stop(obj,id){
+	layer.confirm('确认要下架吗？',function(index){
+		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="article_start(this,id)" href="javascript:;" title="发布"><i class="Hui-iconfont">&#xe603;</i></a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已下架</span>');
+		$(obj).remove();
+		layer.msg('已下架!',{icon: 5,time:1000});
+	});
+}
 
-<script>
-  $(function(){
-	  //修改密码的超链接单击事件
-	 $(document).on("click",'.changepwd',function()
-	 {
-		 var _this = $(this);
-	      data =_this.parent().siblings();
-	      var arr = [];
-	     for(var i = 1; i< data.length; i++){
-	        // console.log($(data[i]).text());
-	        arr.push($(data[i]).text());//拿到点击按钮的当前那条信息的内容 放到一个数组里
-	    }
-	     console.log(arr);
-		 //change-em-password.html
-		 
-	     layer.open({
-	 		type: 2,
-	 		area: ['600px', '270px'],
-	 		fix: false, //不固定
-	 		maxmin: true,
-	 		shade:0.4,
-	 		title: '修改密码',
-	 		content: 'change-emp-password.html',
-	 		success: function(layero, index){
-	             var body = layer.getChildFrame('body',index);//建立父子联系
-	             var iframeWin = window[layero.find('iframe')[0]['name']];
-
-	             var _ename = body.find('#ename');
-	             console.log(_ename+","+arr[1]);
-	             $(_ename).html(arr[1]);
-	            
-	         }
-	 	});
-		 
-		 
-	 });
-	  
-	  
-	  
-	 //修改员工信息的超链接单击事件
-	 $(document).on("click",'.empedit',function()
-	 {
-		 var _this = $(this); //当前对象 编辑的超链接
-	     data =_this.parent().siblings(); //_this.parent() 得到td   siblings(); 当前行的其他td
-	     var arr = [];
-	     for(var i = 1; i< data.length; i++){ //1 从1开始 从姓名开始
-	        arr.push($(data[i]).text());//每一个td中的内容() 放到一个数组里
-	     }
-	    // console.log(arr);
-		 //change-password.html
-		 //打开新窗口 编辑窗口
-	     layer.open({
-	 		type: 2,
-	 		area: ['710px', '510px'], //窗口大小
-	 		fix: false, //不固定
-	 		maxmin: true,
-	 		shade:0.4,
-	 		title: '编辑商品信息', //显示的标题
-	 		content: 'goods-edit.html', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
-	 		success: function(layero, index){ //success可以不写
-	             var body = layer.getChildFrame('body',index);//建立父子联系
-	             var iframeWin = window[layero.find('iframe')[0]['name']];
-	             var inputList = body.find('input'); //找所有的input
-	             for(var j = 0; j< arr.length; j++){
-	                 $(inputList[j]).val(arr[j]); //arr[j] 数组中的值 赋值给  $(inputList[j])
-	             }
-	         }
-	 	});
-		 
-		 
-	 });
-	  
-	  
-  });
+/*资讯-发布*/
+function article_start(obj,id){
+	layer.confirm('确认要发布吗？',function(index){
+		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="article_stop(this,id)" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
+		$(obj).remove();
+		layer.msg('已发布!',{icon: 6,time:1000});
+	});
+}
+/*资讯-申请上线*/
+function article_shenqing(obj,id){
+	$(obj).parents("tr").find(".td-status").html('<span class="label label-default radius">待审核</span>');
+	$(obj).parents("tr").find(".td-manage").html("");
+	layer.msg('已提交申请，耐心等待审核!', {icon: 1,time:2000});
+}
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
-
-
-<!-- 从之前datatable案例中移植过来的代码  头部检索以及表格头部信息-->
-<!-- <div class="container">
-    是否自动检索：<input type="checkbox" id="autoSearch">
-    <br>
-    员工编号：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="1" id="col1_filter">
-    <br>
-    姓名：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="2" id="col2_filter">
-    <br>
-    岗位：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="3" id="col3_filter">
-    <br>
-    入职时间：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="4" id="col4_filter">
-    <br>
-    部门编号：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="5" id="col5_filter">
-    <br>
-    编号：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="6" id="col6_filter">
-    <br>
-    <hr>
-    <table id="example" class="display">
-        <thead>
-        <tr>
-            <th><input type="checkbox" id="employeeCheckAll"></th>
-            <th>员工编号</th>
-            <th>姓名</th>
-            <th>岗位</th>
-            <th>入职时间</th>
-            <th>部门编号</th>
-        </tr>
-        </thead>
-    </table>
-</div> -->
-<!-- 头部检索以及表格标题头结束 -->
-<!-- <link rel="stylesheet" type="text/css" href="plugin/datatables/jquery.dataTables.min.css"/> -->
-
-<!-- <style>
-  .paginate_button{box-sizing:content-box}
-</style> -->
-
-
-<script src="plugin/datatables/jquery.dataTables.min.js"></script>
 
 <script>
 
@@ -463,7 +406,7 @@ function member_del(obj,id){
     //路径配置,此处配置的路径是获取数据的重要手段;
     employee.url="/"; //  这里 / 表示的是localhost/
     employee.requestUrl = {
-        queryList:employee.url+"RentMarket2.0/gsback.do?op=sel"  //数据是从servlet一侧返回的 json格式
+        queryList:employee.url+"RentMarket2.0/gsback.do?op=category"  //数据是从servlet一侧返回的 json格式
     };
 
     employee.search={
@@ -494,21 +437,19 @@ function member_del(obj,id){
         {   //第一个列
         	"data": "extn",
             "createdCell": function (nTd, sData, oData, iRow, iCol) {
-                $(nTd).html("<input type='checkbox' name='checkList' value='" + oData.goodId + "'>");
+                $(nTd).html("<input type='checkbox' name='checkList' value='" + oData.typeId + "'>");
             }
         }, //这里是返回的json对象中的 属性值   {data : }
-        {"data": "goodId"},
-        {"data": "goodName"},
-        {"data": "goodImgAdd"},
-        {"data": "goodPrice"},
-        {"data": "goodCount"},
-        {"data": "goodState"},
+        {"data": "typeId"},
+        {"data": "typeName"},
+        {"data": "typeparentId"},
+       
         {    //创建操作那个列
         	"data":"extn",
         	"createdCell":function(nTd,sData, oData, iRow, iCol)
         	{
         		//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
-        		$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>  <a title="删除" href="javascript:;" onclick="member_del(this,'+oData.goodId+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
+        		$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title=""><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>  <a title="删除" href="javascript:;" onclick="article_del(this,'+oData.typeId+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
         		//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
@@ -740,12 +681,11 @@ function member_del(obj,id){
         }else{
             for(var i=0;i<uuids.length;i++){
                 //uuid = uuid+uuids[i].goodId+",";
-                uuid.push(uuids[i].goodId)
+                uuid.push(uuids[i].typeId)
             }
-            
             //alert(uuid);
             layer.confirm('确认要删除吗？',function(index){
-            $.get("../gsback.do","ids="+uuid+"&op=MuchSel",function(data,status){
+            $.get("../gsback.do","ids="+uuid+"&op=MuchSelType",function(data,status){
             	
     			if(data){
     			$(eloancn.table.grid.rows(".selected")).parents("tr").remove();
@@ -798,16 +738,6 @@ function member_del(obj,id){
         dataTablesInit(employee);
     });
 </script>
-<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
-<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.page.js"></script>
-<!--/_footer /作为公共模版分离出去-->
-
-<!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
-<script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 
 </body>
 </html>

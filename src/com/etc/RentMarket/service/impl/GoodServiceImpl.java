@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.etc.RentMarket.dao.impl.GoodsDaoImpl;
 import com.etc.RentMarket.entity.Good;
+import com.etc.RentMarket.entity.Goodstype;
 import com.etc.RentMarket.service.GoodService;
 
 public class GoodServiceImpl implements GoodService {
@@ -39,6 +40,26 @@ public class GoodServiceImpl implements GoodService {
 	public boolean upGoods(Good good) {
 		// TODO Auto-generated method stub
 		return gd.upGoods(good);
+	}
+	@Override
+	public List<Goodstype> selGoodType() {
+		// TODO Auto-generated method stub
+		return gd.selGoodType();
+	}
+	@Override
+	public boolean upGoodsType(Goodstype goodstype) {
+		// TODO Auto-generated method stub
+		return gd.upGoodsType(goodstype);
+	}
+	@Override
+	public boolean delGoodsType(int goodtypeId) {
+		// TODO Auto-generated method stub
+		return gd.delGoodsType(goodtypeId);
+	}
+	@Override
+	public boolean delMuchGoodsType(List<Integer> goodIds) {
+		// TODO Auto-generated method stub
+		return gd.delMuchGoodsType(goodIds);
 	}
 
 }

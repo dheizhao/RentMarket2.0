@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.etc.RentMarket.DBUtil.MyData;
 import com.etc.RentMarket.entity.Good;
+import com.etc.RentMarket.entity.Goodstype;
 import com.etc.RentMarket.service.GoodService;
 import com.etc.RentMarket.service.impl.GoodServiceImpl;
 import com.google.gson.Gson;
@@ -80,6 +81,7 @@ public class GoodsBackServlet extends HttpServlet {
 			for (int i =0;i<arr.length;i++) {
 				list.add(Integer.valueOf(arr[i]));
 			}
+			//System.out.println(list);
 			boolean flag = gs.delMuchGoods(list);
 			if(flag) {
 				
@@ -95,10 +97,56 @@ public class GoodsBackServlet extends HttpServlet {
 			String goodPrice=request.getParameter("goodPrice");
 			String goodCount=request.getParameter("goodCount");
 			String goodState=request.getParameter("goodState");
-			System.out.println(goodName);
+			
 			Good good = new Good(Integer.parseInt(goodId),Integer.parseInt(goodCount), goodImgAdd, goodName, Double.valueOf(goodPrice), goodState);
 			boolean flag = gs.upGoods(good);
 			out.println(flag);
+		}else if(op.equals("category")) {//商品类别信息查询
+			List<Goodstype> list = gs.selGoodType();
+			// Ajax来实现
+			// 返回数据最好是json格式 外部的jar包 gson
+			MyData<Goodstype> md = new MyData<Goodstype>();
+			md.setData(list);
+			String jsonString = gson.toJson(md);
+			out.print(jsonString);
+			
+			out.close();
+		}else if (op.equals("uptypeInfo")) {//商品类型更新
+			String goodsTypeId=request.getParameter("goodsTypeId");
+			String goodsTypeName=request.getParameter("goodsTypeName");
+			String goodsParentId=request.getParameter("goodsParentId");
+			Goodstype goodstype = new Goodstype(Integer.parseInt(goodsTypeId),goodsTypeName, Integer.valueOf(goodsParentId));
+			boolean flag = gs.upGoodsType(goodstype);
+			out.println(flag);
+		}else if (op.equals("deltype")) {//删除商品类型
+			String goodId = request.getParameter("id");
+			
+			boolean flag = gs.delGoodsType(Integer.valueOf(goodId));
+			
+			if(flag) {
+				//out.print("alert('删除成功')");
+				out.print(flag);
+			}else {
+				out.print(flag);
+			}
+			out.close();
+		}else if(op.equals("MuchSelType")) {
+			String goods= request.getParameter("ids");
+			String arr[]=goods.split(",");
+			
+			List<Integer> list = new ArrayList<Integer>();
+			for (int i =0;i<arr.length;i++) {
+				list.add(Integer.valueOf(arr[i]));
+			}
+			//System.out.println(list);
+			boolean flag = gs.delMuchGoodsType(list);
+			if(flag) {
+				
+				out.print(flag);
+			}else {
+				out.print(flag);
+			}
+			out.close();
 		}
 		
 	}

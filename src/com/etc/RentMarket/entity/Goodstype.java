@@ -21,6 +21,13 @@ public class Goodstype implements Serializable {
 	public Goodstype() {
 	}
 
+	public Goodstype(int typeId, String typeName, int typeparentId) {
+		super();
+		this.typeId = typeId;
+		this.typeName = typeName;
+		this.typeparentId = typeparentId;
+	}
+
 	public int getTypeId() {
 		return this.typeId;
 	}
@@ -44,5 +51,11 @@ public class Goodstype implements Serializable {
 	public void setTypeparentId(int typeparentId) {
 		this.typeparentId = typeparentId;
 	}
+
+	@Override
+	public String toString() {
+		return "Goodstype [typeId=" + typeId + ", typeName=" + typeName + ", typeparentId=" + typeparentId + "]";
+	}
+	
 
 }
