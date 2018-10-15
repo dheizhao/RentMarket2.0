@@ -1,4 +1,4 @@
-﻿﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+﻿﻿﻿<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
@@ -600,7 +600,6 @@ function article_shenqing(obj,id){
         //鼠标经过高亮
         var lastIdx = null;
         eloancn.table.grid.on( 'mouseover', 'td', function () {
-
             if(typeof(eloancn.table.grid.cell(this).index())!="undefined"){
                 var colIdx = eloancn.table.grid.cell(this).index().column;
                 if ( colIdx !== lastIdx ) {
