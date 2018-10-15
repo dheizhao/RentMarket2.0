@@ -1,0 +1,217 @@
+<!--订单修改界面-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="Bookmark" href="favicon.ico">
+<link rel="Shortcut Icon" href="favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css"
+	href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script><![endif]-->
+<!--/meta 作为公共模版分离出去-->
+
+<title>修改订单</title>
+<meta name="keywords" content="易点租  方便你的生活">
+<meta name="description" content="易点租  方便你的生活">
+</head>
+<body>
+	<article class="cl pd-20">
+		<form  method="post"
+			class="form form-horizontal" id="form-member-edit">
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>订单Id：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+				
+					<input type="text" class="input-text" value="" readonly="readonly"
+						id="orderId" name="orderId">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>用户名：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="" readonly="readonly"
+						id="userName" name="userName">
+				</div>
+			</div>
+
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>联系方式：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="" readonly="readonly"
+						id="userTel" name="userTel">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>发货地址：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="" readonly="readonly"
+						name="userAddress" id="userAddress">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>下单时间：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="" readonly="readonly"
+						name="orderDate" id="orderDate"> 
+					
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>订单总价：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="" readonly="readonly"
+						name="orderTPrice" id="orderTPrice"> 
+					<!-- 把用户状态的input隐藏 -->
+					<input type="hidden"
+						class="input-text" value="" >
+				</div>
+			</div>
+			<div class="row cl">
+
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>订单状态：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+
+					<select class="select" size="1" id="orderState" name="orderState">
+						<option value="0">未发货 </option>
+						<option value="1">已发货</option>
+						<option value="2">已收货</option>
+					</select>
+
+				</div>
+			</div>
+
+			<div class="row cl">
+				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+					<input class="btn btn-primary radius" type="submit" value="提交" />
+				</div>
+			</div>
+		</form>
+	</article>
+
+	<!--_footer 作为公共模版分离出去-->
+	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+	<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
+	<script type="text/javascript"
+		src="static/h-ui.admin/js/H-ui.admin.page.js"></script>
+	<!--/_footer /作为公共模版分离出去-->
+
+	<!--请在下方写此页面业务相关的脚本-->
+	<script type="text/javascript"
+		src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
+	<script type="text/javascript"
+		src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+	<script type="text/javascript"
+		src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
+	<script type="text/javascript"
+		src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
+	<!--ajax提交表单需要引入jquery.form.js-->
+	<!-- 	<script type="text/javascript"
+		src="http://malsup.github.io/jquery.form.js"></script> -->
+	<script type="text/javascript">
+		$(function() {
+			$('.skin-minimal input').iCheck({
+				checkboxClass : 'icheckbox-blue',
+				radioClass : 'iradio-blue',
+				increaseArea : '20%'
+			});
+
+			/*validate验证和 ajax 的方式完成表单提交 */
+			$("#form-member-edit")
+					.validate(
+							{
+								rules : {
+								mobile : {//用户电话 验证 minlength最短长度为11
+									required : true,
+									minlength : 11,
+									maxlength : 11
+								}},
+								onkeyup : false,
+								focusCleanup : true,
+								success : "valid",
+								submitHandler : function(form) {
+									$(form)
+											.ajaxSubmit(
+													{
+														type : 'post',//提交表单方法 
+														url : "/RentMarket2.0/OrderBack.do?op=orderEdit",//请求的servlet路径 
+														success : function(data) {
+															layer
+																	.msg(
+																			'操作成功!',
+																			{
+																				icon : 1,
+																				time : 1000
+																			},
+																			function() {
+																				//获取父层					
+																				var index = parent.layer
+																						.getFrameIndex(window.name);
+																				//刷新父层					
+																				parent.location
+																						.reload();
+																				//关闭弹出层			
+																				parent.layer
+																						.close(index);
+
+																			});
+
+														},
+														error : function(
+																XmlHttpRequest,
+																textStatus,
+																errorThrown) {
+															console
+																	.log(errorThrown
+																			+ ","
+																			+ XmlHttpRequest.responseText);
+															layer
+																	.msg(
+																			'ERROR!'
+																					+ errorThrown,
+																			{
+																				icon : 2,
+																				time : 1000
+																			});
+														}
+													});
+									//ajaxSubmit结束
+									//return false; // 阻止表单自动提交事件
+
+								},
+							});
+		});
+	</script>
+
+
+	
+
+	<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>
