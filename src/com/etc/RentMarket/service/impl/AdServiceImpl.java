@@ -29,4 +29,10 @@ public class AdServiceImpl implements AdService {
 		// TODO 自动生成的方法存根
 		return ad.UpdAd(a);
 	}
+	
+	@Override
+	public boolean DelAd(int ad_id) {
+		// TODO Auto-generated method stub
+		return ad.DelAd(ad_id);
+	}
 }

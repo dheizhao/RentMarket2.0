@@ -10,4 +10,6 @@ public interface AdDao {
 	public boolean AddAds(Ad a);
 	
 	public boolean UpdAd(Ad a);
+	
+	public boolean DelAd(int ad_id);
 }

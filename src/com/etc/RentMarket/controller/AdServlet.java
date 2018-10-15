@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 public class AdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        AdService as = new AdServiceImpl();
+       boolean flag;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -49,7 +50,13 @@ public class AdServlet extends HttpServlet {
 		}
 		if("add".equals(op)){
 			doAddAds(request, response);
-			request.getRequestDispatcher("adv-list.jsp").forward(request, response);
+			
+		}
+		if("upd".equals(op)) {
+			doUpdAds(request, response);
+		}
+		if("del".equals(op)) {
+			doDelAds(request, response);
 		}
 	}
 	/**
@@ -81,8 +88,7 @@ public class AdServlet extends HttpServlet {
 		int ad_day = Integer.parseInt(request.getParameter("day"));
 		String ad_state = request.getParameter("adStatus");
 		Ad a = new Ad(ad_content, ad_picture, ad_productor, ad_day, ad_state);
-		boolean flag = as.AddAds(a);
-		System.out.println("flag:"+flag);
+		flag = as.AddAds(a);
 	}
 	/**
 	 * 3、修改广告内容及其他信息
@@ -93,7 +99,23 @@ public class AdServlet extends HttpServlet {
 	 */
 	protected void doUpdAds(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		int ad_id = Integer.parseInt(request.getParameter("ad_id"));
+		String ad_content = request.getParameter("content");
+		String ad_picture = request.getParameter("picture");
+		String ad_productor = request.getParameter("productor");
+		int ad_day = Integer.parseInt(request.getParameter("day"));
+		String ad_state = request.getParameter("adStatus");
+		Ad a = new Ad(ad_content, ad_picture, ad_productor, ad_day, ad_state,ad_id);
+		flag = as.UpdAd(a);
+	}
+	
+	/**
+	 * 4,删除广告信息
+	 */
+	protected void doDelAds(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int ad_id = Integer.parseInt(request.getParameter("ad_id"));
+		flag = as.DelAd(ad_id);
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

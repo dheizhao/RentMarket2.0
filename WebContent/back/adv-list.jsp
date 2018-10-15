@@ -152,7 +152,7 @@
 		<article class="cl pd-20"> 
 		
 			
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加广告','adv-add.jsp','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加广告</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加广告','adv-add.jsp','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加广告</a></span> </div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>
@@ -227,7 +227,7 @@ function member_stop(obj,id){
 		$(obj).remove();
 		layer.msg('已停用!',{icon: 5,time:1000});
 	});
-}
+} 
 
 /*用户-启用*/
 function member_start(obj,id){
@@ -268,9 +268,25 @@ function change_password(title,url,id,w,h){
 }
 /*用户-删除*/
 function member_del(obj,id){
-	layer.confirm('确认要删除吗？',function(index){
+	/* layer.confirm('确认要删除吗？',function(index){
 		$(obj).parents("tr").remove();
 		layer.msg('已删除!',{icon:1,time:1000});
+		//刷新父层					
+		parent.location.reload();
+	}); */
+	layer.confirm('确认要删除吗？',function(index){
+		$.get("../as.do","ad_id="+id+"&op=del",function(data,status){
+			console.log(data+","+status);
+			if(data){
+			$(obj).parents("tr").remove();
+			layer.msg('已删除!',{icon:1,time:1000});
+			}else{
+			layer.msg('删除失败!',{icon:1,time:1000});
+			}
+		});
+		//刷新父层					
+		parent.location.reload();
+		
 	});
 }
 </script>
@@ -278,7 +294,7 @@ function member_del(obj,id){
 <script>
   $(function(){
 	  //修改密码的超链接单击事件
-	 $(document).on("click",'.changepwd',function()
+	 /* $(document).on("click",'.changepwd',function()
 	 {
 		 var _this = $(this);
 	      data =_this.parent().siblings();
@@ -310,7 +326,7 @@ function member_del(obj,id){
 	 	});
 		 
 		 
-	 });
+	 }); */
 	  
 	  
 	  
@@ -334,7 +350,7 @@ function member_del(obj,id){
 	 		maxmin: true,
 	 		shade:0.4,
 	 		title: '编辑广告投放信息', //显示的标题
-	 		content: 'ad-add.jsp', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
+	 		content: 'adv-edit.jsp', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
 	 		success: function(layero, index){ //success可以不写
 	             var body = layer.getChildFrame('body',index);//建立父子联系
 	             var iframeWin = window[layero.find('iframe')[0]['name']];
@@ -345,6 +361,7 @@ function member_del(obj,id){
 	             }
 	         }
 	 	});
+		 reload();
 		 
 		 
 	 });
@@ -474,7 +491,7 @@ function member_del(obj,id){
         {   //第一个列
         	"data": "extn",
             "createdCell": function (nTd, sData, oData, iRow, iCol) {
-                $(nTd).html("<input type='checkbox' name='checkList' value='" + sData + "'>");
+                $(nTd).html("<input type='checkbox' name='checkList' value='" + oData.ad_id + "'>");
             }
         }, //这里是返回的json对象中的 属性值   {data : }
         {"data": "ad_id"},
@@ -487,10 +504,10 @@ function member_del(obj,id){
         {"data": "ad_state"},
         {    //创建操作那个列
         	"data":"extn",
-        	"createdCell":function(nTd)
+        	"createdCell":function(nTd,sData, oData, iRow, iCol)
         	{
         		//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
-        		$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
+        		$(nTd).html(' <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>  <a title="删除" href="javascript:;" onclick="member_del(this,'+oData.ad_id+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
         		//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
@@ -722,6 +739,7 @@ function member_del(obj,id){
                 uuid = uuid+uuids[i].extn+",";
             }
             alert(uuid);
+            reload();
         }
     }
 
