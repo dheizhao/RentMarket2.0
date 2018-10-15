@@ -9,6 +9,7 @@ import com.etc.RentMarket.dao.GoodsDao;
 import com.etc.RentMarket.entity.Good;
 import com.etc.RentMarket.entity.GoodsChecked;
 import com.etc.RentMarket.entity.Goodstype;
+import com.etc.RentMarket.entity.PhoneGood;
 
 public class GoodsDaoImpl implements GoodsDao {
 	/**
@@ -89,7 +90,17 @@ public class GoodsDaoImpl implements GoodsDao {
 	 * //商品类型更新
 	 */
 	@Override
-	public boolean upGoodsType(Goodstype goodstype) {
+
+	public List<Goodstype> selGoodTypeByTypeParentId(int typeparentId) {
+		// TODO Auto-generated method stub
+		String sql ="select * from goodstype where typeparentId = ?";
+		
+		return (List<Goodstype>) BaseDao.select(sql, Goodstype.class,typeparentId);
+	}
+	
+	@Override
+	public boolean upGoodsType(Goodstype goodstype) {//商品类型更新
+
 		String sql = "update goodstype set typeName=?,typeparentId=?  where typeId=?";
 		return BaseDao.execute(sql, goodstype.getTypeName(),goodstype.getTypeparentId(),goodstype.getTypeId())>0;
 	}
@@ -169,6 +180,11 @@ public class GoodsDaoImpl implements GoodsDao {
 		return BaseDao.execute(sql,good.getGoodName(),good.getGoodImgAdd(),good.getUserName(),good.getReleaseDate(),good.getReleaseState(),good.getGoodId() )>0;
 	}
 	
-	
+	@Override
+	public List<Good> getgoodsByGoodId(int goodId) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT good.goodId,good.goodName,good.goodPrice,good.goodCount,good.goodImgAdd FROM good WHERE goodId = ?";
+		return (List<Good>) BaseDao.select(sql, Good.class, goodId);
+	}
 
 }

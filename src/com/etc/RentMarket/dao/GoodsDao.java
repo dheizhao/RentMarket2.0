@@ -5,8 +5,10 @@ import java.util.List;
 import com.etc.RentMarket.entity.Good;
 import com.etc.RentMarket.entity.GoodsChecked;
 import com.etc.RentMarket.entity.Goodstype;
+import com.etc.RentMarket.entity.PhoneGood;
 
 public interface GoodsDao {
+
 	/**
 	 * //查询商品信息
 	 * @return
@@ -76,4 +78,10 @@ public interface GoodsDao {
 	 * @return
 	 */
 	public boolean upGoodsChecked(GoodsChecked good);
+
+	
+	public List<Goodstype> selGoodTypeByTypeParentId(int typeparentId);//通过父类型ID查询商品类型
+	
+	public List<Good> getgoodsByGoodId(int goodId);
+
 }

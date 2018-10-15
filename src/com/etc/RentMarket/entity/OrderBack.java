@@ -81,5 +81,10 @@ public class OrderBack {
 				+ ", orderTPrice=" + orderTPrice + ", userAddress=" + userAddress + ", userName=" + userName
 				+ ", userTel=" + userTel + "]";
 	}
+	public OrderBack(int orderId, int orderState) {
+		super();
+		this.orderId = orderId;
+		this.orderState = orderState;
+	}
 	
 }

@@ -60,7 +60,7 @@
 	</header>
 	<!-- header End -->
 
-<div class="containers"><div class="pc-nav-item"><a href="index.jsp">首页</a> &gt; <a href="user-info.jsp">会员中心 </a></div></div>
+<div class="containers"><div class="pc-nav-item"><a href="front/index.jsp">首页</a> &gt; <a href="user-info.jsp">会员中心 </a></div></div>
 
 <!-- 商城快讯 begin -->
 <section id="member">
@@ -89,7 +89,7 @@
         </div>
         <div class="member-right fr">
             <div class="member-head">
-                <div class="member-heels fl"><h2 style="margin-top: 3px">地址管理</h2></div>
+                <div class="member-heels fl"><h2 style="margin-top: 3px;font-size: 18px">地址管理</h2></div>
             </div>
             <div class="member-border">
                 <div class="member-newly"><a role="button" class="btn" data-toggle="modal" data-target="#Mymodal2" contenteditable="true">新增地址</a></div>
@@ -117,7 +117,7 @@
 
                             <div class="pc-event">
                                 <a role="button" class="btn" data-toggle="modal" data-target="#Mymodal3" contenteditable="true">修改 </a>
-                                <a href="#">删除</a>
+                                <a role="button" class="btn" data-toggle="modal" data-target="#Mymodal4" contenteditable="true">删除</a>
                             </div>
                         </li>
 
@@ -125,11 +125,11 @@
                     </ul>
                 </div>
                 
-                </c:forEach>
+                
                 <!-- 添加遮罩开始 -->
-               <div class="modal fade" tabindex="-1" role="dialog" id="Mymodal2">
+               <div class="modal fade" tabindex="-1" role="dialog" id="Mymodal2" style="height: 500px">
 						<div class="modal-dialog" role="document">
-							<div class="modal-content">
+							<div class="modal-content" style="height: 500px;margin-top: -30px">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal"
 										aria-label="Close">
@@ -145,17 +145,17 @@
 										<div class="form-group">
 											<input type="hidden" id="userName" name="userName" value="${sessionScope.user.userName}">
 											<label for="userRealName">收货人</label> <input type="text"
-												class="form-control" id="userRealName" name="userRealName" placeholder="" />
+												class="form-control" id="userRealName" name="userRealName" placeholder="" style="height: 40px;width: 550px" required="required"/>
 										</div>
 										<div class="form-group">
 											<label for="userAddress">地址</label> <input type="text"
 												class="form-control" id="userAddress" name="userAddress"
-												placeholder="地址" />
+												placeholder="地址" style="height: 40px;width: 550px" required="required"/>
 										</div>
 										<div class="form-group">
 											<label for="userPhone">手机</label> <input type="text"
 												class="form-control" name="userPhone" id="userPhone"
-												placeholder="手机" />
+												placeholder="手机" style="height: 40px;width: 550px" required="required"/>
 										</div>
 										<button type="submit" class="btn btn-default">提交</button>
 									</form>
@@ -170,9 +170,9 @@
             <!-- 添加遮罩结束 -->    
             
             <!-- 修改遮罩开始 -->
-               <div class="modal fade" tabindex="-1" role="dialog" id="Mymodal3">
+               <div class="modal fade" tabindex="-1" role="dialog" id="Mymodal3" style="height: 500px"> 
 						<div class="modal-dialog" role="document">
-							<div class="modal-content">
+							<div class="modal-content" style="height: 500px;margin-top: -30px">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal"
 										aria-label="Close">
@@ -188,17 +188,17 @@
 										<div class="form-group">
 											<input type="hidden" id="userDetailId" name="userDetailId" value="${a.userDetailId}">
 											<label for="userRealName">收货人</label> <input type="text"
-												class="form-control" id="userRealName" name="userRealName" placeholder="" />
+												class="form-control" id="userRealName" name="userRealName" placeholder="" style="height: 40px;width: 550px"/>
 										</div>
 										<div class="form-group">
 											<label for="userAddress">地址</label> <input type="text"
 												class="form-control" id="userAddress" name="userAddress"
-												placeholder="地址" />
+												placeholder="地址" style="height: 40px;width: 550px"/>
 										</div>
 										<div class="form-group">
 											<label for="userPhone">手机</label> <input type="text"
 												class="form-control" name="userPhone" id="userPhone"
-												placeholder="手机" />
+												placeholder="手机" style="height: 40px;width: 550px"/>
 										</div>
 										<button type="submit" class="btn btn-default">提交</button>
 									</form>
@@ -211,6 +211,40 @@
 					</div>
 					<!-- /.modal -->
             <!-- 修改遮罩结束 --> 
+            
+            <!-- 删除遮罩开始 -->
+               <div class="modal fade" tabindex="-1" role="dialog" id="Mymodal4" style="height: 170px"> 
+						<div class="modal-dialog" role="document">
+							<div class="modal-content" style="height: 500px;margin-top: -30px">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title">删除地址</h4>
+								</div>
+								<div class="modal-body">
+									<input type="hidden" id="id" name="id">
+									<!-- 内容部分 -->
+									<form class="form-horizontal" action="ads.do?op=del"
+										role="form" method="post">
+										<div class="form-group">
+											<input type="hidden" id="userDetailId" name="userDetailId" value="${a.userDetailId}">
+											<label style="text-align: center;">确认删除该地址？</label>
+										</div>
+										<button type="submit" class="btn btn-default" style="margin-left: 170px">确定</button>
+										<input type="button" onclick="javascript:location.href='ads.do?op=sel'" class="btn btn-default" style="margin-left: 100px" value="取消"></input>
+									</form>
+									<!-- 内容部分 -->
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+            <!-- 删除遮罩结束 --> 
+            </c:forEach>
             </div>
         </div>
     </div>

@@ -34,7 +34,14 @@ public class AdDaoImpl implements AdDao {
 	@Override
 	public boolean UpdAd(Ad a) {
 		// TODO 自动生成的方法存根
-		String sql = "update set ad_content=?,ad_picture=?,ad_productor=?,ad_endDate=now(),ad_day=?,ad_state=? from ad";
-		return BaseDao.execute(sql,  a.getad_content(),a.getad_picture(),a.getad_productor(),a.getAd_day(),a.getAd_state())>0;
+		String sql = "update ad set ad_content=?,ad_picture=?,ad_productor=?,ad_endDate=now(),ad_day=?,ad_state=? where ad_id=?";
+		return BaseDao.execute(sql,  a.getad_content(),a.getad_picture(),a.getad_productor(),a.getAd_day(),a.getAd_state(),a.getad_id())>0;
+	}
+	
+	@Override
+	public boolean DelAd(int ad_id) {
+		// TODO Auto-generated method stub
+		String sql = "delete from ad where ad_id=?";
+		return BaseDao.execute(sql, ad_id)>0;
 	}
 }

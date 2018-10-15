@@ -74,6 +74,7 @@ public class GoodServiceImpl implements GoodService {
 		// TODO Auto-generated method stub
 		return gd.delMuchGoodsType(goodIds);
 	}
+
 	/**
 	 * 查询审核商品列表
 	 */
@@ -96,6 +97,17 @@ public class GoodServiceImpl implements GoodService {
 	public boolean upGoodsChecked(GoodsChecked good) {
 		// TODO Auto-generated method stub
 		return gd.upGoodsChecked(good);
+	}
+	@Override
+	public List<Good> getgoodsByGoodId(int goodId) {
+		// TODO Auto-generated method stub
+		return gd.getgoodsByGoodId(goodId);
+	}
+	@Override
+	public List<Goodstype> selGoodTypeByTypeParentId(int typeparentId) {
+		// TODO Auto-generated method stub
+		return gd.selGoodTypeByTypeParentId(typeparentId);
+
 	}
 
 }

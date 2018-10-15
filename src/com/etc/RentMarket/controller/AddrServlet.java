@@ -65,6 +65,13 @@ public class AddrServlet extends HttpServlet {
 			if(flag) {
 				request.getRequestDispatcher("ads.do?op=sel").forward(request, response);
 			}
+		}else if ("del".equals(op)) {
+			int userDetailId = Integer.valueOf(request.getParameter("userDetailId"));
+			
+			boolean flag = as.deleteAddr(userDetailId);
+			if (flag) {
+				request.getRequestDispatcher("ads.do?op=sel").forward(request, response);
+			}
 		}
 	}
 
