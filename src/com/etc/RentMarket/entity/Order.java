@@ -32,6 +32,7 @@ public class Order implements Serializable {
 	private String rentDate;
 	private int goodNumber;
 	private String goodImg;
+	private double rentPrice;
 
 	public Order() {
 	}
@@ -46,6 +47,14 @@ public class Order implements Serializable {
 		this.userAddress = userAddress;
 		this.userName = userName;
 		this.userTel = userTel;
+	}
+	
+	public double getRentPrice() {
+		return rentPrice;
+	}
+
+	public void setRentPrice(double rentPrice) {
+		this.rentPrice = rentPrice;
 	}
 
 	public String getGoodImg() {
@@ -160,8 +169,10 @@ public class Order implements Serializable {
 		return "Order [orderId=" + orderId + ", orderDate=" + orderDate + ", orderState=" + orderState
 				+ ", orderTPrice=" + orderTPrice + ", userAddress=" + userAddress + ", userName=" + userName
 				+ ", userTel=" + userTel + ", goodName=" + goodName + ", rentDate=" + rentDate + ", goodNumber="
-				+ goodNumber + ", goodImg=" + goodImg + "]";
+				+ goodNumber + ", goodImg=" + goodImg + ", rentPrice=" + rentPrice + "]";
 	}
+
+	
 
 	
 
