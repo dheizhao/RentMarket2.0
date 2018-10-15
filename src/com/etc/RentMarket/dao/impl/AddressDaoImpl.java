@@ -35,13 +35,25 @@ public boolean addAddr(String userName, String userRealName, String userAddress,
 	String sql = "insert into usersdetail (userName,userPhone,userAddress,userRealName) values (?,?,?,?)";
 	return BaseDao.execute(sql,userName,userRealName,userAddress,userPhone)>0;
 }
-
+/**
+ * 修改地址
+ */
 
 	@Override
 	public boolean updateAddr(int userDetailId, String userRealName, String userAddress, String userPhone) {
 		// TODO Auto-generated method stub
 		String sql = "update usersdetail set userPhone = ?,userAddress = ?,userRealName = ? where userDetailId = ?";
 		return BaseDao.execute(sql, userPhone,userAddress,userRealName,userDetailId)>0;
+	}
+
+/**
+ * 删除地址
+ */
+	@Override
+	public boolean deleteAddr(int userDetailId) {
+		// TODO Auto-generated method stub
+		String sql = "delete from usersdetail where userDetailId = ?";
+		return BaseDao.execute(sql, userDetailId)>0;
 	}
 
 

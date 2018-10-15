@@ -31,11 +31,11 @@
 </head>
 <body>
 <article class="cl pd-20">
-	<form action="as.do?op=add" method="post" class="form form-horizontal" id="form-member-add">
+	<form action="${pageContext.request.contextPath}/as.do?op=add" method="post" class="form form-horizontal" id="form-member-add">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>广告内容：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="请输入广告内容" id="content" name=""content"">
+				<input type="text" class="input-text" value="" placeholder="请输入广告内容" id="content" name="content">
 			</div>
 		</div>
 		<div class="row cl">
@@ -57,15 +57,9 @@
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3">注册时间：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
-				<input class="input-text upload-url" type="date" name="registerTime" id="registerTime" >
-				</span> </div>
-		</div>
-		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">广告状态：</label>
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select class="select" size="1" name="userStatus">
+				<select class="select" size="1" name="adStatus" id="adStatus">
 					<option value="" selected>请选择广告状态</option>
 					<option value="0">未激活</option>
 					<option value="1">激活</option>
@@ -73,10 +67,10 @@
 				</span> </div>
 		</div>
 		<div class="row cl">
-			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+					<input class="btn btn-primary radius" type="submit" value="提交" />
+				</div>
 			</div>
-		</div>
 	</form>
 </article>
 
@@ -130,6 +124,7 @@ $(function(){
 			$(form).ajaxSubmit();
 			var index = parent.layer.getFrameIndex(window.name);
 			parent.$('.btn-refresh').click();
+			parent.location.reload();
 			parent.layer.close(index);
 		}
 	});

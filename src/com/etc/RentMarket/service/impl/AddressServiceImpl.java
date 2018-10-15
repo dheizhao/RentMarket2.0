@@ -29,10 +29,21 @@ public class AddressServiceImpl implements AddressService{
 		// TODO Auto-generated method stub
 		return ad.addAddr(userName, userRealName, userAddress, userPhone);
 	}
+	/**
+	 * 修改地址
+	 */
 @Override
 public boolean updateAddr(int userDetailId, String userRealName, String userAddress, String userPhone) {
 	// TODO Auto-generated method stub
 	return ad.updateAddr(userDetailId, userRealName, userAddress, userPhone);
+}
+/**
+ * 删除地址
+ */
+@Override
+public boolean deleteAddr(int userDetailId) {
+	// TODO Auto-generated method stub
+	return ad.deleteAddr(userDetailId);
 }
 
 }

@@ -1,6 +1,7 @@
 package com.etc.RentMarket.entity;
 
 public class PhoneGood {
+	private int goodId;
 	private String goodName;
 	private double goodPrice;
 	private String goodImgAdd;
@@ -11,6 +12,23 @@ public class PhoneGood {
 		this.goodPrice = goodPrice;
 		this.goodImgAdd = goodImgAdd;
 	}
+	
+	public PhoneGood(int goodId, String goodName, double goodPrice, String goodImgAdd) {
+		super();
+		this.goodId = goodId;
+		this.goodName = goodName;
+		this.goodPrice = goodPrice;
+		this.goodImgAdd = goodImgAdd;
+	}
+
+	public int getGoodId() {
+		return goodId;
+	}
+
+	public void setGoodId(int goodId) {
+		this.goodId = goodId;
+	}
+
 	public String getGoodName() {
 		return goodName;
 	}

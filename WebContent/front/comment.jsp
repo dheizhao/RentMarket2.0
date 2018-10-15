@@ -1,3 +1,7 @@
+<%@page import="com.etc.RentMarket.entity.Order"%>
+<%@page import="java.util.List"%>
+<%@page import="com.etc.RentMarket.service.impl.OrderServiceImpl"%>
+<%@page import="com.etc.RentMarket.service.OrderService"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!doctype html>
@@ -16,54 +20,49 @@
     <link rel="shortcut icon" type="image/x-icon" href="theme/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="theme/css/base.css">
 	<link rel="stylesheet" type="text/css" href="theme/css/member.css">
+	<script type="text/javascript" src="theme/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+    	$(document).ready(function () {
+    		//发表评论的toggle
+    		$("#rediv").hide();
+    		$("#release").click(function () {
+    			$("#rediv").toggle(1000);
+    		});
+    		//111111111
+    		
+    		
+    		
+    	});                      
+    </script>
  </head>
  <body>
 
 <!--- header begin-->
-<header id="pc-header">
-    <div class="BHeader">
-        <div class="yNavIndex">
-            <ul class="BHeaderl">
-                <li><a href="#">登录</a> </li>
-                <li class="headerul">|</li>
-                <li><a href="#">订单查询</a> </li>
-                <li class="headerul">|</li>
-                <li><a href="#">我的收藏</a> </li>
-                <li class="headerul">|</li>
-                <li id="pc-nav" class="menu"><a href="#" class="tit">我的商城</a>
-                    <div class="subnav">
-                        <a href="#">我的商城</a>
-                        <a href="#">我的商城</a>
-                        <a href="#">我的商城</a>
-                    </div>
-                </li>
-                <li class="headerul">|</li>
-                <li><a href="#" class="M-iphone">手机悦商城</a> </li>
-            </ul>
-        </div>
-    </div>
-    <div class="container clearfix">
-        <div class="header-logo fl"><h1><a href="#"><img src="theme/icon/logo.png"></a> </h1></div>
-        <div class="member-title fl"><h2></h2></div>
-        <div class="head-form fl">
-            <form class="clearfix">
-                <input type="text" class="search-text" accesskey="" id="key" autocomplete="off"  placeholder="洗衣机">
-                <button class="button" onClick="search('key');return false;">搜索</button>
-            </form>
-            <div class="words-text clearfix">
-                <a href="#" class="red">优惠廉租</a>
-                <a href="#">低至五折</a>
-                <a href="#">农用物资</a>
-                <a href="#">家具电器</a>
-                <a href="#">佳能相机</a>
-                <a href="#">租房</a>
-                <a href="#">服装城</a>
-            </div>
-        </div>
-        <div class="header-cart fr"><a href="#"><img src="theme/icon/car.png"></a> <i class="head-amount">99</i></div>
-    </div>
-</header>
-<!-- header End -->
+	<header id="pc-header">
+		<div class="BHeader">
+			<div class="yNavIndex">
+				<ul class="BHeaderl">
+					<li><a href="#" style="color: red;">${sessionScope.user.userName}</a></li>
+					<li class="headerul">|</li>
+					<div class="header-cart fr">
+						<a href="#"><img src="theme/icon/car.png"></a>
+					</div>
+				</ul>
+			</div>
+		</div>
+		<div class="container clearfix">
+			<div class="header-logo fl">
+				<h1>
+					<a href="#"><img src="theme/icon/logo.png"></a>
+				</h1>
+			</div>
+			<div class="member-title fl">
+				<h2></h2>
+			</div>
+
+		</div>
+	</header>
+	<!-- header End -->
 
 <div class="containers"><div class="pc-nav-item"><a href="#">首页</a> &gt; <a href="#">会员中心 </a> &gt; <a href="#">商城快讯</a></div></div>
 
@@ -102,6 +101,10 @@
                    <span class="co2">购买时间</span>
                    <span class="co3">评价状态</span>
                </div>
+               
+               <%
+               	OrderService os = new OrderServiceImpl();
+               %>
                <div class="member-class clearfix">
                    <ul>
                        <li class="clearfix">
@@ -111,97 +114,29 @@
                                <span class="gr3">X1</span>
                            </div>
                            <div class="sp2">2015 - 09 -  02</div>
-                           <div class="sp3"><a href="#">发表评价</a> </div>
+                           <div class="sp3"><a href="#" id="release">发表评价</a> </div>
                        </li>
                    </ul>
                </div>
-               <div class="member-setup clearfix">
+               <div class="member-setup clearfix" id="myre">
+               	<p></p>
+               </div>
+               <div class="member-setup clearfix" id="rediv" >
                    <ul>
-                       <li class="clearfix">
-                           <div class="member-score fl"><i class="reds">*</i>评分：</div>
-                           <div class="member-star fl">
-                               <ul>
-                                   <li class="on"></li>
-                                   <li class="on"></li>
-                                   <li></li>
-                                   <li></li>
-                                   <li></li>
-                               </ul>
-                           </div>
-                           <div class="member-judge fr"><input type="checkbox"> 匿名评价</div>
-                       </li>
-
+						<form action="" method="post">
                        <li class="clearfix">
                            <div class="member-score fl"><i class="reds">*</i>商品评价：</div>
                            <div class="member-star fl">
                                <textarea maxlength="200"></textarea>
+                              
                            </div>
+                            <button id="resubmit" type="submit" style="border: 0px solid red;background-color: red;color: white;margin-top: 10px;margin-left:90px ;width: 60px;height: 30px;">提交评价</button>
                        </li>
-                       <li class="clearfix">
-                           <div class="member-score fl">晒单：</div>
-                           <div class="member-star fl">
-                               <a href="#"><img src="theme/img/pd/m2.png"></a>
-                               <a href="#"><img src="theme/img/pd/m2.png"></a>
-                               <a href="#"><img src="theme/img/pd/m2.png"></a>
-                           </div>
-                       </li>
-                       <li class="clearfix">
-                           <div style="padding-left:85px;">最多可以增加<i class="reds">10</i>张</div>
-                       </li>
+                      
+                       </form>
                    </ul>
                </div>
-               <div class="member-class clearfix">
-                    <ul>
-                        <li class="clearfix">
-                            <div class="sp1">
-                                <span class="gr1"><a href="#"><img width="60" height="60" about="" title="" src="theme/img/pd/m1.png"></a></span>
-                                <span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-                                <span class="gr3">X1</span>
-                            </div>
-                            <div class="sp2">2015 - 09 -  02</div>
-                            <div class="sp3"><a href="#">发表评价</a> </div>
-                        </li>
-                        <li class="clearfix">
-                            <div class="sp1">
-                                <span class="gr1"><a href="#"><img width="60" height="60" about="" title="" src="theme/img/pd/m1.png"></a></span>
-                                <span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-                                <span class="gr3">X1</span>
-                            </div>
-                            <div class="sp2">2015 - 09 -  02</div>
-                            <div class="sp3"><a href="#">发表评价</a> </div>
-                        </li>
-                        <li class="clearfix">
-                            <div class="sp1">
-                                <span class="gr1"><a href="#"><img width="60" height="60" about="" title="" src="theme/img/pd/m1.png"></a></span>
-                                <span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-                                <span class="gr3">X1</span>
-                            </div>
-                            <div class="sp2">2015 - 09 -  02</div>
-                            <div class="sp3"><a href="#">发表评价</a> </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="member-pages clearfix">
-                    <div class="fr pc-search-g">
-                        <a class="fl pc-search-f" href="#">上一页</a>
-                        <a href="#" class="current">1</a>
-                        <a href="javascript:;">2</a>
-                        <a href="javascript:;">3</a>
-                        <a href="javascript:;">4</a>
-                        <a href="javascript:;">5</a>
-                        <a href="javascript:;">6</a>
-                        <a href="javascript:;">7</a>
-                        <span class="pc-search-di">…</span>
-                        <a title="使用方向键右键也可翻到下一页哦！" class="pc-search-n" href="javascript:;" onClick="SEARCH.page(3, true)">下一页</a>
-                    <span class="pc-search-y">
-                        <em>  共20页    到第</em>
-                        <input type="text" class="pc-search-j" placeholder="1">
-                        <em>页</em>
-                        <a href="#" class="confirm">确定</a>
-                    </span>
-
-                    </div>
-                </div>
+               
 
             </div>
         </div>

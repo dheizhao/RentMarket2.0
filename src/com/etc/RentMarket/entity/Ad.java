@@ -32,6 +32,16 @@ public class Ad implements Serializable {
 	private String ad_state;
 	
 	
+	public Ad(String ad_content, String ad_picture, String ad_productor, int ad_day, String ad_state , int ad_id) {
+		super();
+		this.ad_id = ad_id;
+		this.ad_content = ad_content;
+		this.ad_picture = ad_picture;
+		this.ad_productor = ad_productor;
+		this.ad_day = ad_day;
+		this.ad_state = ad_state;
+	}
+
 	public Ad() {
 	}
 
@@ -108,6 +118,16 @@ public class Ad implements Serializable {
 		this.ad_productor = ad_productor;
 		this.ad_beginDate = ad_beginDate;
 		this.ad_endDate = ad_endDate;
+		this.ad_day = ad_day;
+		this.ad_state = ad_state;
+	}
+
+	
+	public Ad(String ad_content, String ad_picture, String ad_productor, int ad_day, String ad_state) {
+		super();
+		this.ad_content = ad_content;
+		this.ad_picture = ad_picture;
+		this.ad_productor = ad_productor;
 		this.ad_day = ad_day;
 		this.ad_state = ad_state;
 	}

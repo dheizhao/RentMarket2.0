@@ -80,4 +80,15 @@ public class UsersDaoImpl implements UsersDao {
 		String sql="delete users,usersdetail from users,usersdetail where users.userId=? and users.userName=usersdetail.userName ";
 		return BaseDao.execute(sql, userId)>0;
 	}
+	/**
+	 * 后台批量删除用户方法同时删除用户表和用户详情表
+	 * @param userId
+	 * @return true 操作成功  false 操作失败
+	 */
+	@Override
+	public boolean delMuchUesr(String userId) {
+		// TODO Auto-generated method stub
+		String sql="delete users,usersdetail from users,usersdetail where users.userName=usersdetail.userName and users.userId in ("+userId+")";
+		return BaseDao.execute(sql)>0;
+	}
 }

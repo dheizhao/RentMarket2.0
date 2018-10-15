@@ -68,4 +68,14 @@ public class UsersServiceImpl implements UsersService {
 		// TODO Auto-generated method stub
 		return ud.DelUesr(userId);
 	}
+	/**
+	 * 后台批量删除用户方法同时删除用户表和用户详情表
+	 * @param userId
+	 * @return true 操作成功  false 操作失败
+	 */
+	@Override
+	public boolean delMuchUesr(String userId) {
+		// TODO Auto-generated method stub
+		return ud.delMuchUesr(userId);
+	}
 }

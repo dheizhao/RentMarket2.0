@@ -6,7 +6,7 @@
 <%@page import="com.etc.RentMarket.service.OrderService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -86,7 +86,7 @@
 
 	<div class="containers">
 		<div class="pc-nav-item">
-			<a href="index.jsp">首页</a> &gt; <a href="user-info.jsp">会员中心 </a>
+			<a href="front/index.jsp">首页</a> &gt; <a href="user-info.jsp">会员中心 </a>
 		</div>
 	</div>
 
@@ -179,6 +179,7 @@
 										<td class="td-inner">交易操作</td>
 									</div>
 								</div>
+								<c:if test="${pd!=null}">
 								<!-- 循环开始 -->
 								<c:forEach  var="o" items="${requestScope.pd.data}">
 								<div class="order-main">
@@ -257,12 +258,7 @@
 																<p class="Mystatus">${o.orderState==0?"未收货":"已收货" }</p>
 															</div>
 														</li>
-														<li class="td td-change">
-															<div class="am-btn am-btn-danger anniu">
-																<a
-																	href="deleteOrder.jsp?orderID=<%-- <%=rs.getString(1) %> --%>">删除订单</a>
-															</div>
-														</li>
+														
 													</div>
 												</div>
 											</div>
@@ -272,6 +268,12 @@
 									</div>
 								</div>
 								</c:forEach>
+								</c:if>
+								<c:choose>
+									<c:otherwise>
+										<span>目前没有订单</span>
+									</c:otherwise>
+								</c:choose>
 							</div>
 
 						</div>

@@ -31,4 +31,28 @@ public class AdDaoImpl implements AdDao {
 		return BaseDao.execute(sql, a.getad_content(),a.getad_picture(),a.getad_productor(),a.getAd_day(),a.getAd_state())>0;
 	}
 	
+	@Override
+	public boolean UpdAd(Ad a) {
+		// TODO 自动生成的方法存根
+		String sql = "update ad set ad_content=?,ad_picture=?,ad_productor=?,ad_endDate=now(),ad_day=?,ad_state=? where ad_id=?";
+		return BaseDao.execute(sql,  a.getad_content(),a.getad_picture(),a.getad_productor(),a.getAd_day(),a.getAd_state(),a.getad_id())>0;
+	}
+	
+	@Override
+	public boolean DelAd(int ad_id) {
+		// TODO Auto-generated method stub
+		String sql = "delete from ad where ad_id=?";
+		return BaseDao.execute(sql, ad_id)>0;
+	}
+	/**
+	 * 后台批量删除广告
+	 * @param ad_id
+	 * @return true 操作成功  false 操作失败
+	 */
+	@Override
+	public boolean delMuchAd(String ad_id) {
+		// TODO Auto-generated method stub
+		String sql="delete from ad where ad_id in ("+ad_id+")";
+		return BaseDao.execute(sql)>0;
+	}
 }

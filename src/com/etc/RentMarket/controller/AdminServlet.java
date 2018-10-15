@@ -59,10 +59,11 @@ public class AdminServlet extends HttpServlet {
 			List<Admin> list = ads.adminLogin(adm);
 			if (list.size() > 0) {// 该用户存在，可以登录，跳到首页
 				request.getSession().setAttribute("adm", adm);
-				out.print("<script>alert('登录成功！');location.href='back/index.jsp'</script>");
-
+				//out.print("<script>alert('登录成功！');location.href='back/index.jsp'</script>");
+				out.print("true");
 			} else {//该用户不存在，登录失败
-				out.print("<script>alert('登录失败！');location.href='back/login1.html'</script>");
+				//out.print("<script>alert('登录失败！');location.href='back/login1.html'</script>");
+				out.print("false");
 			}
 			// 关闭PrintWriter对象，释放资源
 			out.close();

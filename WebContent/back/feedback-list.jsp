@@ -157,7 +157,7 @@
 		<article class="cl pd-20"> 
 		
 			
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> </div>
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="batchIds()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> </div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>
@@ -577,21 +577,45 @@ function member_del(obj,id){
         //清空查询条件重新读取数据
         eloancn.table.grid.columns().search("").draw();
     }
+ //批量删除的按钮实现方法 
+	//选取第一列的CheckBox时获取该行的Id，如uuids[i].evaluateId
+	//获取所有选中行的UUID
+	function batchIds() {
 
-    //获取所有选中行的UUID
-    function batchIds(){
+		var uuid = [];//新建一个数组 
+		var uuids = eloancn.table.grid.rows(".selected").data();
+		if (uuids.length == 0) {
+			alert(eloancn.table.statusTitle);
+		} else {
+			for (var i = 0; i < uuids.length; i++) {
+				//uuid = uuid+uuids[i].evaluateId+",";
+				uuid.push(uuids[i].evaluateId);//把选中的行的Id放到数组里 
+			}
+			// alert(uuid);
+			layer.confirm('确认要删除吗？', function(index) {//ajax请求 
+				$.get("../evaluate.do", "ids=" + uuid + "&op=MuchDel",
+						function(data, status) {
 
-        var uuid = '';
-        var uuids =eloancn.table.grid.rows(".selected").data();
-        if(uuids.length==0){
-            alert(eloancn.table.statusTitle);
-        }else{
-            for(var i=0;i<uuids.length;i++){
-                uuid = uuid+uuids[i].extn+",";
-            }
-            alert(uuid);
-        }
-    }
+							if (data) {
+								//$("#"+eloancn.table.grid.rows(".selected")).parents("tr").remove();
+								layer.msg('已删除!', {
+									icon : 1,
+									time : 1000
+								});
+								$("input[type='checkbox']:checked").remove(
+										'selected');
+								reload();
+							} else {
+								layer.msg('删除失败!', {
+									icon : 2,
+									time : 1000
+								});
+							}
+						});
+			});
+
+		}
+	}
 
     //单选
     function selection(){

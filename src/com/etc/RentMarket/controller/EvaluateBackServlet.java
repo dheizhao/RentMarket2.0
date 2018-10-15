@@ -23,20 +23,22 @@ import com.google.gson.Gson;
 @WebServlet("/evaluate.do")
 public class EvaluateBackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	EvaluateService es=new EvaluateServiceImpl();
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EvaluateBackServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	EvaluateService es = new EvaluateServiceImpl();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public EvaluateBackServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
@@ -48,19 +50,28 @@ public class EvaluateBackServlet extends HttpServlet {
 		if ("".equals(op)) {
 			doGetEvaluates(request, response);
 		}
-		//2、删除评价信息
-		else if("evaluateDel".equals(op)) {
+		// 2、删除评价信息
+		else if ("evaluateDel".equals(op)) {
 			doDelEvaluate(request, response);
 		}
-		// 3、显示回复评价信息
+		// 3、批量删除评价信息
+		else if ("MuchDel".equals(op)) {
+			doMuchDelEvaluate(request, response);
+		}
+		// 4、显示回复评价信息
 		else if ("show".equals(op)) {
-					doGetREevaluates(request, response);
-				}
-		//4、删除回复评价信息
-		else if("reevaluateDel".equals(op)) {
-					doDelREevaluate(request, response);
-				}
+			doGetREevaluates(request, response);
+		}
+		// 5、删除回复评价信息
+		else if ("reevaluateDel".equals(op)) {
+			doDelREevaluate(request, response);
+		}
+		// 6、批量删除回复评价信息
+		else if ("MuchDelci".equals(op)) {
+			doMuchDelEvaluateci(request, response);
+		}
 	}
+
 	/**
 	 * 1、显示评价信息
 	 */
@@ -81,6 +92,7 @@ public class EvaluateBackServlet extends HttpServlet {
 		System.out.println("[jsonString] :" + jsonString);
 		out.close();
 	}
+
 	/**
 	 * 2、删除评价信息
 	 */
@@ -95,8 +107,28 @@ public class EvaluateBackServlet extends HttpServlet {
 		out.print(flag);
 
 	}
+
 	/**
-	 * 3、显示回复评价信息
+	 * 3、批量删除评价信息
+	 */
+	protected void doMuchDelEvaluate(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 使用printWriter对象
+		PrintWriter out = response.getWriter();
+		String evaluateId = request.getParameter("ids");
+		boolean flag = es.delMuchEvaluate(evaluateId);
+		if (flag) {
+
+			out.print(flag);
+		} else {
+			out.print(flag);
+		}
+		out.close();
+
+	}
+
+	/**
+	 * 4、显示回复评价信息
 	 */
 	protected void doGetREevaluates(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -115,8 +147,9 @@ public class EvaluateBackServlet extends HttpServlet {
 		System.out.println("[jsonString] :" + jsonString);
 		out.close();
 	}
+
 	/**
-	 * 4、删除回复评价信息
+	 * 5、删除回复评价信息
 	 */
 	protected void doDelREevaluate(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -130,9 +163,29 @@ public class EvaluateBackServlet extends HttpServlet {
 
 	}
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * 6、批量删除回复评价信息
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doMuchDelEvaluateci(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 使用printWriter对象
+		PrintWriter out = response.getWriter();
+		String cid = request.getParameter("ids");
+		boolean flag = es.delMuchEvaluateci(cid);
+		if (flag) {
+
+			out.print(flag);
+		} else {
+			out.print(flag);
+		}
+		out.close();
+
+	}
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
