@@ -44,4 +44,15 @@ public class AdDaoImpl implements AdDao {
 		String sql = "delete from ad where ad_id=?";
 		return BaseDao.execute(sql, ad_id)>0;
 	}
+	/**
+	 * 后台批量删除广告
+	 * @param ad_id
+	 * @return true 操作成功  false 操作失败
+	 */
+	@Override
+	public boolean delMuchAd(String ad_id) {
+		// TODO Auto-generated method stub
+		String sql="delete from ad where ad_id in ("+ad_id+")";
+		return BaseDao.execute(sql)>0;
+	}
 }

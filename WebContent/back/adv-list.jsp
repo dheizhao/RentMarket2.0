@@ -39,11 +39,11 @@
 			
 			<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
 				<ul class="cl">
-					<li>超级管理员</li>
-					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+					<li>欢迎你：</li>
+					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">${sessionScope.adm.admin} <i class="Hui-iconfont">&#xe6d5;</i></a>
 						<ul class="dropDown-menu menu radius box-shadow">
 							<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
-							<li><a href="#">退出</a></li>
+							<li><a href="#" class="exit0">退出</a></li>
 				</ul>
 			</li>
 					<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
@@ -63,6 +63,7 @@
 </div>
 </header>
 <!--/_header部分 结束位置-->
+
 <!-- aside部分  作为左边导航-->
 <aside class="Hui-aside">
 	
@@ -79,7 +80,7 @@
 			<dt><i class="Hui-iconfont">&#xe613;</i> 商品审核<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="goods-status.html" title="商品审核">商品审核</a></li>
+					<li><a href="goods-status.jsp" title="商品审核">商品审核</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -88,7 +89,7 @@
 			<dd>
 				<ul>
 					<li><a href="goods-list.jsp" title="商品信息">商品信息</a></li>
-					<li><a href="goods-category.html" title="分类管理">分类管理</a></li>
+					<li><a href="goods-category.jsp" title="分类管理">分类管理</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -96,8 +97,8 @@
 			<dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="feedback-list.html" title="评论列表">评论列表</a></li>
-					<li><a href="feedback2-list.html" title="回复列表">回复列表</a></li>
+					<li><a href="feedback-list.jsp" title="评论列表">评论列表</a></li>
+					<li><a href="feedback2-list.jsp" title="回复列表">回复列表</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -105,7 +106,7 @@
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 广告信息管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="adv-list.jsp" title="会员列表">广告列表</a></li>
+					<li><a href="adv-list.jsp" title="会员列表">广告列表</a></li>				
 		</ul>
 	</dd>
 </dl>
@@ -113,7 +114,8 @@
 			<dt><i class="Hui-iconfont">&#xe62d;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd> 
 				<ul>
-					<li><a href="order-list.html" title="订单列表">订单列表</a></li>
+					
+					<li><a href="order-list.jsp" title="订单列表">订单列表</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -121,13 +123,13 @@
 			<dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="charts-1.html" title="折线图">折线图</a></li>
-					<li><a href="charts-2.html" title="时间轴折线图">时间轴折线图</a></li>
-					<li><a href="charts-3.html" title="区域图">区域图</a></li>
-					<li><a href="charts-4.html" title="柱状图">柱状图</a></li>
-					<li><a href="charts-5.html" title="饼状图">饼状图</a></li>
-					<li><a href="charts-6.html" title="3D柱状图">3D柱状图</a></li>
-					<li><a href="charts-7.html" title="3D饼状图">3D饼状图</a></li>
+					<li><a href="charts-1.jsp" title="折线图">折线图</a></li>
+					<li><a href="charts-2.jsp" title="时间轴折线图">时间轴折线图</a></li>
+					<li><a href="charts-3.jsp" title="区域图">区域图</a></li>
+					<li><a href="charts-4.jsp" title="柱状图">柱状图</a></li>
+					<li><a href="charts-5.jsp" title="饼状图">饼状图</a></li>
+					<li><a href="charts-6.jsp" title="3D柱状图">3D柱状图</a></li>
+					<li><a href="charts-7.jsp" title="3D饼状图">3D饼状图</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -135,8 +137,9 @@
 			<dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="system-shielding.html" title="屏蔽词">屏蔽词</a></li>
-					<li><a href="system-log.html" title="系统日志">系统日志</a></li>
+					
+					<li><a href="system-shielding.jsp" title="屏蔽词">屏蔽词</a></li>
+					<li><a href="system-log.jsp" title="系统日志">系统日志</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -152,7 +155,7 @@
 		<article class="cl pd-20"> 
 		
 			
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加广告','adv-add.jsp','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加广告</a></span> </div>
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="batchIds()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加广告','adv-add.jsp','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加广告</a></span> </div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>
@@ -726,22 +729,45 @@ function member_del(obj,id){
         //清空查询条件重新读取数据
         eloancn.table.grid.columns().search("").draw();
     }
+//批量删除的按钮实现方法 
+	//选取第一列的CheckBox时获取该行的Id，如uuids[i].ad_id
+	//获取所有选中行的UUID
+	function batchIds() {
 
-    //获取所有选中行的UUID
-    function batchIds(){
+		var uuid = [];//新建一个数组 
+		var uuids = eloancn.table.grid.rows(".selected").data();
+		if (uuids.length == 0) {
+			alert(eloancn.table.statusTitle);
+		} else {
+			for (var i = 0; i < uuids.length; i++) {
+				//uuid = uuid+uuids[i].ad_id+",";
+				uuid.push(uuids[i].ad_id);//把选中的行的Id放到数组里 
+			}
+			// alert(uuid);
+			layer.confirm('确认要删除吗？', function(index) {//ajax请求 
+				$.get("../as.do", "ids=" + uuid + "&op=MuchDel",
+						function(data, status) {
 
-        var uuid = '';
-        var uuids =eloancn.table.grid.rows(".selected").data();
-        if(uuids.length==0){
-            alert(eloancn.table.statusTitle);
-        }else{
-            for(var i=0;i<uuids.length;i++){
-                uuid = uuid+uuids[i].extn+",";
-            }
-            alert(uuid);
-            reload();
-        }
-    }
+							if (data) {
+								//$("#"+eloancn.table.grid.rows(".selected")).parents("tr").remove();
+								layer.msg('已删除!', {
+									icon : 1,
+									time : 1000
+								});
+								$("input[type='checkbox']:checked").remove(
+										'selected');
+								reload();
+							} else {
+								layer.msg('删除失败!', {
+									icon : 2,
+									time : 1000
+								});
+							}
+						});
+			});
+
+		}
+	}
 
     //单选
     function selection(){

@@ -39,11 +39,11 @@
 			
 			<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
 				<ul class="cl">
-					<li>超级管理员</li>
-					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+					<li>欢迎你：</li>
+					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">${sessionScope.adm.admin} <i class="Hui-iconfont">&#xe6d5;</i></a>
 						<ul class="dropDown-menu menu radius box-shadow">
 							<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
-							<li><a href="#">退出</a></li>
+							<li><a href="#" class="exit0">退出</a></li>
 				</ul>
 			</li>
 					<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
@@ -72,7 +72,7 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i>用户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="users-list.html" title="用户信息">用户信息</a></li>
+					<li><a href="user-list.jsp" title="用户信息">用户信息</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -80,7 +80,7 @@
 			<dt><i class="Hui-iconfont">&#xe613;</i> 商品审核<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="goods-status.html" title="商品审核">商品审核</a></li>
+					<li><a href="goods-status.jsp" title="商品审核">商品审核</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -88,8 +88,8 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i>商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="goods-list.html" title="商品信息">商品信息</a></li>
-					<li><a href="goods-category.html" title="分类管理">分类管理</a></li>
+					<li><a href="goods-list.jsp" title="商品信息">商品信息</a></li>
+					<li><a href="goods-category.jsp" title="分类管理">分类管理</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -97,8 +97,8 @@
 			<dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="feedback-list.html" title="评论列表">评论列表</a></li>
-					<li><a href="feedback2-list.html" title="回复列表">回复列表</a></li>
+					<li><a href="feedback-list.jsp" title="评论列表">评论列表</a></li>
+					<li><a href="feedback2-list.jsp" title="回复列表">回复列表</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -106,7 +106,7 @@
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 广告信息管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-						<li><a href="adv-list.html" title="会员列表">广告列表</a></li>
+					<li><a href="adv-list.jsp" title="会员列表">广告列表</a></li>				
 		</ul>
 	</dd>
 </dl>
@@ -114,7 +114,8 @@
 			<dt><i class="Hui-iconfont">&#xe62d;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd> 
 				<ul>
-					<li><a href="order-list.html" title="订单列表">订单列表</a></li>
+					
+					<li><a href="order-list.jsp" title="订单列表">订单列表</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -122,13 +123,13 @@
 			<dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="charts-1.html" title="折线图">折线图</a></li>
-					<li><a href="charts-2.html" title="时间轴折线图">时间轴折线图</a></li>
-					<li><a href="charts-3.html" title="区域图">区域图</a></li>
-					<li><a href="charts-4.html" title="柱状图">柱状图</a></li>
-					<li><a href="charts-5.html" title="饼状图">饼状图</a></li>
-					<li><a href="charts-6.html" title="3D柱状图">3D柱状图</a></li>
-					<li><a href="charts-7.html" title="3D饼状图">3D饼状图</a></li>
+					<li><a href="charts-1.jsp" title="折线图">折线图</a></li>
+					<li><a href="charts-2.jsp" title="时间轴折线图">时间轴折线图</a></li>
+					<li><a href="charts-3.jsp" title="区域图">区域图</a></li>
+					<li><a href="charts-4.jsp" title="柱状图">柱状图</a></li>
+					<li><a href="charts-5.jsp" title="饼状图">饼状图</a></li>
+					<li><a href="charts-6.jsp" title="3D柱状图">3D柱状图</a></li>
+					<li><a href="charts-7.jsp" title="3D饼状图">3D饼状图</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -136,8 +137,9 @@
 			<dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="system-shielding.html" title="屏蔽词">屏蔽词</a></li>
-					<li><a href="system-log.html" title="系统日志">系统日志</a></li>
+					
+					<li><a href="system-shielding.jsp" title="屏蔽词">屏蔽词</a></li>
+					<li><a href="system-log.jsp" title="系统日志">系统日志</a></li>
 		</ul>
 	</dd>
 </dl>

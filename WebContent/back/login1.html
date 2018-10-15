@@ -11,6 +11,10 @@
 <link href='http://fonts.useso.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
 <!--//webfonts-->
 <script src="http://ajax.useso.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- 滑块验证的js和css -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script src="js/style.js" type="text/javascript"></script>
+<!--  -->
 </head>
 <body>
 
@@ -32,7 +36,8 @@
 						<div class="key">
 					<input type="password" id="adminPwd" name="adminPwd" placeholder="密码">
 						</div>
-			
+			<div  id="slideBar" class="formControls col-xs-8 col-xs-offset-3">
+      </div>
 	<div class="signin">
 		<input type="submit" value="登录" id="login">
 	</div>
@@ -41,6 +46,40 @@
  <div class="copy-rights">
 					<p>&copy; 本网站信息全由易点租提供支持~ </p>
 			</div>
-			
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+
+<script type="text/javascript">
+var result=false;
+var dataList = ["0","1"];
+var options = {
+    dataList: dataList,
+    success:function(){  
+        result=true;
+    },
+    fail: function(){
+        console.log("fail");  
+    }
+};
+SliderBar("slideBar", options);
+
+$("#login").click(function(){
+	if(result==false){
+		return false;
+	}else{
+		var admin=$("#admin").val();
+		var adminPwd=$("#adminPwd").val();
+		$.post("../admin.do?op=login","admin="+admin+"&adminPwd="+adminPwd,function(data,status){
+			if("true"==data){
+				location.href="index.jsp";
+			}else{
+				console.log(data);
+				alert("用户名密码错误")
+			}
+		});
+	}
+	
+});
+</script>			
 </body>
 </html>

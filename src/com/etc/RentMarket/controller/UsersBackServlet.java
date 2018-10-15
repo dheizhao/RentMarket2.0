@@ -54,11 +54,14 @@ public class UsersBackServlet extends HttpServlet {
 		else if ("userEdit".equals(op)) {
 			doUpdateUserStatus(request, response);
 		}
-		//3、删除用户信息
-		else if("userDel".equals(op)) {
+		// 3、删除用户信息
+		else if ("userDel".equals(op)) {
 			doDelUser(request, response);
 		}
-
+		// 4、批量删除用户信息
+		else if ("MuchDel".equals(op)) {
+			doMuchDelUser(request, response);
+		}
 	}
 
 	/**
@@ -78,7 +81,6 @@ public class UsersBackServlet extends HttpServlet {
 		// 使用printWriter对象
 		PrintWriter out = response.getWriter();
 		out.print(jsonString);
-		System.out.println("[jsonString] :" + jsonString);
 		out.close();
 	}
 
@@ -93,11 +95,10 @@ public class UsersBackServlet extends HttpServlet {
 		int userId = Integer.valueOf((request.getParameter("userId")));
 		Uesrslist u = new Uesrslist(userId, request.getParameter("userStatus"));
 		boolean flag = us.UpdateUesrStatus(u);
-		System.out.println(flag);
-		System.out.println(request.getParameter("userStatus"));
 		out.print(flag);
 
 	}
+
 	/**
 	 * 3、删除用户信息
 	 */
@@ -108,11 +109,27 @@ public class UsersBackServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		int userId = Integer.valueOf((request.getParameter("id")));
 		boolean flag = us.DelUesr(userId);
-		System.out.println(flag);
 		out.print(flag);
 
 	}
+	/**
+	 * 4、批量删除用户信息
+	 */
+	protected void doMuchDelUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 使用printWriter对象
+		PrintWriter out = response.getWriter();
+		String userId = request.getParameter("ids");
+		boolean flag = us.delMuchUesr(userId);
+		if (flag) {
 
+			out.print(flag);
+		} else {
+			out.print(flag);
+		}
+		out.close();
+
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

@@ -22,20 +22,23 @@ import com.google.gson.Gson;
 @WebServlet("/as.do")
 public class AdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       AdService as = new AdServiceImpl();
-       boolean flag;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AdServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	AdService as = new AdServiceImpl();
+	boolean flag;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public AdServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
@@ -47,18 +50,20 @@ public class AdServlet extends HttpServlet {
 		// 1、显示用户信息
 		if ("".equals(op)) {
 			doGetAds(request, response);
-		}
-		if("add".equals(op)){
+		} else if ("add".equals(op)) {
 			doAddAds(request, response);
-			
-		}
-		if("upd".equals(op)) {
+
+		} else if ("upd".equals(op)) {
 			doUpdAds(request, response);
-		}
-		if("del".equals(op)) {
+		} else if ("del".equals(op)) {
 			doDelAds(request, response);
 		}
+		// 5、批量删除订单信息
+		else if ("MuchDel".equals(op)) {
+			doMuchDelAds(request, response);
+		}
 	}
+
 	/**
 	 * 1、显示广告信息
 	 */
@@ -77,6 +82,7 @@ public class AdServlet extends HttpServlet {
 		out.print(jsonString);
 		out.close();
 	}
+
 	/**
 	 * 2、添加广告信息
 	 */
@@ -90,8 +96,10 @@ public class AdServlet extends HttpServlet {
 		Ad a = new Ad(ad_content, ad_picture, ad_productor, ad_day, ad_state);
 		flag = as.AddAds(a);
 	}
+
 	/**
 	 * 3、修改广告内容及其他信息
+	 * 
 	 * @param request
 	 * @param response
 	 * @throws ServletException
@@ -105,10 +113,10 @@ public class AdServlet extends HttpServlet {
 		String ad_productor = request.getParameter("productor");
 		int ad_day = Integer.parseInt(request.getParameter("day"));
 		String ad_state = request.getParameter("adStatus");
-		Ad a = new Ad(ad_content, ad_picture, ad_productor, ad_day, ad_state,ad_id);
+		Ad a = new Ad(ad_content, ad_picture, ad_productor, ad_day, ad_state, ad_id);
 		flag = as.UpdAd(a);
 	}
-	
+
 	/**
 	 * 4,删除广告信息
 	 */
@@ -117,10 +125,31 @@ public class AdServlet extends HttpServlet {
 		int ad_id = Integer.parseInt(request.getParameter("ad_id"));
 		flag = as.DelAd(ad_id);
 	}
+
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * 5、批量删除广告信息
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doMuchDelAds(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 使用printWriter对象
+		PrintWriter out = response.getWriter();
+		String ad_id = request.getParameter("ids");
+		boolean flag = as.delMuchAd(ad_id);
+		if (flag) {
+
+			out.print(flag);
+		} else {
+			out.print(flag);
+		}
+		out.close();
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

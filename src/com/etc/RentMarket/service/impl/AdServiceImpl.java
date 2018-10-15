@@ -35,4 +35,14 @@ public class AdServiceImpl implements AdService {
 		// TODO Auto-generated method stub
 		return ad.DelAd(ad_id);
 	}
+	/**
+	 * 后台批量删除广告
+	 * @param ad_id
+	 * @return true 操作成功  false 操作失败
+	 */
+	@Override
+	public boolean delMuchAd(String ad_id) {
+		// TODO Auto-generated method stub
+		return ad.delMuchAd(ad_id);
+	}
 }

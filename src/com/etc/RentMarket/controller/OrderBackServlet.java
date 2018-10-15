@@ -81,7 +81,6 @@ public class OrderBackServlet extends HttpServlet {
 		// 使用printWriter对象
 		PrintWriter out = response.getWriter();
 		out.print(jsonString);
-		System.out.println("[jsonString] :" + jsonString);
 		out.close();
 	}
 
@@ -95,7 +94,6 @@ public class OrderBackServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		int orderId = Integer.valueOf((request.getParameter("id")));
 		boolean flag = obs.DelOrderBack(orderId);
-		System.out.println(flag);
 		out.print(flag);
 
 	}
@@ -108,8 +106,7 @@ public class OrderBackServlet extends HttpServlet {
 		// 使用printWriter对象
 		PrintWriter out = response.getWriter();
 		String orderIds = request.getParameter("ids");
-		System.out.println(orderIds);
-		boolean flag = obs.delMuchOrder("4,5");
+		boolean flag = obs.delMuchOrder(orderIds);
 		if (flag) {
 
 			out.print(flag);
