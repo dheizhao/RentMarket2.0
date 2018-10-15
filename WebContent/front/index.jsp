@@ -1,3 +1,6 @@
+<%@page import="com.etc.RentMarket.entity.Goodstype"%>
+<%@page import="com.etc.RentMarket.service.impl.GoodServiceImpl"%>
+<%@page import="com.etc.RentMarket.service.GoodService"%>
 <%@page import="com.etc.RentMarket.entity.PhoneGood"%>
 <%@page import="com.etc.RentMarket.service.impl.GoodPhoneServiceImpl"%>
 <%@page import="com.etc.RentMarket.entity.User"%>
@@ -105,21 +108,13 @@
                 <li class="headerul">|</li>
                 <li><a href="register.jsp">免费注册</a> </li>
                 <li class="headerul">|</li>
-                <li><a href="list-receive.jsp">订单查询</a> </li>
-                <li class="headerul">|</li>
-                <li><a href="myfavorite.jsp">我的收藏</a> </li>
-                <li class="headerul">|</li>
                 <li id="pc-nav" class="menu"><a href="" class="tit">我的商城</a>
                     <div class="subnav">
                    		<a href="user-info.jsp">个人中心</a>
-                        <a href="list-receive.jsp">我的订单</a>
-                        <a href="myfavorite.jsp">我的收藏</a>
-                        <a href="addressManager.html">地址管理</a>
-                        <a href="comment.html">我要评价</a>
                     </div>
                 </li>
                 <li class="headerul">|</li>
-                <li id="pc-nav1" class="menu"><a href="#" class="tit M-iphone">我有话对您说</a>
+                <li id="pc-nav1" class="menu"><a href="#" class="tit M-iphone">有话对您说</a>
                    <div class="subnav">
                        <a href="#"><img src="theme/icon/ewm2.png" width="115" height="115" title="扫一扫，有惊喜！"></a>
                    </div>
@@ -151,6 +146,7 @@
         </div>
         
     </div>
+    
     <div class="yHeader">
         <div class="yNavIndex">
             <div class="pullDown">
@@ -158,52 +154,22 @@
                 全部商品分类
             </h2>
             <ul class="pullDownList">
+            <%
+            	int typeparentId = 0;
+    			GoodService gs = new GoodServiceImpl();
+    			List<Goodstype> list = gs.selGoodTypeByTypeParentId(typeparentId);
+    			for(Goodstype gt:list){
+    		%>
                 <li class="menulihover">
                     <i class="listi1"></i>
-                    <a href="jiadian.html" target="_blank">家用电器</a>
+                    <a href="jiadian.html" target="_blank"><%=gt.getTypeName() %></a>
                     <span></span>
                 </li>
-                <li>
-                    <i class="listi2"></i>
-                    <a href="all-class.html" target="_blank">办公家具</a>
-                    <span></span>
-                </li>
-                <li>
-                    <i class="listi3"></i>
-                    <a href="" target="_blank">家居家具</a>
-                    <span></span>
-                </li>
-                <li>
-                    <i class="listi4"></i>
-                    <a href="" target="_blank">手机数码</a>
-                    <span></span>
-                </li>
-                <li>
-                    <i class="listi5"></i>
-                    <a href="" target="_blank">乐器</a>
-                    <span></span>
-                </li>
-                <li>
-                    <i class="listi6"></i>
-                    <a href="" target="_blank">运动户外、</a>
-                    <a href="" target="_blank">保健器械</a>
-                    <span></span>
-                </li>
-                <li>
-                    <i class="listi7"></i>
-                    <a href="" target="_blank">汽车、</a>
-                    <a href="" target="_blank">房子</a>
-                    <span></span>
-                </li>
-                <li>
-                    <i class="listi8"></i>
-                    <a href="" target="_blank">图书、</a>
-                    <a href="" target="_blank">音像</a>
-                    <span></span>
-                </li>
+                <%
+    			}
+                %>
             </ul>
             <div class="yMenuListCon">
-
                 <div class="yMenuListConin">
                     <div class="yMenuLCinLisi fl">
                         <ul>
@@ -267,7 +233,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="yMenuListConin">
                     <div class="yMenuLCinLisi fl">
                         <ul>
@@ -577,10 +542,10 @@
     <div class="time-list fl">
         <div class="time-title time-clear"><h2>卖场推荐</h2><a href="javascript:;" class="pc-spin fr">换一换</a> </div>
         <div class="time-poued clearfix">
-            <a href="#"><img src="theme/img/ad/pd01.jpg"></a>
-            <a href="#"><img src="theme/img/ad/pd02.jpg"></a>
-            <a href="jiadian.html"><img src="theme/img/ad/pd03.jpg"></a>
-            <a href="#"><img src="theme/img/ad/pd06.jpg"></a>
+            <a href="goodDetail.jsp?goodId=44"><img src="theme/img/pd/pd01.jpg"></a>
+            <a href="goodDetail.jsp?goodId=35"><img src="theme/img/pd/pd02.jpg"></a>
+            <a href="goodDetail.jsp?goodId=45"><img src="theme/img/pd/pd03.jpg"></a>
+            <a href="goodDetail.jsp?goodId=46"><img src="theme/img/pd/pd06.jpg"></a>
         </div>
     </div>
     <div class="news-list fr">
@@ -616,7 +581,7 @@
                         <!-- 展示商品 -->
                         <%for(Good g:good){ %>
                             <li>
-                                <a href="">
+                                <a href="goodDetail.jsp?goodId=<%=g.getGoodId()%>">
                                     <img src=<%=goodPath+g.getGoodImgAdd()%>>
                                     <p class="head-name pc-pa10"><%=g.getGoodName()%></p>
                                     <p class="label-default">¥<%=g.getGoodPrice() %>/月</p>

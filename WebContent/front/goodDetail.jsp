@@ -131,9 +131,9 @@ document.getElementById('text_box').value=num;
 					<!--价格-->
 					<div class="tb-detail-price">
 						<li class="price iteminfo_price">
-							<dt>单价</dt>
+							<dt>租金</dt>
 							<dd>
-								<em>¥</em><b class="sys_item_price"><%=list.get(0).getGoodPrice()%> </b>
+								<em>¥</em><b class="sys_item_price"><%=list.get(0).getGoodPrice()%>/月 </b>
 							</dd>
 						</li>
 						<div class="clear"></div>

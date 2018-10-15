@@ -79,6 +79,14 @@ public class GoodsDaoImpl implements GoodsDao {
 	}
 
 	@Override
+	public List<Goodstype> selGoodTypeByTypeParentId(int typeparentId) {
+		// TODO Auto-generated method stub
+		String sql ="select * from goodstype where typeparentId = ?";
+		
+		return (List<Goodstype>) BaseDao.select(sql, Goodstype.class,typeparentId);
+	}
+	
+	@Override
 	public boolean upGoodsType(Goodstype goodstype) {//商品类型更新
 		String sql = "update goodstype set typeName=?,typeparentId=?  where typeId=?";
 		return BaseDao.execute(sql, goodstype.getTypeName(),goodstype.getTypeparentId(),goodstype.getTypeId())>0;

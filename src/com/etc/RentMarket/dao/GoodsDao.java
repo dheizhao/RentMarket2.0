@@ -12,6 +12,7 @@ public interface GoodsDao {
 	public boolean delMuchGoods(List<Integer> goodIds);//批量删除商品信息
 	public boolean upGoods(Good good);//商品更新
 	public List<Goodstype> selGoodType();//查询商品类型
+	public List<Goodstype> selGoodTypeByTypeParentId(int typeparentId);//通过父类型ID查询商品类型
 	public boolean upGoodsType(Goodstype good);//商品类型更新
 	public boolean  delGoodsType(int goodtypeId);//删除单个商品类型信息
 	public boolean delMuchGoodsType(List<Integer> goodTypeIds);//批量删除商品类型信息

@@ -11,6 +11,7 @@ public interface GoodService {
 	public boolean delMuchGoods(List<Integer> goodIds);//批量删除商品信息
 	public boolean upGoods(Good good);//更新商品信息
 	public List<Goodstype> selGoodType();//查询商品类别信息
+	public List<Goodstype> selGoodTypeByTypeParentId(int typeparentId);//通过父类型ID查询商品类型
 	public boolean upGoodsType(Goodstype goodstype);//更新商品类别信息
 	public boolean delGoodsType(int goodtypeId);//删除商品类型信息
 	public boolean delMuchGoodsType(List<Integer> goodIds);

@@ -66,5 +66,10 @@ public class GoodServiceImpl implements GoodService {
 		// TODO Auto-generated method stub
 		return gd.getgoodsByGoodId(goodId);
 	}
+	@Override
+	public List<Goodstype> selGoodTypeByTypeParentId(int typeparentId) {
+		// TODO Auto-generated method stub
+		return gd.selGoodTypeByTypeParentId(typeparentId);
+	}
 
 }
