@@ -349,7 +349,7 @@ public class BaseDao {
 		PageData data = new PageData(list, count, pageSize, page);
 		return data;
 	}
-	
+
 	/**
 	 * oracle的分页实现
 	 * 
@@ -390,6 +390,5 @@ public class BaseDao {
 		PageData data = new PageData(list, count, pageSize, page);
 		return data;
 	}
-
 
 }

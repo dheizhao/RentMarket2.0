@@ -9,7 +9,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page autoFlush="true" buffer="1094kb"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  
 <!doctype html>
 <html>
@@ -554,11 +554,9 @@
     </div>
 </div>
 <!-- 卖场推荐 End -->
- 
  	<%
 	List<Good> good=(List<Good>)request.getAttribute("Good"); //商品集合
-	String goodPath="theme/img/pd/";//存放商品的绝对路径
-	
+	String goodPath="theme/img/pd/";//存放商品的绝对路径	
 	%>
 	
  	<%
