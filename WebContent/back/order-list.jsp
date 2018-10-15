@@ -524,7 +524,7 @@
 				},
 				{
 					"data" : "userAddress"
-				},
+				}, 
 				{
 					"data" : "orderDate"
 				},
