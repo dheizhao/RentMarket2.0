@@ -34,4 +34,10 @@ public interface AddressDao {
 	 * @return
 	 */
 	boolean updateAddr(int userDetailId,String userRealName,String userAddress,String userPhone);
+	/**
+	 * 删除地址
+	 * @param userDetailId
+	 * @return
+	 */
+	boolean deleteAddr(int userDetailId);
 }

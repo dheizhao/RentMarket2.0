@@ -86,7 +86,7 @@
 
 	<div class="containers">
 		<div class="pc-nav-item">
-			<a href="index.jsp">首页</a> &gt; <a href="user-info.jsp">会员中心 </a>
+			<a href="front/index.jsp">首页</a> &gt; <a href="user-info.jsp">会员中心 </a>
 		</div>
 	</div>
 
@@ -257,12 +257,7 @@
 																<p class="Mystatus">${o.orderState==0?"未收货":"已收货" }</p>
 															</div>
 														</li>
-														<li class="td td-change">
-															<div class="am-btn am-btn-danger anniu">
-																<a
-																	href="deleteOrder.jsp?orderID=<%-- <%=rs.getString(1) %> --%>">删除订单</a>
-															</div>
-														</li>
+														
 													</div>
 												</div>
 											</div>

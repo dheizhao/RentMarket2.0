@@ -670,7 +670,7 @@
                     		for(PhoneGood pg : phoneList){
                     	%>
                         <li>
-                            <div class="brand-imgss"><a href="#"><img src=<%=goodPath+pg.getGoodImgAdd() %>></a></div>
+                            <div class="brand-imgss"><a href="goodDetail.jsp?goodId=<%=pg.getGoodId()%>"><img src=<%=goodPath+pg.getGoodImgAdd() %>></a></div>
                             <div class="brand-title"><a href="#"><%=pg.getGoodName() %></a> </div>
                             <div class="brand-price">￥<%=pg.getGoodPrice() %>/月 </div>
                         </li>

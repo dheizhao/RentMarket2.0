@@ -61,5 +61,10 @@ public class GoodServiceImpl implements GoodService {
 		// TODO Auto-generated method stub
 		return gd.delMuchGoodsType(goodIds);
 	}
+	@Override
+	public List<Good> getgoodsByGoodId(int goodId) {
+		// TODO Auto-generated method stub
+		return gd.getgoodsByGoodId(goodId);
+	}
 
 }

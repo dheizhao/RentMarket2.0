@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.etc.RentMarket.entity.Good;
 import com.etc.RentMarket.entity.Goodstype;
+import com.etc.RentMarket.entity.PhoneGood;
 
 public interface GoodsDao {
 	public List<Good> selectGoods();//查询商品信息
@@ -14,4 +15,6 @@ public interface GoodsDao {
 	public boolean upGoodsType(Goodstype good);//商品类型更新
 	public boolean  delGoodsType(int goodtypeId);//删除单个商品类型信息
 	public boolean delMuchGoodsType(List<Integer> goodTypeIds);//批量删除商品类型信息
+	
+	List<Good> getgoodsByGoodId(int goodId);
 }

@@ -8,6 +8,7 @@ import com.etc.RentMarket.DBUtil.BaseDao;
 import com.etc.RentMarket.dao.GoodsDao;
 import com.etc.RentMarket.entity.Good;
 import com.etc.RentMarket.entity.Goodstype;
+import com.etc.RentMarket.entity.PhoneGood;
 
 public class GoodsDaoImpl implements GoodsDao {
 
@@ -108,6 +109,11 @@ public class GoodsDaoImpl implements GoodsDao {
 			}
 	}
 	
-	
+	@Override
+	public List<Good> getgoodsByGoodId(int goodId) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT good.goodId,good.goodName,good.goodPrice,good.goodCount,good.goodImgAdd FROM good WHERE goodId = ?";
+		return (List<Good>) BaseDao.select(sql, Good.class, goodId);
+	}
 
 }
