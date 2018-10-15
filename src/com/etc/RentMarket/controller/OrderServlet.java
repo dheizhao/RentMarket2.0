@@ -52,6 +52,7 @@ public class OrderServlet extends HttpServlet {
 			int page = 1;
 			int pageSize = 2;
 			String userName = "";
+			String keywords = "123456";
 			if (request.getParameter("page") != null) {
 				page = Integer.parseInt(request.getParameter("page"));
 			}
@@ -62,16 +63,25 @@ public class OrderServlet extends HttpServlet {
 				User user = (User) request.getSession().getAttribute("user");
 				userName = user.getUserName();
 			}
-			String keywords = "";
 			if (request.getParameter("keywords") != null) {
+				
 				keywords = request.getParameter("keywords");
 			}
 
-			
+			System.out.println(page+","+pageSize+","+userName+","+keywords);
 			PageData<Order> pd = os.queryOrdersByPage(page, pageSize, userName, keywords);
-
-			request.setAttribute("pd", pd);
+			System.out.println(pd);
 			request.setAttribute("keywords", keywords);
+			if(pd!=null) {
+				request.setAttribute("pd", pd);
+				request.getRequestDispatcher("front/list-receive.jsp").forward(request, response);
+			}else {
+				request.setAttribute("pd", "null");
+				request.getRequestDispatcher("front/login.jsp").forward(request, response);
+				
+			}
+			
+			
 			request.getRequestDispatcher("front/list-receive.jsp").forward(request, response);
 		}else if (op.equals("selOrderInfo")) {//查询订单表信息
 			List<Order> orders = os.selOrders();

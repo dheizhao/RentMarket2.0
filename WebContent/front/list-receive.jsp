@@ -179,6 +179,7 @@
 										<td class="td-inner">交易操作</td>
 									</div>
 								</div>
+								<c:if test="${pd!=null}">
 								<!-- 循环开始 -->
 								<c:forEach  var="o" items="${requestScope.pd.data}">
 								<div class="order-main">
@@ -267,6 +268,12 @@
 									</div>
 								</div>
 								</c:forEach>
+								</c:if>
+								<c:choose>
+									<c:otherwise>
+										<span>目前没有订单</span>
+									</c:otherwise>
+								</c:choose>
 							</div>
 
 						</div>

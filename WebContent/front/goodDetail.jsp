@@ -165,7 +165,7 @@ document.getElementById('text_box').value=num;
 							</li>
 							<li>
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
-									<input id="LikBasket" class="submit am-btn" title="加入购物车" type="submit" value="加入购物车" onclick="getNumber()">
+									<input style="background-color: red;color: white;" id="LikBasket" class="submit am-btn" title="加入购物车" type="submit" value="加入购物车" onclick="getNumber()">
 								</div>
 							</li>
 						</div>
@@ -184,35 +184,6 @@ document.getElementById('text_box').value=num;
 		</div>
 			
 		</div>
-		<link rel="stylesheet" href="layui/css/layui.css" media="all">
-
-	<script src="layui/layui.js" charset="utf-8"></script>
-	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
-	<script>
-	layui.use(['laypage', 'layer'], function(){
-  var laypage = layui.laypage
-  ,layer = layui.layer;
-  
-//完整功能
-  laypage.render({
-    elem: 'pageDiv'
-    ,count: ${pd.total} 
-    ,curr:${pd.page}
-   ,limit:${pd.pageSize}
-    ,layout: ['count', 'prev', 'page','limit','next', 'skip']
-    ,jump: function(obj,first){
-      console.log(obj);
-      console.log(first);
-    //首次不执行
-      if(!first){
-        //do something
-    	  location.href="os.do?op=sel&page="+obj.curr+"&pageSize="+obj.limit+"&keywords="+document.getElementById("keywords").value;
-      }
-    }
-  });
- 
-});
-</script>
 	</section>
 	<!-- 商城快讯 End -->
 

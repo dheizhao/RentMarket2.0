@@ -1,5 +1,5 @@
-﻿﻿﻿<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
@@ -25,7 +25,7 @@
 <script>DD_belatedPNG.fix('*');</script><![endif]-->
 <!--/meta 作为公共模版分离出去-->
 
-<title>商品信息管理</title>
+<title>商品审核</title>
 <meta name="keywords" content="易点租  方便你的生活">
 <meta name="description" content="易点租  方便你的生活">
 </head>
@@ -63,6 +63,7 @@
 </div>
 </header>
 <!--/_header部分 结束位置-->
+
 <!-- aside部分  作为左边导航-->
 <aside class="Hui-aside">
 	
@@ -71,7 +72,7 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i>用户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="user-list.jsp" title="用户信息">用户信息</a></li>
+					<li><a href="users-list.html" title="用户信息">用户信息</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -87,7 +88,7 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i>商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="goods-list.jsp" title="商品信息">商品信息</a></li>
+					<li><a href="goods-list.html" title="商品信息">商品信息</a></li>
 					<li><a href="goods-category.html" title="分类管理">分类管理</a></li>
 		</ul>
 	</dd>
@@ -105,7 +106,7 @@
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 广告信息管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="adv-list.html" title="会员列表">广告列表</a></li>
+						<li><a href="adv-list.html" title="会员列表">广告列表</a></li>
 		</ul>
 	</dd>
 </dl>
@@ -147,40 +148,39 @@
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
+	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 商品管理 <span class="c-gray en">&gt;</span> 商品审核 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 	<div class="Hui-article">
-	
-		<article class="cl pd-20"> 
-		<div class="text-c">
-				
-				
-				<input type="text" name="" id="" placeholder=" 商品类型名称" style="width:250px" class="input-text">
-				<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜类型名称</button>
-			</div>
-			
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> 
+		<article class="cl pd-20">
+		<div class="cl pd-5 bg-1 bk-gray mt-20"> 
 			<span class="l">
 			<a href="javascript:;" onclick="batchIds()" class="btn btn-danger radius">
 			<i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> 
-			<a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
-			<i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> 
+			</span> 
 			<span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
+		
+			<div class="text-c"> 日期范围：
+				<input type="text" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}'})" id="logmin" class="input-text Wdate" style="width:120px;">
+				-
+				<input type="text" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d'})" id="logmax" class="input-text Wdate" style="width:120px;">
+				<input type="text" name="" id="" placeholder=" 商品名称" style="width:250px" class="input-text">
+				<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜商品</button>
+			</div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-bg table-hover table-sort">
 					<thead>
-						<tr class="text-c" >
+						<tr class="text-c">
+							<th width="40"><input name="" type="checkbox" value=""></th>
+							<th width="80">商品Id</th>
+							<th width="100">商品名称</th>
+							<th width="100">商品图片</th>
 							
-							<th width="25" height="35"><input type="checkbox" name="" value="" id="employeeCheckAll" ></th>
-							<th width="70" height="35">商品Id</th>
-							<th width="200" height="35">商品名称</th>
-							<th width="80" height="35">商品图片</th>
-							<th width="80" height="35">商品价格</th>
-							<th width="120" height="35">商品数量</th>
-							<th width="80" height="35">商品状态</th>
-							<th width="100" height="35">操作</th>
+							<th width="80">发布用户</th>
+							<th width="150">发布时间</th>
+							<th width="60">审核状态</th>
+							<th width="100">操作</th>
 						</tr>
 					</thead>
-					<tbody>					
-					</tbody>
+					
 				</table>
 			</div>
 		</article>
@@ -190,7 +190,7 @@
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
 <script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.page.js"></script>
 <!--/_footer /作为公共模版分离出去-->
 
@@ -203,8 +203,8 @@
 	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
 	"bStateSave": true,//状态保存
 	"aoColumnDefs": [
-		//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-		{"orderable":false,"aTargets":[0,4]}// 不参与排序的列
+	  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+	  {"orderable":false,"aTargets":[0,8]}// 制定列不参与排序
 	]
 }); */
 /*单击数据行 被选中，再次单击取消选中*/
@@ -272,8 +272,8 @@ $(document).on("click",'.empedit',function()
 		fix: false, //不固定
 		maxmin: true,
 		shade:0.4,
-		title: '编辑商品信息', //显示的标题
-		content: 'goods-edit.html', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
+		title: '编辑商品审核信息', //显示的标题
+		content: 'goodstatus-edit.html', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
 		success: function(layero, index){ //success可以不写
             var body = layer.getChildFrame('body',index);//建立父子联系
             var iframeWin = window[layero.find('iframe')[0]['name']];
@@ -299,7 +299,7 @@ function article_edit(title,url,id,w,h){
 /*资讯-删除*/
 function member_del(obj,id){
 layer.confirm('确认要删除吗？',function(index){
-		$.get("../gsback.do","id="+id+"&op=del",function(data,status){
+		$.get("../gsback.do","id="+id+"&op=delGoodsChecked",function(data,status){
 			console.log(data+","+status);
 			if(data){
 			$(obj).parents("tr").remove();
@@ -408,7 +408,7 @@ function article_shenqing(obj,id){
     //路径配置,此处配置的路径是获取数据的重要手段;
     employee.url="/"; //  这里 / 表示的是localhost/
     employee.requestUrl = {
-        queryList:employee.url+"RentMarket2.0/gsback.do?op=sel"  //数据是从servlet一侧返回的 json格式
+        queryList:employee.url+"RentMarket2.0/gsback.do?op=checkedGoods"  //数据是从servlet一侧返回的 json格式
     };
 
     employee.search={
@@ -445,9 +445,9 @@ function article_shenqing(obj,id){
         {"data": "goodId"},
         {"data": "goodName"},
         {"data": "goodImgAdd"},
-        {"data": "goodPrice"},
-        {"data": "goodCount"},
-        {"data": "goodState"},
+        {"data": "userName"},
+        {"data": "releaseDate"},
+        {"data": "releaseState"},
        
         {    //创建操作那个列
         	"data":"extn",
@@ -600,6 +600,7 @@ function article_shenqing(obj,id){
         //鼠标经过高亮
         var lastIdx = null;
         eloancn.table.grid.on( 'mouseover', 'td', function () {
+
             if(typeof(eloancn.table.grid.cell(this).index())!="undefined"){
                 var colIdx = eloancn.table.grid.cell(this).index().column;
                 if ( colIdx !== lastIdx ) {
@@ -686,7 +687,7 @@ function article_shenqing(obj,id){
         }else{
             for(var i=0;i<uuids.length;i++){
                 //uuid = uuid+uuids[i].goodId+",";
-                uuid.push(uuids[i].goodId)
+                uuid.push(uuids[i].goodId);
             }
             //alert(uuid);
             layer.confirm('确认要删除吗？',function(index){

@@ -124,6 +124,8 @@
  										%>
 									</a> <em class="s-name" style="font-size: 20px"><%=userName%><span class="vip1"
 										style="background-image: url('theme/images/vip.png');"></span></em>
+										<br>
+										<input type="button" value="上传头像">
 										<%
 											} 
 										%>
@@ -136,8 +138,7 @@
 						<!--订单 -->
 						<div class="m-order">
 							<div class="s-bar">
-								<i class="s-icon"></i>我的订单 <a class="i-load-more-item-shadow"
-									href="order.jsp">全部订单</a>
+								<i class="s-icon"></i>我的订单 
 							</div>
 							<ul>
 								<li><a href="order.jsp"><i><img
