@@ -511,7 +511,6 @@
 </section>
 <!-- banner End -->
 
-
 <!--- advert begin-->
 
 <!-- advert End -->
@@ -550,7 +549,7 @@
     </div>
     <div class="news-list fr">
         <div class="time-title time-clear"><h2>今日值得租</h2></div>
-        <div class="news-right"><a href="#"><img src="theme/img/ad/pd07.jpg"></a></div>
+        <div class="news-right"><a href="#"><img src="theme/img/pd/pd07.jpg"></a></div>
     </div>
 </div>
 <!-- 卖场推荐 End -->

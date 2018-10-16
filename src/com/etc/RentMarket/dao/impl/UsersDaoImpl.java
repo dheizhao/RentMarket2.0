@@ -91,4 +91,13 @@ public class UsersDaoImpl implements UsersDao {
 		String sql="delete users,usersdetail from users,usersdetail where users.userName=usersdetail.userName and users.userId in ("+userId+")";
 		return BaseDao.execute(sql)>0;
 	}
+/**
+ * 上传头像
+ */
+	@Override
+	public boolean uploadUserImg(String fileName,String userName) {
+		// TODO Auto-generated method stub
+		String sql = "update users set userphoto = ? where userName = ?";
+		return BaseDao.execute(sql, fileName,userName)>0;
+	}
 }

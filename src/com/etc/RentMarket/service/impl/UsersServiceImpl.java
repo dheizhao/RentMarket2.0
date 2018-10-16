@@ -78,4 +78,10 @@ public class UsersServiceImpl implements UsersService {
 		// TODO Auto-generated method stub
 		return ud.delMuchUesr(userId);
 	}
+
+	@Override
+	public boolean uploadUserImg(String fileName, String userName) {
+		// TODO Auto-generated method stub
+		return ud.uploadUserImg(fileName, userName);
+	}
 }
