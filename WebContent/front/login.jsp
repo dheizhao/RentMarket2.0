@@ -17,7 +17,7 @@
 		<script src="theme/js/jquery-3.1.1.min.js"></script>
 		<script src="theme/js/checkcode.js"></script>
 		<script type="text/javascript">
-			function confirm(){
+			/* function confirm(){
 					if (($("#userName").val()).length==0) {
 						$("#notice0").show().html("*用户名不能为空");
 						setTimeout(function(){ $("#notice0").hide(); }, 2000);
@@ -29,8 +29,8 @@
 					}else{
 						return true;
 					}
-			}
-		</script>
+			}  */
+		</script> 
 	</head>
 
 	<body>
@@ -41,8 +41,6 @@
 				</a> <b></b>
 			</div>
 
-			<a href="#" class="q_link fr"> <b class="fl"></b> 登录页面，改进意见
-			</a>
 		</div>
 		<div id="content">
 			<div class="login-wrap">
@@ -59,17 +57,17 @@
 							<div class="msg-wrap"></div>
 							<div class="mc">
 								<div class="form">
-									<form action="../us.do?op=login" id="formlogin" method="post"  onSubmit="return confirm();">
+									<form action="../us.do?op=login" id="formlogin" method="post"  >
 										<div class="item item-fore1 item-error">
 											<label for="userName" class="login-label name-label"></label>
-											<input type="text" name="userName" id="userName" class="itxt" tabindex="1" autocomplete="off" placeholder="邮箱/用户名/已验证手机">
+											<input type="text" name="userName" id="userName" class="itxt" tabindex="1" autocomplete="off" placeholder="邮箱/用户名/已验证手机" >
 											<p id="notice0" class="hide" style="color: red;font-size: 15px;text-align: center;"></p>
 											<span class="clear-btn" style="display: inline;"></span>
 										</div>
 										<!-- 密码输入框fore2 -->
 										<div id="entry" class="item item-fore2" style="visibility: visible">
 											<label class="login-label pwd-label" for="userPwd"></label>
-											<input type="password" id="userPwd" name="userPwd" class="itxt itxt-error" tabindex="2" autocomplete="off" placeholder="密码">
+											<input type="password" id="userPwd" name="userPwd" class="itxt itxt-error" tabindex="2" autocomplete="off" placeholder="密码" >
 											<p id="notice1" class="hide" style="color: red;font-size: 15px;text-align: center;"></p>
 											<span class="clear-btn" style="display: inline;"></span> <span class="capslock" style="display: none;"> <b></b> 大小写锁定已打开
 										</span>
@@ -223,7 +221,27 @@
 	<script src="gt.js"></script>
 	<script>
 		var handler2 = function(captchaObj) {
-
+			 $("#loginsubmit").click(function (e) {
+	            var result = captchaObj.getValidate();
+	            if (($("#userName").val()).length==0) {
+					$("#notice0").show().html("*用户名不能为空");
+					setTimeout(function(){ $("#notice0").hide(); }, 2000);
+					return false;
+				} else if(($("#userPwd").val()).length==0){
+					$("#notice1").show().html("*密码不能为空");
+					setTimeout(function(){ $("#notice1").hide(); }, 2000);
+					return false;
+				}
+				else if (!result) {
+	                $("#notice2").show();
+	                setTimeout(function () {
+	                    $("#notice2").hide();
+	                }, 2000);
+	                return false;
+	            } else {
+	            	return true;
+	            }
+	        });
 			// 将验证码加到id为captcha的元素里，同时会有三个input的值用于表单提交
 			captchaObj
 				.appendTo("#captcha2");

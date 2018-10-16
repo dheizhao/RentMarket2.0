@@ -412,7 +412,6 @@ p {
 									<a href="" class="ecolor610">车载CD</a>
 								</p>
 
-
 							</div>
 						</div>
 
@@ -457,6 +456,33 @@ p {
 
 	<!-- advert End -->
 
+<!-- 卖场推荐 begin -->
+<div class="container-c time-lists clearfix">
+    <div class="time-list fl">
+        <div class="time-title time-clear"><h2>卖场推荐</h2><a href="javascript:;" class="pc-spin fr">换一换</a> </div>
+        <div class="time-poued clearfix">
+            <a href="goodDetail.jsp?goodId=42"><img src="theme/img/pd/pd01.jpg"></a>
+            <a href="goodDetail.jsp?goodId=43"><img src="theme/img/pd/pd02.jpg"></a>
+            <a href="goodDetail.jsp?goodId=44"><img src="theme/img/pd/pd03.jpg"></a>
+            <a href="goodDetail.jsp?goodId=35"><img src="theme/img/pd/pd06.jpg"></a>
+        </div>
+    </div>
+    <div class="news-list fr">
+        <div class="time-title time-clear"><h2>今日值得租</h2></div>
+        <div class="news-right"><a href="#"><img src="theme/img/pd/pd07.jpg"></a></div>
+    </div>
+</div>
+<!-- 卖场推荐 End -->
+ 	<%
+	List<Good> good=(List<Good>)request.getAttribute("Good"); //商品集合
+	String goodPath="theme/img/pd/";//存放商品的绝对路径	
+	%>
+	
+ 	<%
+ 	if(good==null){//为空就跳转到Servlet获取数据
+ 	%>
+		<jsp:forward page="../GoodServlet"></jsp:forward>
+		
 	<%
 		List<Ad> ad = (List<Ad>) request.getAttribute("Ad"); //广告集合
 		String adPath = "theme/img/ad_img/";//存放广告的绝对路径
@@ -641,6 +667,7 @@ p {
 									￥<%=pg.getGoodPrice()%>/月
 								</div>
 							</li>
+							
 							<%
 								}
 							%>
