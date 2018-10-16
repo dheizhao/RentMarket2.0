@@ -23,6 +23,18 @@
 <link href="theme/css/amazeui.css" rel="stylesheet" type="text/css">
 <link href="theme/css/personal.css" rel="stylesheet" type="text/css">
 <link href="theme/css/systyle.css" rel="stylesheet" type="text/css">
+<script src="theme/js/jquery-3.1.1.min.js"></script>
+<!-- <script type="text/javascript">
+	 $("#upload").click(function() {
+					if (document.all.file1.value=="") {
+						$("#notice0").show().html("*请先点击头像选择文件");
+						setTimeout(function(){ $("#notice0").hide(); }, 2000);
+						return false;
+					} else{
+						return true;
+					}
+			}  
+		</script>  -->
 </head>
 <body>
 
@@ -111,21 +123,29 @@
 							<div class="m-userinfo"
 								style="background: url(theme/images/header-bg1.jpg);">
 								<div class="m-baseinfo">
-									<a href="#"> <img
-										src="theme/images/getAvatar.do.jpg"> 
 										<%
-											
 											if(session.getAttribute("user")==null){
 												response.sendRedirect("login.jsp");
 												return;
 											}else{
  											User user = (User) session.getAttribute("user");
  											String userName = user.getUserName();
+ 											UsersService us = new UsersServiceImpl();
+ 											List<User> list = us.getUserByUserName(userName);
  										%>
+										<form name="form1" action="${pageContext.request.contextPath}/us.do?op=upload" method="post" enctype="multipart/form-data">
+											<a href="#"> <img src="${pageContext.request.contextPath}/avatar/<%=list.get(0).getUserphoto() %>" onclick="document.form1.picpath.click()"> 
+　											<input type="file" name="picpath" id="picpath" style="display:none;" onChange="document.form1.path.value=this.value">
+　											<input name="path" readonly style="margin-left: 65px;background-color:  transparent;border: 0;width: 300px;height:24px;margin-top: -80px"><br>
+											<input type="submit" id="upload" value="上传" style="margin-left: 71px;margin-top: -65px;width: 50px;border: 0;background-color: #0080FF;color: white;">
+											<input type="hidden" name="userName" value="${sessionScope.user.userName}">
+											<p id="notice0" class="hide" style="color: red;font-size: 15px;text-align: center;margin-left: 130px;margin-top: -45px;"></p>
+										</form>
+										
+										
 									</a> <em class="s-name" style="font-size: 20px"><%=userName%><span class="vip1"
 										style="background-image: url('theme/images/vip.png');"></span></em>
 										<br>
-										<input type="button" value="上传头像">
 										<%
 											} 
 										%>

@@ -1,14 +1,22 @@
 package com.etc.RentMarket.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.etc.RentMarket.DBUtil.MD5Util;
 import com.etc.RentMarket.entity.User;
@@ -139,8 +147,78 @@ public class UsersServlet extends HttpServlet {
 					request.getSession().setAttribute("user", user);
 				}
 			}
+		}else if ("upload".equals(op)) {
+			//接收userName
+			String fileName = "";
+			DiskFileItemFactory factory = new DiskFileItemFactory();
+
+			// 得到一个文件上传处理的临时目录
+			ServletContext servletContext = this.getServletConfig()
+					.getServletContext();
+			File repository = (File) servletContext
+					.getAttribute("javax.servlet.context.tempdir");
+			factory.setRepository(repository);
+
+			// ServletFileUpload 核心对象来做文件的上传操作
+			ServletFileUpload upload = new ServletFileUpload(factory);
+
+			// 解析request对象
+			try {
+				List<FileItem> items = upload.parseRequest(request);
+
+				// List的处理 可以使用foreach 也可以用迭代器
+				// Process the uploaded items
+				Iterator<FileItem> iter = items.iterator();
+				while (iter.hasNext()) {
+					// FileItem 一个fileItem理解为一个表单的元素对象
+					// 按照之前的表单 两个item 文本框 文件域
+					FileItem item = iter.next();
+
+					// isFormField() 如果这个item是表单域（表达实际上就是 非文件上传的部分,非文件域）
+					if (item.isFormField()) {
+
+						String name = item.getFieldName();
+						// 其实item.getString的方法有两个重载的方法
+						// item.getString(arg0) ==>字符串参数就是一个编码格式的字符串
+						String value = item.getString("utf-8");
+						//接收表单中文本域的值
+						if (name.equals("userName")) {
+							userName = value;
+						}
+						
+					} else {
+						// 文件域的处理
+						String fieldName = item.getFieldName();
+						fileName = item.getName(); // 文件名
+						String contentType = item.getContentType();
+						boolean isInMemory = item.isInMemory();
+						long sizeInBytes = item.getSize(); // 大小
+						// path应该如何来赋值？ 这个文件上传之后的实际目录是哪里 ->还要将文件名写完整
+						// 分析 实际上应该是 tomcat下的webapps/工程名/某个目录 暂时定为 imgs
+						String path = "C:\\Users\\Administrator\\git\\RentMarket2.0\\WebContent\\avatar\\" + fileName;
+						// 构建一个FIle对象出来
+						File uploadedFile = new File(path);
+						// write写 实际就是文件上传的具体动作
+						item.write(uploadedFile);
+
+					}
+				}
+
+			} catch (FileUploadException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			boolean flag = us.uploadUserImg(fileName, userName);
+			if (flag) {
+				request.getRequestDispatcher("front/user-info.jsp").forward(request, response);
+			}
 		}
-	}
+		
+		}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

@@ -12,10 +12,11 @@ public class UserTest {
 		// TODO Auto-generated method stub
 		//查询用户是否存在
 		String userName = "azhuge";
+		String fileName = "b.jpg";
 		UsersService us = new UsersServiceImpl();
-		List<User> list = us.getUserByUserName(userName);
-		if (list.size()!=0) {
-			System.out.println("exist");
+		boolean flag = us.uploadUserImg(fileName, userName);
+		if (flag) {
+			System.out.println("success");
 		}else {
 			System.out.println("notExist");
 		}

@@ -49,4 +49,11 @@ public interface UsersService {
 	 * @return true 操作成功  false 操作失败
 	 */
 	boolean delMuchUesr(String userId);
+	
+	/**
+	 * 上传用户头像
+	 * @param fileName
+	 * @return
+	 */
+	boolean uploadUserImg(String fileName,String userName);
 }
