@@ -20,7 +20,7 @@ import com.google.gson.Gson;
  * Servlet implementation class AdServlet
  */
 @WebServlet("/as.do")
-public class AdServlet extends HttpServlet {
+public class AdvBackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	AdService as = new AdServiceImpl();
 	boolean flag;
@@ -28,7 +28,7 @@ public class AdServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AdServlet() {
+	public AdvBackServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
