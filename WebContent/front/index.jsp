@@ -542,10 +542,10 @@
     <div class="time-list fl">
         <div class="time-title time-clear"><h2>卖场推荐</h2><a href="javascript:;" class="pc-spin fr">换一换</a> </div>
         <div class="time-poued clearfix">
-            <a href="goodDetail.jsp?goodId=44"><img src="theme/img/pd/pd01.jpg"></a>
-            <a href="goodDetail.jsp?goodId=35"><img src="theme/img/pd/pd02.jpg"></a>
-            <a href="goodDetail.jsp?goodId=45"><img src="theme/img/pd/pd03.jpg"></a>
-            <a href="goodDetail.jsp?goodId=46"><img src="theme/img/pd/pd06.jpg"></a>
+            <a href="goodDetail.jsp?goodId=42"><img src="theme/img/pd/pd01.jpg"></a>
+            <a href="goodDetail.jsp?goodId=43"><img src="theme/img/pd/pd02.jpg"></a>
+            <a href="goodDetail.jsp?goodId=44"><img src="theme/img/pd/pd03.jpg"></a>
+            <a href="goodDetail.jsp?goodId=35"><img src="theme/img/pd/pd06.jpg"></a>
         </div>
     </div>
     <div class="news-list fr">
