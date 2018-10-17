@@ -78,4 +78,20 @@ public class UsersServiceImpl implements UsersService {
 		// TODO Auto-generated method stub
 		return ud.delMuchUesr(userId);
 	}
+	/**
+	 * 通过用户名得到用户Id
+	 * @param userName 用户名
+	 * @return 用户Id
+	 */
+	@Override
+	public int getUserIdByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return ud.getUserIdByUserName(userName);
+	}
+
+	@Override
+	public boolean uploadUserImg(String fileName, String userName) {
+		// TODO Auto-generated method stub
+		return ud.uploadUserImg(fileName, userName);
+	}
 }

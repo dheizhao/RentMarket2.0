@@ -91,4 +91,26 @@ public class UsersDaoImpl implements UsersDao {
 		String sql="delete users,usersdetail from users,usersdetail where users.userName=usersdetail.userName and users.userId in ("+userId+")";
 		return BaseDao.execute(sql)>0;
 	}
+	/**
+	 * 通过用户名得到用户Id
+	 * @param userName 用户名
+	 * @return 用户Id
+	 */
+	@Override
+	public int getUserIdByUserName(String userName) {
+		// TODO Auto-generated method stub
+		String sql="select * from users where userName=?";
+		List<User> list = (List<User>)BaseDao.select(sql,  User.class, userName);
+		int userId=list.get(0).getUserId();
+		return userId;
+	}
+/**
+ * 上传头像
+ */
+	@Override
+	public boolean uploadUserImg(String fileName,String userName) {
+		// TODO Auto-generated method stub
+		String sql = "update users set userphoto = ? where userName = ?";
+		return BaseDao.execute(sql, fileName,userName)>0;
+	}
 }
