@@ -410,10 +410,18 @@ p {
 								</p>
 								<p>
 									<a href="" class="ecolor610">车载CD</a>
+<<<<<<< HEAD
 								</p>
+=======
+								</p>
+>>>>>>> branch 'master' of https://github.com/dheizhao/RentMarket2.0.git
 
 							</div>
+<<<<<<< HEAD
 						</div>
+=======
+						</div>
+>>>>>>> branch 'master' of https://github.com/dheizhao/RentMarket2.0.git
 
 					</div>
 				</div>
@@ -450,6 +458,14 @@ p {
 		</div>
 	</section>
 	<!-- banner End -->
+<<<<<<< HEAD
+
+
+	<!--- advert begin-->
+
+	<!-- advert End -->
+=======
+>>>>>>> branch 'master' of https://github.com/dheizhao/RentMarket2.0.git
 
 
 	<!--- advert begin-->
