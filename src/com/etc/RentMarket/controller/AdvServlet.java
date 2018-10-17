@@ -21,8 +21,6 @@ import com.etc.RentMarket.service.impl.GoodServiceImpl;
 @WebServlet("/AdvServlet")
 public class AdvServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -44,7 +42,6 @@ public class AdvServlet extends HttpServlet {
 		request.setAttribute("Ad", list);
 		request.getRequestDispatcher("front/index.jsp").forward(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -33,17 +33,6 @@ public class EvaluateDaoImpl implements EvaluateDao {
 		String sql="delete evaluate,reevaluate from evaluate,reevaluate where evaluate.evaluateId=reevaluate.evaluateId and evaluate.evaluateId=?";
 		return BaseDao.execute(sql, evaluateId)>0;
 	}
-	/**
-	 * 后台批量删除评价方法同时删除评价表和回复评价表
-	 * @param evaluateId
-	 * @return true 操作成功  false 操作失败
-	 */
-	@Override
-	public boolean delMuchEvaluate(String evaluateId) {
-		// TODO Auto-generated method stub
-		String sql="delete evaluate,reevaluate from evaluate,reevaluate where evaluate.evaluateId=reevaluate.evaluateId and evaluate.evaluateId in ("+ evaluateId+")";
-		return BaseDao.execute(sql)>0;
-	}
 	//以下是回复相关的操作
 		/**
 		 * 后台得到所有回复方法
@@ -67,15 +56,17 @@ public class EvaluateDaoImpl implements EvaluateDao {
 			String sql="delete from reevaluate where cid=?";
 			return BaseDao.execute(sql, cid)>0;
 		}
+		
 		/**
-		 * 后台批量删除回复评价方法
-		 * @param cid
-		 * @return true 操作成功  false 操作失败
+		 * 前台获得我的评论
 		 */
 		@Override
-		public boolean delMuchEvaluateci(String cid) {
+		public List<EvaluateBack> qEvaluate(String userName, String goodName) {
 			// TODO Auto-generated method stub
-			String sql="delete from reevaluate where cid in("+cid+")";
-			return BaseDao.execute(sql)>0;
+			String sql = "select evaluateId,evaluateContent from evaluate where userId =(select userId from users where userName = ?) and goodId = (select goodId from good where goodName = ?)";
+			List<EvaluateBack> list = (List<EvaluateBack>) BaseDao.select(sql, EvaluateBack.class, userName,goodName);
+			return list;
 		}
+		
+		
 }

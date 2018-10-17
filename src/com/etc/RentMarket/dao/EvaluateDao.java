@@ -48,4 +48,6 @@ public interface EvaluateDao {
 	 * @return true 操作成功  false 操作失败
 	 */
 	boolean delMuchEvaluateci(String cid);
+
+	List<EvaluateBack> qEvaluate(String userName, String goodName);
 }

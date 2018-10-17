@@ -592,8 +592,6 @@ p {
 			</div>
 		</div>
 	</div>
-
-
 	<!-- 获取servlet中广告的路径,通过判断状态是否被激活决定广告是否挂出 -->
 	<div class="containers main-banner">
 		<a href="#">

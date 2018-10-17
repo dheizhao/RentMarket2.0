@@ -1,5 +1,12 @@
-<%@page import="com.etc.RentMarket.entity.Order"%>
+<%@page import="com.etc.RentMarket.service.impl.EvaluateServiceImpl"%>
+<%@page import="com.etc.RentMarket.service.EvaluateService"%>
+<%@page import="com.etc.RentMarket.entity.EvaluateBack"%>
+<%@page import="com.etc.RentMarket.entity.User"%>
+<%@page import="com.etc.RentMarket.entity.Orderdetail"%>
+<%@page import="com.etc.RentMarket.service.impl.GoodServiceImpl"%>
+<%@page import="com.etc.RentMarket.service.GoodService"%>
 <%@page import="java.util.List"%>
+<%@page import="com.etc.RentMarket.entity.Order"%>
 <%@page import="com.etc.RentMarket.service.impl.OrderServiceImpl"%>
 <%@page import="com.etc.RentMarket.service.OrderService"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -23,17 +30,26 @@
 	<script type="text/javascript" src="theme/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript">
     	$(document).ready(function () {
-    		//发表评论的toggle
-    		$("#rediv").hide();
-    		$("#release").click(function () {
-    			$("#rediv").toggle(1000);
+    		$(".rediv").hide();
+    		$(".release").click(function () {
+    			$(".rediv").toggle(1000);
     		});
-    		//111111111
-    		
-    		
-    		
-    	});                      
+    	}); 
+    	$(document).ready(function () {
+    		$(".seecomment").click(function () {
+    			$(".myre").toggle(1000);
+    		});
+    	});    
     </script>
+    	<script language="javascript">
+<!--
+/*屏蔽所有的js错误*/-->
+	function killerrors() {
+	return true;
+	}
+	window.onerror = killerrors;
+
+	</script>
  </head>
  <body>
 
@@ -65,7 +81,6 @@
 	<!-- header End -->
 
 <div class="containers"><div class="pc-nav-item"><a href="#">首页</a> &gt; <a href="#">会员中心 </a> &gt; <a href="#">商城快讯</a></div></div>
-
 <!-- 商城快讯 begin -->
 <section id="member">
     <div class="member-center clearfix">
@@ -98,46 +113,72 @@
             <div class="member-border">
                <div class="member-column clearfix">
                    <span class="co1">商品信息</span>
-                   <span class="co2">购买时间</span>
+                   <span class="co2">租赁时间</span>
                    <span class="co3">评价状态</span>
                </div>
-               
-               <%
-               	OrderService os = new OrderServiceImpl();
-               %>
                <div class="member-class clearfix">
                    <ul>
-                       <li class="clearfix">
-                           <div class="sp1">
-                               <span class="gr1"><a href="#"><img width="60" height="60" about="" title="" src="theme/img/pd/m1.png"></a></span>
-                               <span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-                               <span class="gr3">X1</span>
+                
+                            <%                           
+                                OrderService os = new OrderServiceImpl(); 
+                            	User u = (User)request.getSession().getAttribute("user");
+                            	List<Order> list2 = os.queryOrdersIdByuserName(u.getUserName());
+                            	for(int i = 0;i<list2.size();i++){
+                            	int orderId = list2.get(i).getOrderId();
+                                List<Order> list = os.queryOrdersByOrderId2(orderId);
+                                for(Order o : list){	
+                             %>
+                              <li class="clearfix">
+                           <div class="sp1">                                                                                         
+                               <span class="gr1"><a href="#"><img width="60" height="60" about="" title="" src="theme/img/pd/<%=o.getGoodImg()%>"></a></span>
+                               <span class="gr2"><a href="#"><%=o.getGoodName()%></a></span>
+                               <span class="gr3">x<%=o.getGoodNumber()%></span>
                            </div>
-                           <div class="sp2">2015 - 09 -  02</div>
-                           <div class="sp3"><a href="#" id="release">发表评价</a> </div>
-                       </li>
-                   </ul>
-               </div>
-               <div class="member-setup clearfix" id="myre">
-               	<p></p>
-               </div>
-               <div class="member-setup clearfix" id="rediv" >
-                   <ul>
-						<form action="" method="post">
-                       <li class="clearfix">
-                           <div class="member-score fl"><i class="reds">*</i>商品评价：</div>
-                           <div class="member-star fl">
-                               <textarea maxlength="200"></textarea>
-                              
+                           <div class="sp2"><%=o.getRentDate()%></div>
+                           <div class="sp3">
+                           <a style="cursor:pointer" class="release">发表评价</a>
+                           <a class="seecomment" style="margin-top: 3px; margin-bottom: 20px;cursor:pointer">查看评价</a>
                            </div>
-                            <button id="resubmit" type="submit" style="border: 0px solid red;background-color: red;color: white;margin-top: 10px;margin-left:90px ;width: 60px;height: 30px;">提交评价</button>
                        </li>
-                      
-                       </form>
-                   </ul>
-               </div>
+                       <!-- 评论区  -->
+                        <%
+                	EvaluateService es = new EvaluateServiceImpl();
+                	List<EvaluateBack> list3 = es.getEvaluate(u.getUserName(), o.getGoodName());
+                	for(int j = 0;j<list3.size();j++){
+                %>
+               <div class="member-setup clearfix myre" style="float: left;">
+                <div style="width: 970px;">
+                 <p style="margin-right: 300px"><img src="theme/icon/user.png" style="width: 30px; height: 30px; margin-top: 10px;margin-right:10px ; margin-left: 3px;"/> 我的评论：</p>
+                <div id="commentarea">
                
-
+                 <p style="margin-left: 30px;"><%=list3.get(j).getEvaluateContent() %></p>
+                 
+                </div>
+                </div>
+                </div>
+                <%
+                	}
+                 %>
+               <div  class="rediv" style="clear: both;">
+                   <ul>
+                       <li class="clearfix" >
+                           <div class="member-score fl" style="margin-top: 10px;"><i class="reds">*</i>商品评价：</div>
+                           <div class="member-star fl">
+                               <textarea maxlength="200" style="margin-top: 10px;"></textarea>    
+                           </div>
+                           <button id="resubmit" type="submit" style="border: 0px solid red;background-color: red;color: white;margin-top: 20px;margin-left:90px ;width: 60px;height: 30px;">提交评价</button>
+                       </li> 
+                   </ul>
+               </div>
+               <!--评论区 -->
+                             <%
+                                }
+                            	}
+                             %>                       
+                      
+                   </ul>
+               </div>
+                
             </div>
         </div>
     </div>
@@ -155,9 +196,7 @@
             <ul>
                 <li><a href="#">保障范围 </a> </li>
                 <li><a href="#">退货退款流程</a> </li>
-                
-                
-                
+
             </ul>
         </div>
         <div class="aui-footer-list clearfix">

@@ -54,8 +54,7 @@ public class AddrServlet extends HttpServlet {
 			boolean flag = as.addAddr(userName, userRealName, userAddress, userPhone);
 			if (flag) {
 				request.getRequestDispatcher("ads.do?op=sel").forward(request, response);
-			}
-			
+			}			
 		}else if ("up".equals(op)) {
 			int userDetailId = Integer.parseInt(request.getParameter("userDetailId"));
 			String userRealName = request.getParameter("userRealName");

@@ -47,4 +47,12 @@ public interface OrderService {
 	public boolean delOrders(int orderId);//删除订单
 	
 	public boolean delMuchOrders(List<Integer> ordersIds);//批量删除订单
+
+
+	/**
+	 * 根据订单ID查询订单信息(包含图片)
+	 * @param orderId
+	 * @return
+	 */
+	List<Order> queryOrdersByOrderId2(int orderId);
 }
