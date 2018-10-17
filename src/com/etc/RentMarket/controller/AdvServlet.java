@@ -22,6 +22,7 @@ import com.etc.RentMarket.service.impl.GoodServiceImpl;
 public class AdvServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
