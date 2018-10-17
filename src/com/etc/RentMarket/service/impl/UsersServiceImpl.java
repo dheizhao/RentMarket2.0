@@ -78,6 +78,7 @@ public class UsersServiceImpl implements UsersService {
 		// TODO Auto-generated method stub
 		return ud.delMuchUesr(userId);
 	}
+
 	/**
 	 * 通过用户名得到用户Id
 	 * @param userName 用户名
@@ -88,6 +89,7 @@ public class UsersServiceImpl implements UsersService {
 		// TODO Auto-generated method stub
 		return ud.getUserIdByUserName(userName);
 	}
+
 
 	@Override
 	public boolean uploadUserImg(String fileName, String userName) {

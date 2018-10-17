@@ -299,7 +299,7 @@ function article_edit(title,url,id,w,h){
 function member_del(obj,id){
 layer.confirm('确认要删除吗？',function(index){
 		$.get("../gsback.do","id="+id+"&op=deltype",function(data,status){
-			console.log(data+","+status);
+			location.href="goods-category.jsp";
 			if(data){
 			$(obj).parents("tr").remove();
 			layer.msg('已删除!',{icon:1,time:1000});

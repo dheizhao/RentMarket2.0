@@ -91,6 +91,7 @@ public class UsersDaoImpl implements UsersDao {
 		String sql="delete users,usersdetail from users,usersdetail where users.userName=usersdetail.userName and users.userId in ("+userId+")";
 		return BaseDao.execute(sql)>0;
 	}
+
 	/**
 	 * 通过用户名得到用户Id
 	 * @param userName 用户名
@@ -104,6 +105,7 @@ public class UsersDaoImpl implements UsersDao {
 		int userId=list.get(0).getUserId();
 		return userId;
 	}
+
 /**
  * 上传头像
  */

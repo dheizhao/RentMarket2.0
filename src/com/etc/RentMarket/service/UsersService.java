@@ -49,12 +49,14 @@ public interface UsersService {
 	 * @return true 操作成功  false 操作失败
 	 */
 	boolean delMuchUesr(String userId);
+
 	/**
 	 * 通过用户名得到用户Id
 	 * @param userName 用户名
 	 * @return 用户Id
 	 */
 	int getUserIdByUserName(String userName);
+
 	
 	/**
 	 * 上传用户头像

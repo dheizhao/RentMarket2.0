@@ -1,3 +1,7 @@
+<%@page import="com.etc.RentMarket.entity.Good"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
  <head>
@@ -118,58 +122,13 @@
         </ul>
     </div>
     <div>
-        
-        <div class="pc-nav-digit clearfix">
-        
-            <ul>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/meidi洗衣机.jpg"></a></div>
-                    <div class="digit2"><a href="#">美的洗衣机 MG70-J11WDX 8成新</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/AUX空调.jpg"></a></div>
-                    <div class="digit2"><a href="#">奥克斯（AUX）2匹 定频 单冷 立柜式空调 KF-51LW/N+3 8成新</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/Haier洗衣机.jpg"></a></div>
-                    <div class="digit2"><a href="#">海尔（Haier） 波轮 洗衣机 顶开式 银灰色 红色盖 XQS60-Z1128</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/meidi洗衣机.jpg"></a></div>
-                    <div class="digit2"><a href="#">美的洗衣机 MG70-J11WDX 8成新</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/meidi洗衣机.jpg"></a></div>
-                    <div class="digit2"><a href="#">美的洗衣机 MG70-J11WDX 8成新</a></div>
-                </li>
-                 <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/威力洗衣机.jpg"></a></div>
-                    <div class="digit2"><a href="#">海尔（Haier） 波轮 洗衣机 顶开式 银灰色 红色盖 XQS60-Z1128</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/AUX空调.jpg"></a></div>
-                    <div class="digit2"><a href="#">奥克斯（AUX）2匹 定频 单冷 立柜式空调 KF-51LW/N+3 8成新</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/AUX空调.jpg"></a></div>
-                    <div class="digit2"><a href="#">奥克斯（AUX）2匹 定频 单冷 立柜式空调 KF-51LW/N+3 8成新</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/AUX空调.jpg"></a></div>
-                    <div class="digit2"><a href="#">奥克斯（AUX）2匹 定频 单冷 立柜式空调 KF-51LW/N+3 8成新</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/meidi洗衣机.jpg"></a></div>
-                    <div class="digit2"><a href="#">美的洗衣机 MG70-J11WDX 8成新</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/meidi洗衣机.jpg"></a></div>
-                    <div class="digit2"><a href="#">美的洗衣机 MG70-J11WDX 8成新</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/Haier洗衣机.jpg"></a></div>
-                    <div class="digit2"><a href="#">海尔（Haier） 波轮 洗衣机 顶开式 银灰色 红色盖 XQS60-Z1128</a></div>
-                </li>
+       	 <% 
+        		String imgPath="theme/img/pd/"; 
+
+        	%>
+        <div class="pc-nav-digit clearfix">     	
+	       <ul>
+                
             </ul>
         </div>
     </div>

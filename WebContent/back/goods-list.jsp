@@ -165,14 +165,16 @@
 			<a href="javascript:;" onclick="batchIds()" class="btn btn-danger radius">
 			<i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> 
 			<a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
-			<i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> 
+			<i class="Hui-iconfont">&#xe600;</i> 添加用户</a>
+			<!-- <input type="button" value="测试删除" name="btn1" id="btn"> -->
+			</span> 
 			<span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-bg table-hover table-sort">
 					<thead>
 						<tr class="text-c" >
 							
-							<th width="25" height="35"><input type="checkbox" name="" value="" id="employeeCheckAll" ></th>
+							<th width="25" height="35"><input type="checkbox" name="checkbox" value="" id="employeeCheckAll" ></th>
 							<th width="70" height="35">商品Id</th>
 							<th width="200" height="35">商品名称</th>
 							<th width="80" height="35">商品图片</th>
@@ -698,8 +700,13 @@ function article_shenqing(obj,id){
     			if(data){
     			//$("#"+eloancn.table.grid.rows(".selected")).parents("tr").remove();
     			layer.msg('已删除!',{icon:1,time:1000});
-				$("input[type='checkbox']:checked").remove('selected');
-
+    			location.href="goods-list.jsp";
+    			$("input[name='checkbox']:checked").each(function() { // 遍历选中的checkbox
+    	            n = $(this).parents("tr").index();  // 获取checkbox所在行的顺序
+    	            
+    	            $("table #example").find("tr:eq("+n+")").remove();
+    	            
+    	        });
     			}else{
     			layer.msg('删除失败!',{icon:2,time:1000});
     			}
@@ -747,6 +754,19 @@ function article_shenqing(obj,id){
     $(document).ready(function(){
         dataTablesInit(employee);
     });
+    
+</script>
+<script type="text/javascript">
+$(function(){  
+    $("input[name='btn1']").click(function() {
+        $("input[name='checkList']:checked").each(function() { // 遍历选中的checkbox
+            n = $(this).parents("tr").index();  // 获取checkbox所在行的顺序
+            console.log(n);
+            $("table#example").find("tr:eq("+n+")").remove();
+        });
+    });
+});
+
 </script>
 </body>
 </html>
