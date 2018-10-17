@@ -410,23 +410,23 @@ p {
 								</p>
 								<p>
 									<a href="" class="ecolor610">车载CD</a>
-<<<<<<< HEAD
+
 								</p>
-=======
-								</p>
->>>>>>> branch 'master' of https://github.com/dheizhao/RentMarket2.0.git
+
+								
+
 
 							</div>
-<<<<<<< HEAD
+
 						</div>
-=======
+
 						</div>
->>>>>>> branch 'master' of https://github.com/dheizhao/RentMarket2.0.git
+
 
 					</div>
 				</div>
 			</div>
-		</div>
+		
 	</header>
 	<!-- header End -->
 
@@ -458,21 +458,16 @@ p {
 		</div>
 	</section>
 	<!-- banner End -->
-<<<<<<< HEAD
 
-
-	<!--- advert begin-->
-
-	<!-- advert End -->
-=======
->>>>>>> branch 'master' of https://github.com/dheizhao/RentMarket2.0.git
 
 
 	<!--- advert begin-->
 
+
 	<!-- advert End -->
 
-<!-- 卖场推荐 begin -->
+ <!-- 卖场推荐 begin -->
+ <!--
 <div class="container-c time-lists clearfix">
     <div class="time-list fl">
         <div class="time-title time-clear"><h2>卖场推荐</h2><a href="javascript:;" class="pc-spin fr">换一换</a> </div>
@@ -487,17 +482,8 @@ p {
         <div class="time-title time-clear"><h2>今日值得租</h2></div>
         <div class="news-right"><a href="#"><img src="theme/img/pd/pd07.jpg"></a></div>
     </div>
-</div>
-<!-- 卖场推荐 End -->
- 	<%
-	List<Good> good=(List<Good>)request.getAttribute("Good"); //商品集合
-	String goodPath="theme/img/pd/";//存放商品的绝对路径	
-	%>
-	
- 	<%
- 	if(good==null){//为空就跳转到Servlet获取数据
- 	%>
-		<jsp:forward page="../GoodServlet"></jsp:forward>
+</div> -->
+
 		
 	<%
 		List<Ad> ad = (List<Ad>) request.getAttribute("Ad"); //广告集合
@@ -510,7 +496,7 @@ p {
 	<jsp:forward page="../AdvServlet"></jsp:forward>
 	<%
 		}
-	%>
+	%> 
 	<!-- 商城资讯 begin -->
 	<section id="pc-information">
 		<div class="containers">
@@ -519,7 +505,7 @@ p {
 				<div id="MarqueeDiv" class="MarqueeDiv">
 				<%for(Ad a:ad) {%>
 					<a href="new.html"><%=a.getad_content() %></a> 
-						<%} %>
+						<%} %> 
 				</div>
 				<a href="new.html" style="position: absolute; right: 15px; top: 0;">
 					更多资讯</a>
@@ -537,14 +523,14 @@ p {
 				<a href="javascript:;" class="pc-spin fr">换一换</a>
 			</div>
 			<div class="time-poued clearfix">
-				<a href="goodDetail.jsp?goodId=44"><img
-					src="theme/img/ad/pd01.jpg"></a> <a
-					href="goodDetail.jsp?goodId=35"><img
-					src="theme/img/ad/pd02.jpg"></a> <a
-					href="goodDetail.jsp?goodId=45"><img
-					src="theme/img/ad/pd03.jpg"></a> <a
-					href="goodDetail.jsp?goodId=46"><img
-					src="theme/img/ad/pd06.jpg"></a>
+				<a href="goodDetail.jsp?goodId=44">
+				<img src="theme/img/pd/pd01.jpg"></a> 
+				<a href="goodDetail.jsp?goodId=35">
+				<img src="theme/img/pd/pd02.jpg"></a> 
+				<a href="goodDetail.jsp?goodId=45">
+				<img src="theme/img/pd/pd03.jpg"></a> 
+				<a href="goodDetail.jsp?goodId=46">
+				<img src="theme/img/pd/pd06.jpg"></a>
 			</div>
 		</div>
 		<div class="news-list fr">
@@ -552,7 +538,7 @@ p {
 				<h2>今日值得租</h2>
 			</div>
 			<div class="news-right">
-				<a href="#"><img src="theme/img/ad/pd07.jpg"></a>
+				<a href="#"><img src="theme/img/pd/pd07.jpg"></a>
 			</div>
 		</div>
 	</div>
@@ -623,7 +609,7 @@ p {
 			%>
 			<%
 				}
-			%>
+			%> 
 		</a>
 	</div>
 
@@ -809,16 +795,5 @@ p {
 	<script type="text/javascript">
 		banner()
 	</script>
-</body>
-</html>
-DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
 </body>
 </html>
